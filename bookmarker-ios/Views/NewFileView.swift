@@ -56,7 +56,10 @@ struct NewFileView: View {
                 }
             }
             .onReceive(NotificationCenter.default.publisher(for: .didCompleteNewFile)) { (_) in
-                self.sheetIsPresented = false 
+                if activeSheet == Sheet.selectFolder {
+                    self.sheetIsPresented = false
+                    self.vm.link = ""
+                }
             }
         }
     }
