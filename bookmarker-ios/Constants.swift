@@ -18,4 +18,11 @@ struct Constants {
     static let userFolders: String = "user_folders"
     static let userId: String = "user_id"
     static let folderId: String = "folder_id"
+    
+    struct Icon {
+        static let home: String = "house"
+        static let messages: String = "message"
+        static let close: String = "xmark"
+        static let account: String = "person.crop.circle"
+    }
 }
