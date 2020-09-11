@@ -25,13 +25,13 @@ struct SignUpView: View {
     var body: some View {
         VStack {
             TextField("Email", text: self.$vm.email)
+                .keyboardType(.emailAddress)
             SecureField("Password", text: self.$vm.password)
             Button(action: signUp) {
                 Text("Sign up")
                     .padding()
                     .frame(maxWidth: .infinity)
                     .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color.primary))
-                    .keyboardType(.emailAddress)
             }
             Button(action: {
                 self.authViewModel.isSigningUp.toggle()
