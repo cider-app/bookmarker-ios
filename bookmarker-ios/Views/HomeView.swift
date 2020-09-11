@@ -21,11 +21,11 @@ struct HomeView: View {
                         }) {
                             Image(systemName: Constants.Icon.account)
                         }
-                        .sheet(isPresented: $accountViewIsPresented) {
-                            AccountView(isPresented: $accountViewIsPresented)
-                                .environmentObject(self.appState)
-                        }
                     }
+                }
+                .sheet(isPresented: $accountViewIsPresented) {
+                    AccountView(isPresented: $accountViewIsPresented)
+                        .environmentObject(self.appState)
                 }
         }
     }

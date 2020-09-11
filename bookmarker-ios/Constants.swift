@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Constants {
     static let title: String = "title"
@@ -18,6 +19,7 @@ struct Constants {
     static let userFolders: String = "user_folders"
     static let userId: String = "user_id"
     static let folderId: String = "folder_id"
+    static let cornerRadius: CGFloat = 16
     
     struct Icon {
         static let home: String = "house"

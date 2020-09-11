@@ -25,6 +25,11 @@
 		0AAD15AE250BFC2800F8927B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15AD250BFC2800F8927B /* HomeView.swift */; };
 		0AAD15B0250BFD0C00F8927B /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15AF250BFD0C00F8927B /* AuthenticationView.swift */; };
 		0AAD15B2250BFE7700F8927B /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15B1250BFE7700F8927B /* AccountView.swift */; };
+		0AAD15B4250C00C400F8927B /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15B3250C00C400F8927B /* SignUpView.swift */; };
+		0AAD15B6250C00CB00F8927B /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15B5250C00CB00F8927B /* SignInView.swift */; };
+		0AAD15B8250C022900F8927B /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15B7250C022900F8927B /* SignUpViewModel.swift */; };
+		0AAD15BC250C024300F8927B /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15BB250C024300F8927B /* SignInViewModel.swift */; };
+		0AAD15BE250C065F00F8927B /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15BD250C065F00F8927B /* AuthenticationViewModel.swift */; };
 		1E5403FD8D760BCBF3B25356 /* Pods_bookmarker_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E8F9F5613752E4D719C502 /* Pods_bookmarker_iosTests.framework */; };
 		5B82A64943D35DD1A3DE80F6 /* Pods_bookmarker_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9BE1EFB93C783B8D13001C /* Pods_bookmarker_ios.framework */; };
 		A11E113C8FF189D9E7D792A5 /* Pods_bookmarker_ios_bookmarker_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01663A9E5F153CBE9603DA38 /* Pods_bookmarker_ios_bookmarker_iosUITests.framework */; };
@@ -74,6 +79,12 @@
 		0AAD15AD250BFC2800F8927B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0AAD15AF250BFD0C00F8927B /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		0AAD15B1250BFE7700F8927B /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		0AAD15B3250C00C400F8927B /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		0AAD15B5250C00CB00F8927B /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		0AAD15B7250C022900F8927B /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		0AAD15BB250C024300F8927B /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		0AAD15BD250C065F00F8927B /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		0AAD15BF250C099A00F8927B /* bookmarker-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "bookmarker-ios.entitlements"; sourceTree = "<group>"; };
 		1F11715738755AC992E82316 /* Pods-bookmarker-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarker-iosTests.release.xcconfig"; path = "Target Support Files/Pods-bookmarker-iosTests/Pods-bookmarker-iosTests.release.xcconfig"; sourceTree = "<group>"; };
 		29718C85EEAF7D71CE678E6A /* Pods-bookmarker-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarker-ios.release.xcconfig"; path = "Target Support Files/Pods-bookmarker-ios/Pods-bookmarker-ios.release.xcconfig"; sourceTree = "<group>"; };
 		4FA59607AA8CE2FE6F748143 /* Pods-bookmarker-ios-bookmarker-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarker-ios-bookmarker-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-bookmarker-ios-bookmarker-iosUITests/Pods-bookmarker-ios-bookmarker-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -136,6 +147,7 @@
 		0AAD156A250BE9A700F8927B /* bookmarker-ios */ = {
 			isa = PBXGroup;
 			children = (
+				0AAD15BF250C099A00F8927B /* bookmarker-ios.entitlements */,
 				0AAD15A9250BF8C900F8927B /* AppState.swift */,
 				0AAD156F250BE9AA00F8927B /* Assets.xcassets */,
 				0AAD156B250BE9A700F8927B /* bookmarker_iosApp.swift */,
@@ -193,6 +205,9 @@
 		0AAD159C250BEF2600F8927B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				0AAD15BD250C065F00F8927B /* AuthenticationViewModel.swift */,
+				0AAD15BB250C024300F8927B /* SignInViewModel.swift */,
+				0AAD15B7250C022900F8927B /* SignUpViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -203,6 +218,8 @@
 				0AAD15B1250BFE7700F8927B /* AccountView.swift */,
 				0AAD15AF250BFD0C00F8927B /* AuthenticationView.swift */,
 				0AAD15AD250BFC2800F8927B /* HomeView.swift */,
+				0AAD15B5250C00CB00F8927B /* SignInView.swift */,
+				0AAD15B3250C00C400F8927B /* SignUpView.swift */,
 				0AAD15AB250BFC1500F8927B /* TabsView.swift */,
 			);
 			path = Views;
@@ -478,14 +495,19 @@
 			files = (
 				0AAD15A6250BEF7000F8927B /* UserFolder.swift in Sources */,
 				0AAD15A0250BEF4E00F8927B /* User.swift in Sources */,
+				0AAD15B8250C022900F8927B /* SignUpViewModel.swift in Sources */,
 				0AAD15B0250BFD0C00F8927B /* AuthenticationView.swift in Sources */,
 				0AAD15A2250BEF5600F8927B /* Folder.swift in Sources */,
 				0AAD15AA250BF8C900F8927B /* AppState.swift in Sources */,
+				0AAD15BE250C065F00F8927B /* AuthenticationViewModel.swift in Sources */,
 				0AAD15AC250BFC1500F8927B /* TabsView.swift in Sources */,
 				0AAD15AE250BFC2800F8927B /* HomeView.swift in Sources */,
 				0AAD15A8250BF2AB00F8927B /* FirestoreModel.swift in Sources */,
+				0AAD15BC250C024300F8927B /* SignInViewModel.swift in Sources */,
 				0AAD156E250BE9A700F8927B /* ContentView.swift in Sources */,
+				0AAD15B6250C00CB00F8927B /* SignInView.swift in Sources */,
 				0AAD156C250BE9A700F8927B /* bookmarker_iosApp.swift in Sources */,
+				0AAD15B4250C00C400F8927B /* SignUpView.swift in Sources */,
 				0AAD15A4250BEF6800F8927B /* FolderUser.swift in Sources */,
 				0AAD15B2250BFE7700F8927B /* AccountView.swift in Sources */,
 				0AAD159A250BEEEE00F8927B /* Constants.swift in Sources */,
@@ -646,6 +668,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "bookmarker-ios/bookmarker-ios.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"bookmarker-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = KDPC3776KJ;
@@ -669,6 +692,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "bookmarker-ios/bookmarker-ios.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"bookmarker-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = KDPC3776KJ;

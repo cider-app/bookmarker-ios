@@ -8,21 +8,39 @@
 import SwiftUI
 
 struct AuthenticationView: View {
+    @StateObject var vm = AuthenticationViewModel()
     @Binding var isPresented: Bool
     
     var body: some View {
         NavigationView {
-            Text("Authentication")
-                .toolbar {
-                    ToolbarItem(placement: .cancellationAction) {
-                        Button(action: {
-                            self.isPresented = false
-                        }) {
-                            Image(systemName: Constants.Icon.close)
-                        }
+            Group {
+                if self.vm.isSigningUp {
+                    SignUpView()
+                        .environmentObject(self.vm)
+                } else {
+                    SignInView()
+                        .environmentObject(self.vm)
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button(action: {
+                        self.isPresented = false
+                    }) {
+                        Image(systemName: Constants.Icon.close)
                     }
                 }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .didCompleteAuthentication)) { (_) in
+                self.isPresented = false
+            }
         }
+    }
+}
+
+extension Notification.Name {
+    static var didCompleteAuthentication: Notification.Name {
+        return Notification.Name("did complete authentication")
     }
 }
 

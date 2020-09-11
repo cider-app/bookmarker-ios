@@ -15,7 +15,15 @@ struct AccountView: View {
     var body: some View {
         Group {
             if self.appState.authUser != nil {
-                Text("Account")
+                Form {
+                    Section {
+                        Button(action: {
+                            self.appState.signOut(completion: nil)
+                        }) {
+                            Text("Sign out")
+                        }
+                    }
+                }
             } else {
                 Button(action: {
                     self.authViewIsPresented = true
