@@ -7,12 +7,27 @@
 
 import SwiftUI
 
+enum Tabs: Hashable {
+    case home
+    case newFile
+}
+
 struct TabsView: View {
+    @EnvironmentObject var appState: AppState
+    
     var body: some View {
-        HomeView()
-            .tabItem {
-                Image(systemName: Constants.Icon.home)
-            }
+        TabView(selection: self.$appState.selectedTab) {
+            HomeView()
+                .tabItem {
+                    Image(systemName: Constants.Icon.home)
+                }
+                .tag(Tabs.home)
+            NewFileView()
+                .tabItem {
+                    Image(systemName: Constants.Icon.addFile)
+                }
+                .tag(Tabs.newFile)
+        }
     }
 }
 

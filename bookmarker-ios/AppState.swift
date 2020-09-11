@@ -10,6 +10,7 @@ import FirebaseAuth
 
 class AppState: ObservableObject {
     @Published var authUser: FirebaseAuth.User?
+    @Published var selectedTab: Tabs = Tabs.home
     var handle: AuthStateDidChangeListenerHandle?
     
     func listenAuth() {
