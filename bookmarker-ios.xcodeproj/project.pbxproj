@@ -200,10 +200,10 @@
 		0AAD159D250BEF2C00F8927B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0AAD15B1250BFE7700F8927B /* AccountView.swift */,
 				0AAD15AF250BFD0C00F8927B /* AuthenticationView.swift */,
 				0AAD15AD250BFC2800F8927B /* HomeView.swift */,
 				0AAD15AB250BFC1500F8927B /* TabsView.swift */,
-				0AAD15B1250BFE7700F8927B /* AccountView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
