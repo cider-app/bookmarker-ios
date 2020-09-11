@@ -8,9 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var appState: AppState
+    
     var body: some View {
         Text("Hello, world!")
             .padding()
+            .onAppear {
+                self.appState.listenAuth()
+            }
+            .onDisappear {
+                self.appState.unlistenAuth()
+            }
     }
 }
 
