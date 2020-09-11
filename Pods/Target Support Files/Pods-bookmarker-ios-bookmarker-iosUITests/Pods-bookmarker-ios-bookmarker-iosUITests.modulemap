@@ -1,0 +1,6 @@
+framework module Pods_bookmarker_ios_bookmarker_iosUITests {
+  umbrella header "Pods-bookmarker-ios-bookmarker-iosUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
