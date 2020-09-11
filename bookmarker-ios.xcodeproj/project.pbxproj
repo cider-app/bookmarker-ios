@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -114,10 +114,10 @@
 		0AAD156A250BE9A700F8927B /* bookmarker-ios */ = {
 			isa = PBXGroup;
 			children = (
-				0AAD1597250BEADD00F8927B /* GoogleService-Info.plist */,
+				0AAD156F250BE9AA00F8927B /* Assets.xcassets */,
 				0AAD156B250BE9A700F8927B /* bookmarker_iosApp.swift */,
 				0AAD156D250BE9A700F8927B /* ContentView.swift */,
-				0AAD156F250BE9AA00F8927B /* Assets.xcassets */,
+				0AAD1597250BEADD00F8927B /* GoogleService-Info.plist */,
 				0AAD1574250BE9AA00F8927B /* Info.plist */,
 				0AAD1571250BE9AA00F8927B /* Preview Content */,
 			);
@@ -160,7 +160,6 @@
 				5435476D096B387ABE1E451B /* Pods-bookmarker-iosTests.debug.xcconfig */,
 				1F11715738755AC992E82316 /* Pods-bookmarker-iosTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
