@@ -20,6 +20,7 @@
 		0AAD15A4250BEF6800F8927B /* FolderUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15A3250BEF6800F8927B /* FolderUser.swift */; };
 		0AAD15A6250BEF7000F8927B /* UserFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15A5250BEF7000F8927B /* UserFolder.swift */; };
 		0AAD15A8250BF2AB00F8927B /* FirestoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15A7250BF2AB00F8927B /* FirestoreModel.swift */; };
+		0AAD15AA250BF8C900F8927B /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15A9250BF8C900F8927B /* AppState.swift */; };
 		1E5403FD8D760BCBF3B25356 /* Pods_bookmarker_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E8F9F5613752E4D719C502 /* Pods_bookmarker_iosTests.framework */; };
 		5B82A64943D35DD1A3DE80F6 /* Pods_bookmarker_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9BE1EFB93C783B8D13001C /* Pods_bookmarker_ios.framework */; };
 		A11E113C8FF189D9E7D792A5 /* Pods_bookmarker_ios_bookmarker_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01663A9E5F153CBE9603DA38 /* Pods_bookmarker_ios_bookmarker_iosUITests.framework */; };
@@ -64,6 +65,7 @@
 		0AAD15A3250BEF6800F8927B /* FolderUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderUser.swift; sourceTree = "<group>"; };
 		0AAD15A5250BEF7000F8927B /* UserFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFolder.swift; sourceTree = "<group>"; };
 		0AAD15A7250BF2AB00F8927B /* FirestoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreModel.swift; sourceTree = "<group>"; };
+		0AAD15A9250BF8C900F8927B /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		1F11715738755AC992E82316 /* Pods-bookmarker-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarker-iosTests.release.xcconfig"; path = "Target Support Files/Pods-bookmarker-iosTests/Pods-bookmarker-iosTests.release.xcconfig"; sourceTree = "<group>"; };
 		29718C85EEAF7D71CE678E6A /* Pods-bookmarker-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarker-ios.release.xcconfig"; path = "Target Support Files/Pods-bookmarker-ios/Pods-bookmarker-ios.release.xcconfig"; sourceTree = "<group>"; };
 		4FA59607AA8CE2FE6F748143 /* Pods-bookmarker-ios-bookmarker-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarker-ios-bookmarker-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-bookmarker-ios-bookmarker-iosUITests/Pods-bookmarker-ios-bookmarker-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 		0AAD156A250BE9A700F8927B /* bookmarker-ios */ = {
 			isa = PBXGroup;
 			children = (
+				0AAD15A9250BF8C900F8927B /* AppState.swift */,
 				0AAD156F250BE9AA00F8927B /* Assets.xcassets */,
 				0AAD156B250BE9A700F8927B /* bookmarker_iosApp.swift */,
 				0AAD1599250BEEEE00F8927B /* Constants.swift */,
@@ -464,6 +467,7 @@
 				0AAD15A6250BEF7000F8927B /* UserFolder.swift in Sources */,
 				0AAD15A0250BEF4E00F8927B /* User.swift in Sources */,
 				0AAD15A2250BEF5600F8927B /* Folder.swift in Sources */,
+				0AAD15AA250BF8C900F8927B /* AppState.swift in Sources */,
 				0AAD15A8250BF2AB00F8927B /* FirestoreModel.swift in Sources */,
 				0AAD156E250BE9A700F8927B /* ContentView.swift in Sources */,
 				0AAD156C250BE9A700F8927B /* bookmarker_iosApp.swift in Sources */,

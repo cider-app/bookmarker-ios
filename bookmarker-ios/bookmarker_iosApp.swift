@@ -17,6 +17,7 @@ struct bookmarker_iosApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(AppState())
         }
     }
 }
