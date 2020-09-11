@@ -27,5 +27,8 @@ struct Constants {
         static let close: String = "xmark"
         static let account: String = "person.crop.circle"
         static let more: String = "ellipsis"
+        static let addFolder: String = "plus.rectangle.on.rectangle"
+        static let addFile: String = "plus.app"
+        static let add: String = "plus"
     }
 }
