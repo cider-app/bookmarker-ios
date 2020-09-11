@@ -26,5 +26,6 @@ struct Constants {
         static let messages: String = "message"
         static let close: String = "xmark"
         static let account: String = "person.crop.circle"
+        static let more: String = "ellipsis"
     }
 }
