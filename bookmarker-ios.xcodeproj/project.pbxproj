@@ -31,6 +31,9 @@
 		0AAD15BC250C024300F8927B /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15BB250C024300F8927B /* SignInViewModel.swift */; };
 		0AAD15BE250C065F00F8927B /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15BD250C065F00F8927B /* AuthenticationViewModel.swift */; };
 		0AAD15C1250C18D100F8927B /* NewFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15C0250C18D100F8927B /* NewFileView.swift */; };
+		0AAD15C3250C1BA500F8927B /* NewFileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15C2250C1BA500F8927B /* NewFileViewModel.swift */; };
+		0AAD15C5250C1E2000F8927B /* Notification.Name+didCompleteAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15C4250C1E2000F8927B /* Notification.Name+didCompleteAuthentication.swift */; };
+		0AAD15C7250C1E6800F8927B /* Notification.Name+didCompleteNewFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15C6250C1E6800F8927B /* Notification.Name+didCompleteNewFile.swift */; };
 		1E5403FD8D760BCBF3B25356 /* Pods_bookmarker_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E8F9F5613752E4D719C502 /* Pods_bookmarker_iosTests.framework */; };
 		5B82A64943D35DD1A3DE80F6 /* Pods_bookmarker_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9BE1EFB93C783B8D13001C /* Pods_bookmarker_ios.framework */; };
 		A11E113C8FF189D9E7D792A5 /* Pods_bookmarker_ios_bookmarker_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01663A9E5F153CBE9603DA38 /* Pods_bookmarker_ios_bookmarker_iosUITests.framework */; };
@@ -87,6 +90,9 @@
 		0AAD15BD250C065F00F8927B /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		0AAD15BF250C099A00F8927B /* bookmarker-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "bookmarker-ios.entitlements"; sourceTree = "<group>"; };
 		0AAD15C0250C18D100F8927B /* NewFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFileView.swift; sourceTree = "<group>"; };
+		0AAD15C2250C1BA500F8927B /* NewFileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFileViewModel.swift; sourceTree = "<group>"; };
+		0AAD15C4250C1E2000F8927B /* Notification.Name+didCompleteAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+didCompleteAuthentication.swift"; sourceTree = "<group>"; };
+		0AAD15C6250C1E6800F8927B /* Notification.Name+didCompleteNewFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+didCompleteNewFile.swift"; sourceTree = "<group>"; };
 		1F11715738755AC992E82316 /* Pods-bookmarker-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarker-iosTests.release.xcconfig"; path = "Target Support Files/Pods-bookmarker-iosTests/Pods-bookmarker-iosTests.release.xcconfig"; sourceTree = "<group>"; };
 		29718C85EEAF7D71CE678E6A /* Pods-bookmarker-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarker-ios.release.xcconfig"; path = "Target Support Files/Pods-bookmarker-ios/Pods-bookmarker-ios.release.xcconfig"; sourceTree = "<group>"; };
 		4FA59607AA8CE2FE6F748143 /* Pods-bookmarker-ios-bookmarker-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarker-ios-bookmarker-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-bookmarker-ios-bookmarker-iosUITests/Pods-bookmarker-ios-bookmarker-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -149,15 +155,17 @@
 		0AAD156A250BE9A700F8927B /* bookmarker-ios */ = {
 			isa = PBXGroup;
 			children = (
-				0AAD15BF250C099A00F8927B /* bookmarker-ios.entitlements */,
 				0AAD15A9250BF8C900F8927B /* AppState.swift */,
 				0AAD156F250BE9AA00F8927B /* Assets.xcassets */,
 				0AAD156B250BE9A700F8927B /* bookmarker_iosApp.swift */,
+				0AAD15BF250C099A00F8927B /* bookmarker-ios.entitlements */,
 				0AAD1599250BEEEE00F8927B /* Constants.swift */,
 				0AAD156D250BE9A700F8927B /* ContentView.swift */,
 				0AAD1597250BEADD00F8927B /* GoogleService-Info.plist */,
 				0AAD1574250BE9AA00F8927B /* Info.plist */,
 				0AAD159B250BEF2200F8927B /* Models */,
+				0AAD15C4250C1E2000F8927B /* Notification.Name+didCompleteAuthentication.swift */,
+				0AAD15C6250C1E6800F8927B /* Notification.Name+didCompleteNewFile.swift */,
 				0AAD1571250BE9AA00F8927B /* Preview Content */,
 				0AAD159E250BEF3600F8927B /* Repositories */,
 				0AAD159C250BEF2600F8927B /* ViewModels */,
@@ -208,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				0AAD15BD250C065F00F8927B /* AuthenticationViewModel.swift */,
+				0AAD15C2250C1BA500F8927B /* NewFileViewModel.swift */,
 				0AAD15BB250C024300F8927B /* SignInViewModel.swift */,
 				0AAD15B7250C022900F8927B /* SignUpViewModel.swift */,
 			);
@@ -220,10 +229,10 @@
 				0AAD15B1250BFE7700F8927B /* AccountView.swift */,
 				0AAD15AF250BFD0C00F8927B /* AuthenticationView.swift */,
 				0AAD15AD250BFC2800F8927B /* HomeView.swift */,
+				0AAD15C0250C18D100F8927B /* NewFileView.swift */,
 				0AAD15B5250C00CB00F8927B /* SignInView.swift */,
 				0AAD15B3250C00C400F8927B /* SignUpView.swift */,
 				0AAD15AB250BFC1500F8927B /* TabsView.swift */,
-				0AAD15C0250C18D100F8927B /* NewFileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -496,10 +505,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AAD15C7250C1E6800F8927B /* Notification.Name+didCompleteNewFile.swift in Sources */,
 				0AAD15A6250BEF7000F8927B /* UserFolder.swift in Sources */,
 				0AAD15A0250BEF4E00F8927B /* User.swift in Sources */,
 				0AAD15B8250C022900F8927B /* SignUpViewModel.swift in Sources */,
 				0AAD15C1250C18D100F8927B /* NewFileView.swift in Sources */,
+				0AAD15C5250C1E2000F8927B /* Notification.Name+didCompleteAuthentication.swift in Sources */,
 				0AAD15B0250BFD0C00F8927B /* AuthenticationView.swift in Sources */,
 				0AAD15A2250BEF5600F8927B /* Folder.swift in Sources */,
 				0AAD15AA250BF8C900F8927B /* AppState.swift in Sources */,
@@ -511,6 +522,7 @@
 				0AAD156E250BE9A700F8927B /* ContentView.swift in Sources */,
 				0AAD15B6250C00CB00F8927B /* SignInView.swift in Sources */,
 				0AAD156C250BE9A700F8927B /* bookmarker_iosApp.swift in Sources */,
+				0AAD15C3250C1BA500F8927B /* NewFileViewModel.swift in Sources */,
 				0AAD15B4250C00C400F8927B /* SignUpView.swift in Sources */,
 				0AAD15A4250BEF6800F8927B /* FolderUser.swift in Sources */,
 				0AAD15B2250BFE7700F8927B /* AccountView.swift in Sources */,

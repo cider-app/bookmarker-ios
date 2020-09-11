@@ -38,12 +38,6 @@ struct AuthenticationView: View {
     }
 }
 
-extension Notification.Name {
-    static var didCompleteAuthentication: Notification.Name {
-        return Notification.Name("did complete authentication")
-    }
-}
-
 //struct AuthenticationView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        AuthenticationView()
