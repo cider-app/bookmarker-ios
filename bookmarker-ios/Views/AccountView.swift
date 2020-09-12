@@ -15,8 +15,10 @@ struct AccountView: View {
         NavigationView {
             ProtectedWithPlaceholderView {
                 Form {
-                    Section {
-                        Text(self.appState.authUser!.uid)
+                    if let authUser = self.appState.authUser {
+                        Section {
+                            Text(authUser.uid)
+                        }
                     }
                     Section {
                         Button(action: {
