@@ -238,10 +238,10 @@
 				0AAD15AD250BFC2800F8927B /* HomeView.swift */,
 				0AAD15C0250C18D100F8927B /* NewFileView.swift */,
 				0AAD15D2250C9FB900F8927B /* ProtectedButtonView.swift */,
+				0AAD15D4250CA82300F8927B /* ProtectedWithPlaceholderView.swift */,
 				0AAD15B5250C00CB00F8927B /* SignInView.swift */,
 				0AAD15B3250C00C400F8927B /* SignUpView.swift */,
 				0AAD15AB250BFC1500F8927B /* TabsView.swift */,
-				0AAD15D4250CA82300F8927B /* ProtectedWithPlaceholderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
