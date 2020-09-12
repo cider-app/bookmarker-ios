@@ -15,41 +15,29 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            Group {
-                //  First let auth perform the initial check to see if a user is signed in or not
-                if self.appState.authStateFirstChanged {
-                    if let authUser = self.appState.authUser {
-                        ScrollView {
-                            VStack {
-                                HStack {
-                                    Text("My Collections")
-                                    Spacer()
-                                    Button(action: {
-                                        
-                                    }) {
-                                        Image(systemName: Constants.Icon.addFolder)
-                                    }
-                                }
-                                ForEach(self.vm.userFolders, id: \.id) { userFolder in
-                                    Text(userFolder.title)
-                                }
+            IfAuthenticatedView {
+                ScrollView {
+                    VStack {
+                        HStack {
+                            Text("My Collections")
+                            Spacer()
+                            Button(action: {
+                                
+                            }) {
+                                Image(systemName: Constants.Icon.addFolder)
                             }
-                            .padding()
                         }
-                        .onAppear {
-                            self.vm.listen(userId: authUser.uid)
-                        }
-                        .onDisappear {
-                            self.vm.unlisten()
-                        }
-                    } else {
-                        Color(.systemBackground)
-                        .onAppear {
-                            self.appState.signInAnonymously()
+                        ForEach(self.vm.userFolders, id: \.id) { userFolder in
+                            Text(userFolder.title)
                         }
                     }
-                } else {
-                    Color(.systemBackground)
+                    .padding()
+                }
+                .onAppear {
+                    self.vm.listen(userId: self.appState.authUser!.uid)
+                }
+                .onDisappear {
+                    self.vm.unlisten()
                 }
             }
             .toolbar {
