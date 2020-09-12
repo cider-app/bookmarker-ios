@@ -20,11 +20,11 @@ struct SignUpView: View {
                 return 
             }
             
-            NotificationCenter.default.post(name: .didCompleteAuthentication, object: nil)
-            
             //  Refresh the appState's reference of the authUser
             guard let authUser = Auth.auth().currentUser else { return }
             self.appState.authUser = authUser
+            
+            NotificationCenter.default.post(name: .didCompleteAuthentication, object: nil)
         }
     }
     
