@@ -8,5 +8,5 @@
 import Foundation
 
 class AuthenticationViewModel: ObservableObject {
-    @Published var isSigningUp: Bool = false 
+    @Published var isSigningUp: Bool = true
 }
