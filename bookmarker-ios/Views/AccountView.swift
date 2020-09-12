@@ -9,35 +9,21 @@ import SwiftUI
 
 struct AccountView: View {
     @EnvironmentObject var appState: AppState
-    @Binding var isPresented: Bool 
-    @State private var authViewIsPresented: Bool = false
+    @Binding var isPresented: Bool
     
     var body: some View {
         NavigationView {
-            Group {
-                if let authUser = self.appState.authUser {
-                    if authUser.isAnonymous {
+            ProtectedWithPlaceholderView {
+                Form {
+                    Section {
                         Button(action: {
-                            self.authViewIsPresented = true
-                        }) {
-                            Text("Sign up")
-                        }
-                        .fullScreenCover(isPresented: self.$authViewIsPresented) {
-                            AuthenticationView(isPresented: self.$authViewIsPresented)
-                        }
-                    } else {
-                        Form {
-                            Section {
-                                Button(action: {
-                                    self.appState.signOut { (error) in
-                                        if error == nil {
-                                            self.isPresented = false
-                                        }
-                                    }
-                                }) {
-                                    Text("Sign out")
+                            self.appState.signOut { (error) in
+                                if error == nil {
+                                    self.isPresented = false
                                 }
                             }
+                        }) {
+                            Text("Sign out")
                         }
                     }
                 }
