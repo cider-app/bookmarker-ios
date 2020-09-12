@@ -17,7 +17,7 @@ struct HomeView: View {
         NavigationView {
             IfAuthenticatedView {
                 ScrollView {
-                    VStack {
+                    VStack(alignment: .leading) {
                         HStack {
                             Text("My Collections")
                             Spacer()
@@ -28,7 +28,7 @@ struct HomeView: View {
                             }
                         }
                         ForEach(self.vm.userFolders, id: \.id) { userFolder in
-                            Text(userFolder.title)
+                            UserFoldersListRowView(userFolder: userFolder)
                         }
                     }
                     .padding()
