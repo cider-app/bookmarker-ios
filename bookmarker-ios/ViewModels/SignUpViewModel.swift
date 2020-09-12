@@ -21,6 +21,30 @@ class SignUpViewModel: ObservableObject {
                 print("Error signing up user: \(error.localizedDescription)")
                 return
             }
+            
+            guard let authUser = result?.user else { return }
+            authUser.reload(completion: nil)
+        }
+    }
+    
+    func signUpAnonymousUserWithEmailAndPassword(completion: ((Error?) -> Void)?) {
+        guard let authUser = Auth.auth().currentUser else { return }
+        
+        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+        authUser.link(with: credential) { (authDataResult, error) in
+            if let error = error {
+                print("Error linking anonymous user with email and password: \(error.localizedDescription)")
+                if completion != nil {
+                    completion!(error)
+                }
+                return
+            }
+            
+            authUser.reload(completion: nil)
+            
+            if completion != nil {
+                completion!(nil)
+            }
         }
     }
 }
