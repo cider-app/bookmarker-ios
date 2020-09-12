@@ -12,12 +12,12 @@ struct ContentView: View {
     
     var body: some View {
         TabsView()
-            .onAppear {
-                self.appState.listenAuth()
-            }
-            .onDisappear {
-                self.appState.unlistenAuth()
-            }
+        .onAppear {
+            self.appState.listenAuth()
+        }
+        .onDisappear {
+            self.appState.unlistenAuth()
+        }
     }
 }
 
