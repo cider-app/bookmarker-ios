@@ -10,12 +10,14 @@ import FirebaseAuth
 
 class AppState: ObservableObject {
     @Published var authUser: FirebaseAuth.User?
+    @Published var authStateFirstChanged: Bool = false
     @Published var selectedTab: Tabs = Tabs.home
     var handle: AuthStateDidChangeListenerHandle?
     
     func listenAuth() {
         handle = Auth.auth().addStateDidChangeListener({ (auth, authUser) in
             if let user = authUser {
+                print("User \(user.uid) signed in. Anonymous: \(user.isAnonymous)")
                 self.authUser = user
                 
                 do {
@@ -24,14 +26,26 @@ class AppState: ObservableObject {
                     print("Error changing user access group: %@, ", error)
                 }
             } else {
+                print("No user signed in")
                 self.authUser = nil 
             }
+            
+            self.authStateFirstChanged = true
         })
     }
     
     func unlistenAuth() {
         if let handle = handle {
             Auth.auth().removeStateDidChangeListener(handle)
+        }
+    }
+    
+    func signInAnonymously() {
+        Auth.auth().signInAnonymously { (autDataResult, error) in
+            if let error = error {
+                print("Error signing in anonymously: \(error.localizedDescription)")
+                return
+            }
         }
     }
     
