@@ -22,7 +22,14 @@ class SignInViewModel: ObservableObject {
             
             if let error = error {
                 print("Error signing in with email and password: \(error.localizedDescription)")
+                if completion != nil {
+                    completion!(error)
+                }
                 return
+            }
+            
+            if completion != nil {
+                completion!(nil)
             }
         }
     }
