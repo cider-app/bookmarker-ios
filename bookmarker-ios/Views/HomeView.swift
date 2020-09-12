@@ -57,7 +57,7 @@ struct HomeView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
+                    ProtectedButtonView(action: {
                         self.accountViewIsPresented = true
                     }) {
                         Image(systemName: Constants.Icon.account)
