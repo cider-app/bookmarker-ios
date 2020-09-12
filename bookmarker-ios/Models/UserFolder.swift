@@ -11,6 +11,7 @@ import FirebaseFirestore
 struct UserFolder: FirestoreModel {
     var title: String = ""
     var description: String = ""
+    var secret: Bool = true
     
     //  MARK: - FirestoreModel protocol
     var id: String
@@ -18,7 +19,8 @@ struct UserFolder: FirestoreModel {
     var toDictionary: [String : Any] {
         return [
             Constants.title: title,
-            Constants.description: description
+            Constants.description: description,
+            Constants.secret: secret
         ]
     }
     
@@ -30,6 +32,7 @@ struct UserFolder: FirestoreModel {
         self.id = documentSnapshot.documentID
         self.title = title
         self.description = data[Constants.description] as? String ?? ""
+        self.secret = data[Constants.secret] as? Bool ?? true 
     }
     
     static func subcollectionRef(parentDocId: String) -> CollectionReference {
