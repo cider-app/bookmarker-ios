@@ -35,6 +35,7 @@
 		0AAD15C5250C1E2000F8927B /* Notification.Name+didCompleteAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15C4250C1E2000F8927B /* Notification.Name+didCompleteAuthentication.swift */; };
 		0AAD15C7250C1E6800F8927B /* Notification.Name+didCompleteNewFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15C6250C1E6800F8927B /* Notification.Name+didCompleteNewFile.swift */; };
 		0AAD15C9250C201400F8927B /* UserFoldersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15C8250C201400F8927B /* UserFoldersViewModel.swift */; };
+		0AAD15D3250C9FB900F8927B /* ProtectedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15D2250C9FB900F8927B /* ProtectedButtonView.swift */; };
 		1E5403FD8D760BCBF3B25356 /* Pods_bookmarker_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E8F9F5613752E4D719C502 /* Pods_bookmarker_iosTests.framework */; };
 		5B82A64943D35DD1A3DE80F6 /* Pods_bookmarker_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9BE1EFB93C783B8D13001C /* Pods_bookmarker_ios.framework */; };
 		A11E113C8FF189D9E7D792A5 /* Pods_bookmarker_ios_bookmarker_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01663A9E5F153CBE9603DA38 /* Pods_bookmarker_ios_bookmarker_iosUITests.framework */; };
@@ -95,6 +96,7 @@
 		0AAD15C4250C1E2000F8927B /* Notification.Name+didCompleteAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+didCompleteAuthentication.swift"; sourceTree = "<group>"; };
 		0AAD15C6250C1E6800F8927B /* Notification.Name+didCompleteNewFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+didCompleteNewFile.swift"; sourceTree = "<group>"; };
 		0AAD15C8250C201400F8927B /* UserFoldersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFoldersViewModel.swift; sourceTree = "<group>"; };
+		0AAD15D2250C9FB900F8927B /* ProtectedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectedButtonView.swift; sourceTree = "<group>"; };
 		1F11715738755AC992E82316 /* Pods-bookmarker-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarker-iosTests.release.xcconfig"; path = "Target Support Files/Pods-bookmarker-iosTests/Pods-bookmarker-iosTests.release.xcconfig"; sourceTree = "<group>"; };
 		29718C85EEAF7D71CE678E6A /* Pods-bookmarker-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarker-ios.release.xcconfig"; path = "Target Support Files/Pods-bookmarker-ios/Pods-bookmarker-ios.release.xcconfig"; sourceTree = "<group>"; };
 		4FA59607AA8CE2FE6F748143 /* Pods-bookmarker-ios-bookmarker-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarker-ios-bookmarker-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-bookmarker-ios-bookmarker-iosUITests/Pods-bookmarker-ios-bookmarker-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				0AAD15AF250BFD0C00F8927B /* AuthenticationView.swift */,
 				0AAD15AD250BFC2800F8927B /* HomeView.swift */,
 				0AAD15C0250C18D100F8927B /* NewFileView.swift */,
+				0AAD15D2250C9FB900F8927B /* ProtectedButtonView.swift */,
 				0AAD15B5250C00CB00F8927B /* SignInView.swift */,
 				0AAD15B3250C00C400F8927B /* SignUpView.swift */,
 				0AAD15AB250BFC1500F8927B /* TabsView.swift */,
@@ -519,6 +522,7 @@
 				0AAD15A2250BEF5600F8927B /* Folder.swift in Sources */,
 				0AAD15AA250BF8C900F8927B /* AppState.swift in Sources */,
 				0AAD15BE250C065F00F8927B /* AuthenticationViewModel.swift in Sources */,
+				0AAD15D3250C9FB900F8927B /* ProtectedButtonView.swift in Sources */,
 				0AAD15AC250BFC1500F8927B /* TabsView.swift in Sources */,
 				0AAD15AE250BFC2800F8927B /* HomeView.swift in Sources */,
 				0AAD15A8250BF2AB00F8927B /* FirestoreModel.swift in Sources */,
