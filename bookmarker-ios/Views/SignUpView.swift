@@ -6,19 +6,25 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct SignUpView: View {
+    @EnvironmentObject var appState: AppState
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     @StateObject var vm = SignUpViewModel()
     
     func signUp() {
-        self.vm.signUpWithEmailAndPassword { (error) in
+        self.vm.signUpAnonymousUserWithEmailAndPassword { (error) in
             if let error = error {
                 print("Error signing up: \(error.localizedDescription)")
                 return 
             }
             
             NotificationCenter.default.post(name: .didCompleteAuthentication, object: nil)
+            
+            //  Refresh the appState's reference of the authUser
+            guard let authUser = Auth.auth().currentUser else { return }
+            self.appState.authUser = authUser
         }
     }
     
