@@ -16,6 +16,9 @@ struct AccountView: View {
             ProtectedWithPlaceholderView {
                 Form {
                     Section {
+                        Text(self.appState.authUser!.uid)
+                    }
+                    Section {
                         Button(action: {
                             self.appState.signOut { (error) in
                                 if error == nil {
