@@ -26,8 +26,12 @@ struct ProtectedWithPlaceholderView<Content: View>: View {
                         self.authViewIsPresented = true
                     }) {
                         Text("Sign up")
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color.primary))
                     }
                 }
+                .padding()
                 .fullScreenCover(isPresented: self.$authViewIsPresented) {
                     AuthenticationView(isPresented: self.$authViewIsPresented)
                 }
