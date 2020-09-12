@@ -18,7 +18,7 @@ struct HomeView: View {
             Group {
                 //  First let auth perform the initial check to see if a user is signed in or not
                 if self.appState.authStateFirstChanged {
-                    if self.appState.authUser != nil {
+                    if let authUser = self.appState.authUser {
                         ScrollView {
                             VStack {
                                 HStack {
@@ -37,27 +37,24 @@ struct HomeView: View {
                             .padding()
                         }
                         .onAppear {
-                            if let authUser = self.appState.authUser {
-                                self.vm.listen(userId: authUser.uid)
-                            }
+                            self.vm.listen(userId: authUser.uid)
                         }
                         .onDisappear {
                             self.vm.unlisten()
                         }
                     } else {
-                        Text("EmptyView: no user signed in")
-                            .onAppear {
-                                print("Emptyview appear")
-                                self.appState.signInAnonymously()
-                            }
+                        Color(.systemBackground)
+                        .onAppear {
+                            self.appState.signInAnonymously()
+                        }
                     }
                 } else {
-                    Text("Auth state no change")
+                    Color(.systemBackground)
                 }
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    ProtectedButtonView(action: {
+                    Button(action: {
                         self.accountViewIsPresented = true
                     }) {
                         Image(systemName: Constants.Icon.account)
