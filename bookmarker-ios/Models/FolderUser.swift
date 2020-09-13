@@ -9,24 +9,18 @@ import Foundation
 import FirebaseFirestore
 
 struct FolderUser: FirestoreModel {
-    var userId: String
-    
     //  MARK: - FirestoreModel protocol
     var id: String
     
     var toDictionary: [String : Any] {
-        return [
-            Constants.userId: userId
-        ]
+        return [:]
     }
     
     init?(documentSnapshot: DocumentSnapshot) {
-        guard let data = documentSnapshot.data(),
-              let userId = data[Constants.userId] as? String
+        guard let data = documentSnapshot.data()
         else { return nil }
         
         self.id = documentSnapshot.documentID
-        self.userId = userId
     }
     
     static func subcollectionRef(parentDocId: String) -> CollectionReference {
