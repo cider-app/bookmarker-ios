@@ -42,7 +42,6 @@
 		0AAD15DB250DEE3F00F8927B /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15DA250DEE3F00F8927B /* FolderView.swift */; };
 		0AAD15DD250DEE5C00F8927B /* FolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15DC250DEE5C00F8927B /* FolderViewModel.swift */; };
 		0AAD15DF250DEE9200F8927B /* FolderFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15DE250DEE9200F8927B /* FolderFile.swift */; };
-		0AAD15E1250DF1CF00F8927B /* FolderFilesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15E0250DF1CF00F8927B /* FolderFilesListView.swift */; };
 		0AAD15E3250DF1D900F8927B /* FolderFilesListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15E2250DF1D900F8927B /* FolderFilesListRowView.swift */; };
 		0AAD15E5250DF37400F8927B /* NewFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15E4250DF37400F8927B /* NewFolderView.swift */; };
 		0AAD15E7250DF3D700F8927B /* NewFolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15E6250DF3D700F8927B /* NewFolderViewModel.swift */; };
@@ -114,7 +113,6 @@
 		0AAD15DA250DEE3F00F8927B /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
 		0AAD15DC250DEE5C00F8927B /* FolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewModel.swift; sourceTree = "<group>"; };
 		0AAD15DE250DEE9200F8927B /* FolderFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFile.swift; sourceTree = "<group>"; };
-		0AAD15E0250DF1CF00F8927B /* FolderFilesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFilesListView.swift; sourceTree = "<group>"; };
 		0AAD15E2250DF1D900F8927B /* FolderFilesListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFilesListRowView.swift; sourceTree = "<group>"; };
 		0AAD15E4250DF37400F8927B /* NewFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFolderView.swift; sourceTree = "<group>"; };
 		0AAD15E6250DF3D700F8927B /* NewFolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFolderViewModel.swift; sourceTree = "<group>"; };
@@ -260,7 +258,6 @@
 				0AAD15B1250BFE7700F8927B /* AccountView.swift */,
 				0AAD15AF250BFD0C00F8927B /* AuthenticationView.swift */,
 				0AAD15E2250DF1D900F8927B /* FolderFilesListRowView.swift */,
-				0AAD15E0250DF1CF00F8927B /* FolderFilesListView.swift */,
 				0AAD15DA250DEE3F00F8927B /* FolderView.swift */,
 				0AAD15AD250BFC2800F8927B /* HomeView.swift */,
 				0AAD15D6250CACC200F8927B /* IfAuthenticatedView.swift */,
@@ -554,7 +551,6 @@
 				0AAD15B8250C022900F8927B /* SignUpViewModel.swift in Sources */,
 				0AAD15C1250C18D100F8927B /* NewFileView.swift in Sources */,
 				0AAD15C5250C1E2000F8927B /* Notification.Name+didCompleteAuthentication.swift in Sources */,
-				0AAD15E1250DF1CF00F8927B /* FolderFilesListView.swift in Sources */,
 				0AAD15B0250BFD0C00F8927B /* AuthenticationView.swift in Sources */,
 				0AAD15A2250BEF5600F8927B /* Folder.swift in Sources */,
 				0AAD15AA250BF8C900F8927B /* AppState.swift in Sources */,

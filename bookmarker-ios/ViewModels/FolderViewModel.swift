@@ -6,13 +6,15 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 class FolderViewModel: ObservableObject {
     @Published var folder: Folder?
     @Published var folderFiles = [FolderFile]()
+    var listener: ListenerRegistration?
     
     func listenFolder(folderId: String) {
-        Folder.collectionRef.document(folderId).addSnapshotListener { (documentSnapshot, error) in
+        listener = Folder.collectionRef.document(folderId).addSnapshotListener { (documentSnapshot, error) in
             guard let document = documentSnapshot else {
                 print("Error fetching document: \(error!)")
                 return
@@ -36,5 +38,9 @@ class FolderViewModel: ObservableObject {
             }
             self.folderFiles = items
         }
+    }
+    
+    func unlistenFolder() {
+        listener?.remove()
     }
 }
