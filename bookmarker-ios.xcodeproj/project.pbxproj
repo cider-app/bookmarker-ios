@@ -273,6 +273,9 @@
 				0AAD15DA250DEE3F00F8927B /* FolderView.swift */,
 				0AAD15AD250BFC2800F8927B /* HomeView.swift */,
 				0AAD15D6250CACC200F8927B /* IfAuthenticatedView.swift */,
+				0A87C47C250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift */,
+				0A87C478250EA1DD00BC6B4C /* IfIsFolderCreatorView.swift */,
+				0A29067A250EAFA0003602E7 /* IfIsFolderMemberView.swift */,
 				0AAD15C0250C18D100F8927B /* NewFileView.swift */,
 				0AAD15E4250DF37400F8927B /* NewFolderView.swift */,
 				0AAD15D2250C9FB900F8927B /* ProtectedButtonView.swift */,
@@ -281,9 +284,6 @@
 				0AAD15B3250C00C400F8927B /* SignUpView.swift */,
 				0AAD15AB250BFC1500F8927B /* TabsView.swift */,
 				0AAD15D8250CB74600F8927B /* UserFoldersListRowView.swift */,
-				0A29067A250EAFA0003602E7 /* IfIsFolderMemberView.swift */,
-				0A87C478250EA1DD00BC6B4C /* IfIsFolderCreatorView.swift */,
-				0A87C47C250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
