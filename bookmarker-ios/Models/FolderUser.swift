@@ -17,7 +17,9 @@ struct FolderUser: FirestoreModel {
     var id: String
     
     var toDictionary: [String : Any] {
-        return [:]
+        return [
+            Constants.userId: id
+        ]
     }
     
     init?(documentSnapshot: DocumentSnapshot) {

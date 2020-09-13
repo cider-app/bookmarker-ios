@@ -27,7 +27,8 @@ struct UserFolder: FirestoreModel {
         return [
             Constants.title: title,
             Constants.description: description,
-            Constants.secret: secret
+            Constants.secret: secret,
+            Constants.folderId: id
         ]
     }
     
