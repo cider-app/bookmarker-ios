@@ -38,5 +38,10 @@ struct Constants {
         static let addFolder: String = "plus.rectangle.on.rectangle"
         static let addFile: String = "plus.app"
         static let add: String = "plus"
+        static let edit: String = "pencil"
+        static let members: String = "person.2"
+        static let leave: String = "arrow.left.to.line"
+        static let delete: String = "trash"
+        static let chat: String = "message"
     }
 }
