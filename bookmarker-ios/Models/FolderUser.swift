@@ -9,6 +9,10 @@ import Foundation
 import FirebaseFirestore
 
 struct FolderUser: FirestoreModel {
+    init(id: String) {
+        self.id = id
+    }
+    
     //  MARK: - FirestoreModel protocol
     var id: String
     

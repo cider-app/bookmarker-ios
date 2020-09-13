@@ -13,6 +13,13 @@ struct UserFolder: FirestoreModel {
     var description: String = ""
     var secret: Bool = true
     
+    init(id: String, title: String, description: String, secret: Bool = true) {
+        self.id = id
+        self.title = title
+        self.description = description
+        self.secret = secret
+    }
+    
     //  MARK: - FirestoreModel protocol
     var id: String
     
@@ -32,7 +39,7 @@ struct UserFolder: FirestoreModel {
         self.id = documentSnapshot.documentID
         self.title = title
         self.description = data[Constants.description] as? String ?? ""
-        self.secret = data[Constants.secret] as? Bool ?? true 
+        self.secret = data[Constants.secret] as? Bool ?? true
     }
     
     static func subcollectionRef(parentDocId: String) -> CollectionReference {

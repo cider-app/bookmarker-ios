@@ -11,6 +11,7 @@ import FirebaseFirestore
 struct HomeView: View {
     @EnvironmentObject var appState: AppState
     @State private var accountViewIsPresented: Bool = false
+    @State private var newFolderViewIsPresented: Bool = false
     @StateObject var vm = UserFoldersViewModel()
     
     var body: some View {
@@ -22,9 +23,12 @@ struct HomeView: View {
                             Text("My Collections")
                             Spacer()
                             Button(action: {
-                                
+                                self.newFolderViewIsPresented = true
                             }) {
                                 Image(systemName: Constants.Icon.addFolder)
+                            }
+                            .sheet(isPresented: self.$newFolderViewIsPresented) {
+                                NewFolderView(isPresented: self.$newFolderViewIsPresented)
                             }
                         }
                         ForEach(self.vm.userFolders, id: \.id) { userFolder in
@@ -47,11 +51,11 @@ struct HomeView: View {
                     }) {
                         Image(systemName: Constants.Icon.account)
                     }
+                    .sheet(isPresented: $accountViewIsPresented) {
+                        AccountView(isPresented: $accountViewIsPresented)
+                            .environmentObject(self.appState)
+                    }
                 }
-            }
-            .sheet(isPresented: $accountViewIsPresented) {
-                AccountView(isPresented: $accountViewIsPresented)
-                    .environmentObject(self.appState)
             }
         }
     }
