@@ -39,11 +39,13 @@ struct SignUpView: View {
                     .frame(maxWidth: .infinity)
                     .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color.primary))
             }
+            .disabled(self.vm.isLoading)
             Button(action: {
                 self.authViewModel.isSigningUp.toggle()
             }) {
                 Text("Log in")
             }
+            .disabled(self.vm.isLoading)
         }
         .padding()
         .navigationTitle("Sign up")

@@ -34,6 +34,7 @@ struct NewFolderView: View {
                             .frame(maxWidth: .infinity)
                             .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color.primary))
                     }
+                    .disabled(self.vm.isLoading)
                 }
                 .padding()
             }
