@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A29067B250EAFA0003602E7 /* IfIsFolderMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29067A250EAFA0003602E7 /* IfIsFolderMemberView.swift */; };
 		0A87C477250E9B7000BC6B4C /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A87C476250E9B7000BC6B4C /* NotificationsView.swift */; };
+		0A87C479250EA1DD00BC6B4C /* IfIsFolderCreatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A87C478250EA1DD00BC6B4C /* IfIsFolderCreatorView.swift */; };
+		0A87C47D250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A87C47C250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift */; };
 		0AAD156C250BE9A700F8927B /* bookmarker_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD156B250BE9A700F8927B /* bookmarker_iosApp.swift */; };
 		0AAD156E250BE9A700F8927B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD156D250BE9A700F8927B /* ContentView.swift */; };
 		0AAD1570250BE9AA00F8927B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AAD156F250BE9AA00F8927B /* Assets.xcassets */; };
@@ -74,7 +77,10 @@
 /* Begin PBXFileReference section */
 		01663A9E5F153CBE9603DA38 /* Pods_bookmarker_ios_bookmarker_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bookmarker_ios_bookmarker_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		09E8F9F5613752E4D719C502 /* Pods_bookmarker_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bookmarker_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A29067A250EAFA0003602E7 /* IfIsFolderMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfIsFolderMemberView.swift; sourceTree = "<group>"; };
 		0A87C476250E9B7000BC6B4C /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		0A87C478250EA1DD00BC6B4C /* IfIsFolderCreatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfIsFolderCreatorView.swift; sourceTree = "<group>"; };
+		0A87C47C250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfIsFolderCreatorOrCanManageMembersView.swift; sourceTree = "<group>"; };
 		0AAD1568250BE9A700F8927B /* bookmarker-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bookmarker-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AAD156B250BE9A700F8927B /* bookmarker_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookmarker_iosApp.swift; sourceTree = "<group>"; };
 		0AAD156D250BE9A700F8927B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -278,6 +284,9 @@
 				0AAD15AB250BFC1500F8927B /* TabsView.swift */,
 				0AAD15D8250CB74600F8927B /* UserFoldersListRowView.swift */,
 				0A87C476250E9B7000BC6B4C /* NotificationsView.swift */,
+				0A29067A250EAFA0003602E7 /* IfIsFolderMemberView.swift */,
+				0A87C478250EA1DD00BC6B4C /* IfIsFolderCreatorView.swift */,
+				0A87C47C250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -556,6 +565,7 @@
 				0AAD15A6250BEF7000F8927B /* UserFolder.swift in Sources */,
 				0AAD15C9250C201400F8927B /* UserFoldersViewModel.swift in Sources */,
 				0AAD15A0250BEF4E00F8927B /* User.swift in Sources */,
+				0A87C479250EA1DD00BC6B4C /* IfIsFolderCreatorView.swift in Sources */,
 				0AAD15DF250DEE9200F8927B /* FolderFile.swift in Sources */,
 				0AAD15B8250C022900F8927B /* SignUpViewModel.swift in Sources */,
 				0AAD15C1250C18D100F8927B /* NewFileView.swift in Sources */,
@@ -584,9 +594,11 @@
 				0AAD15B4250C00C400F8927B /* SignUpView.swift in Sources */,
 				0AAD15A4250BEF6800F8927B /* FolderUser.swift in Sources */,
 				0AAD15B2250BFE7700F8927B /* AccountView.swift in Sources */,
+				0A87C47D250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift in Sources */,
 				0AAD15E7250DF3D700F8927B /* NewFolderViewModel.swift in Sources */,
 				0AAD15E5250DF37400F8927B /* NewFolderView.swift in Sources */,
 				0AAD159A250BEEEE00F8927B /* Constants.swift in Sources */,
+				0A29067B250EAFA0003602E7 /* IfIsFolderMemberView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
