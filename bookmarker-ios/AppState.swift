@@ -7,15 +7,18 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
 
 class AppState: ObservableObject {
     @Published var authUser: FirebaseAuth.User?
     @Published var authStateFirstChanged: Bool = false
     @Published var selectedTab: Tabs = Tabs.home
-    var handle: AuthStateDidChangeListenerHandle?
+    @Published var currentUserFolders = [UserFolder]()
+    var authListenerHandle: AuthStateDidChangeListenerHandle?
+    var userFoldersListener: ListenerRegistration?
     
     func listenAuth() {
-        handle = Auth.auth().addStateDidChangeListener({ (auth, authUser) in
+        authListenerHandle = Auth.auth().addStateDidChangeListener({ (auth, authUser) in
             if let user = authUser {
                 print("User \(user.uid) signed in. Anonymous: \(user.isAnonymous)")
                 self.authUser = user
@@ -35,7 +38,7 @@ class AppState: ObservableObject {
     }
     
     func unlistenAuth() {
-        if let handle = handle {
+        if let handle = authListenerHandle {
             Auth.auth().removeStateDidChangeListener(handle)
         }
     }
@@ -61,5 +64,24 @@ class AppState: ObservableObject {
                 completion!(signOutError)
             }
         }
+    }
+    
+    func listenCurrentUserFolders() {
+        guard let authUser = self.authUser else { return }
+        userFoldersListener = UserFolder.subcollectionRef(parentDocId: authUser.uid).addSnapshotListener { (querySnapshot, error) in
+            guard let documents = querySnapshot?.documents else {
+                print("Error fetching documents: \(error!)")
+                return
+            }
+            
+            let items = documents.compactMap {
+                UserFolder(documentSnapshot: $0)
+            }
+            self.currentUserFolders = items
+        }
+    }
+    
+    func unlistenCurrentUserFolders() {
+        userFoldersListener?.remove()
     }
 }
