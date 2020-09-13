@@ -10,7 +10,6 @@ import SwiftUI
 enum Tabs: Hashable {
     case home
     case newFile
-    case notifications
 }
 
 struct TabsView: View {
@@ -29,11 +28,6 @@ struct TabsView: View {
                         Image(systemName: Constants.Icon.addFile)
                     }
                     .tag(Tabs.newFile)
-                NotificationsView()
-                    .tabItem {
-                        Image(systemName: Constants.Icon.chat)
-                    }
-                    .tag(Tabs.notifications)
             }
             .onAppear {
                 self.appState.listenCurrentUserFolders()
