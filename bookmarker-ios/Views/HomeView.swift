@@ -12,40 +12,31 @@ struct HomeView: View {
     @EnvironmentObject var appState: AppState
     @State private var accountViewIsPresented: Bool = false
     @State private var newFolderViewIsPresented: Bool = false
-    @StateObject var vm = UserFoldersViewModel()
     
     var body: some View {
         NavigationView {
-            IfAuthenticatedView {
-                ScrollView {
-                    VStack(alignment: .leading, spacing: Constants.verticalSpacing) {
-                        HStack {
-                            Text("My Collections")
-                            Spacer()
-                            Button(action: {
-                                self.newFolderViewIsPresented = true
-                            }) {
-                                Image(systemName: Constants.Icon.addFolder)
-                            }
-                            .sheet(isPresented: self.$newFolderViewIsPresented) {
-                                NewFolderView(isPresented: self.$newFolderViewIsPresented)
-                            }
+            ScrollView {
+                VStack(alignment: .leading, spacing: Constants.verticalSpacing) {
+                    HStack {
+                        Text("My Collections")
+                        Spacer()
+                        Button(action: {
+                            self.newFolderViewIsPresented = true
+                        }) {
+                            Image(systemName: Constants.Icon.addFolder)
                         }
-                        ForEach(self.vm.userFolders, id: \.id) { userFolder in
-                            NavigationLink(destination: FolderView(folderId: userFolder.id)) {
-                                UserFoldersListRowView(userFolder: userFolder)
-                            }
-                            .buttonStyle(PlainButtonStyle())
+                        .sheet(isPresented: self.$newFolderViewIsPresented) {
+                            NewFolderView(isPresented: self.$newFolderViewIsPresented)
                         }
                     }
-                    .padding()
+                    ForEach(self.appState.currentUserFolders, id: \.id) { userFolder in
+                        NavigationLink(destination: FolderView(folderId: userFolder.id)) {
+                            UserFoldersListRowView(userFolder: userFolder)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                    }
                 }
-                .onAppear {
-                    self.vm.listen(userId: self.appState.authUser!.uid)
-                }
-                .onDisappear {
-                    self.vm.unlisten()
-                }
+                .padding()
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
