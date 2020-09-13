@@ -47,6 +47,7 @@ struct Folder: FirestoreModel {
         self.id = documentSnapshot.documentID
         self.title = title
         self.description = data[Constants.description] as? String ?? ""
+        self.secret = data[Constants.secret] as? Bool ?? true 
         self.permissions = Permissions(data: permissionsData)
         self.createdByUserId = data[Constants.createdByUserId] as? String ?? ""
     }
