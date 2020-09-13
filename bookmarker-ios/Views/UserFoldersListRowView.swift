@@ -11,7 +11,14 @@ struct UserFoldersListRowView: View {
     var userFolder: UserFolder
     
     var body: some View {
-        Text(userFolder.title)
+        HStack {
+            VStack(alignment: .leading) {
+                Text(userFolder.title)
+                    .font(.headline)
+                Text(userFolder.description)
+            }
+            Spacer()
+        }
     }
 }
 
