@@ -22,6 +22,7 @@ struct Constants {
     static let folderId: String = "folder_id"
     static let fileId: String = "file_id"
     static let cornerRadius: CGFloat = 16
+    static let link: String = "link"
     
     struct Icon {
         static let home: String = "house"

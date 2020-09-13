@@ -39,6 +39,11 @@
 		0AAD15D5250CA82300F8927B /* ProtectedWithPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15D4250CA82300F8927B /* ProtectedWithPlaceholderView.swift */; };
 		0AAD15D7250CACC200F8927B /* IfAuthenticatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15D6250CACC200F8927B /* IfAuthenticatedView.swift */; };
 		0AAD15D9250CB74600F8927B /* UserFoldersListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15D8250CB74600F8927B /* UserFoldersListRowView.swift */; };
+		0AAD15DB250DEE3F00F8927B /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15DA250DEE3F00F8927B /* FolderView.swift */; };
+		0AAD15DD250DEE5C00F8927B /* FolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15DC250DEE5C00F8927B /* FolderViewModel.swift */; };
+		0AAD15DF250DEE9200F8927B /* FolderFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15DE250DEE9200F8927B /* FolderFile.swift */; };
+		0AAD15E1250DF1CF00F8927B /* FolderFilesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15E0250DF1CF00F8927B /* FolderFilesListView.swift */; };
+		0AAD15E3250DF1D900F8927B /* FolderFilesListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15E2250DF1D900F8927B /* FolderFilesListRowView.swift */; };
 		1E5403FD8D760BCBF3B25356 /* Pods_bookmarker_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E8F9F5613752E4D719C502 /* Pods_bookmarker_iosTests.framework */; };
 		5B82A64943D35DD1A3DE80F6 /* Pods_bookmarker_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9BE1EFB93C783B8D13001C /* Pods_bookmarker_ios.framework */; };
 		A11E113C8FF189D9E7D792A5 /* Pods_bookmarker_ios_bookmarker_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01663A9E5F153CBE9603DA38 /* Pods_bookmarker_ios_bookmarker_iosUITests.framework */; };
@@ -103,6 +108,11 @@
 		0AAD15D4250CA82300F8927B /* ProtectedWithPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectedWithPlaceholderView.swift; sourceTree = "<group>"; };
 		0AAD15D6250CACC200F8927B /* IfAuthenticatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfAuthenticatedView.swift; sourceTree = "<group>"; };
 		0AAD15D8250CB74600F8927B /* UserFoldersListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFoldersListRowView.swift; sourceTree = "<group>"; };
+		0AAD15DA250DEE3F00F8927B /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
+		0AAD15DC250DEE5C00F8927B /* FolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewModel.swift; sourceTree = "<group>"; };
+		0AAD15DE250DEE9200F8927B /* FolderFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFile.swift; sourceTree = "<group>"; };
+		0AAD15E0250DF1CF00F8927B /* FolderFilesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFilesListView.swift; sourceTree = "<group>"; };
+		0AAD15E2250DF1D900F8927B /* FolderFilesListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFilesListRowView.swift; sourceTree = "<group>"; };
 		1F11715738755AC992E82316 /* Pods-bookmarker-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarker-iosTests.release.xcconfig"; path = "Target Support Files/Pods-bookmarker-iosTests/Pods-bookmarker-iosTests.release.xcconfig"; sourceTree = "<group>"; };
 		29718C85EEAF7D71CE678E6A /* Pods-bookmarker-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarker-ios.release.xcconfig"; path = "Target Support Files/Pods-bookmarker-ios/Pods-bookmarker-ios.release.xcconfig"; sourceTree = "<group>"; };
 		4FA59607AA8CE2FE6F748143 /* Pods-bookmarker-ios-bookmarker-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarker-ios-bookmarker-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-bookmarker-ios-bookmarker-iosUITests/Pods-bookmarker-ios-bookmarker-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -215,6 +225,7 @@
 			children = (
 				0AAD15A7250BF2AB00F8927B /* FirestoreModel.swift */,
 				0AAD15A1250BEF5600F8927B /* Folder.swift */,
+				0AAD15DE250DEE9200F8927B /* FolderFile.swift */,
 				0AAD15A3250BEF6800F8927B /* FolderUser.swift */,
 				0AAD159F250BEF4E00F8927B /* User.swift */,
 				0AAD15A5250BEF7000F8927B /* UserFolder.swift */,
@@ -230,6 +241,7 @@
 				0AAD15BB250C024300F8927B /* SignInViewModel.swift */,
 				0AAD15B7250C022900F8927B /* SignUpViewModel.swift */,
 				0AAD15C8250C201400F8927B /* UserFoldersViewModel.swift */,
+				0AAD15DC250DEE5C00F8927B /* FolderViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -239,6 +251,9 @@
 			children = (
 				0AAD15B1250BFE7700F8927B /* AccountView.swift */,
 				0AAD15AF250BFD0C00F8927B /* AuthenticationView.swift */,
+				0AAD15E2250DF1D900F8927B /* FolderFilesListRowView.swift */,
+				0AAD15E0250DF1CF00F8927B /* FolderFilesListView.swift */,
+				0AAD15DA250DEE3F00F8927B /* FolderView.swift */,
 				0AAD15AD250BFC2800F8927B /* HomeView.swift */,
 				0AAD15D6250CACC200F8927B /* IfAuthenticatedView.swift */,
 				0AAD15C0250C18D100F8927B /* NewFileView.swift */,
@@ -521,12 +536,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AAD15C7250C1E6800F8927B /* Notification.Name+didCompleteNewFile.swift in Sources */,
+				0AAD15DD250DEE5C00F8927B /* FolderViewModel.swift in Sources */,
 				0AAD15A6250BEF7000F8927B /* UserFolder.swift in Sources */,
 				0AAD15C9250C201400F8927B /* UserFoldersViewModel.swift in Sources */,
 				0AAD15A0250BEF4E00F8927B /* User.swift in Sources */,
+				0AAD15DF250DEE9200F8927B /* FolderFile.swift in Sources */,
 				0AAD15B8250C022900F8927B /* SignUpViewModel.swift in Sources */,
 				0AAD15C1250C18D100F8927B /* NewFileView.swift in Sources */,
 				0AAD15C5250C1E2000F8927B /* Notification.Name+didCompleteAuthentication.swift in Sources */,
+				0AAD15E1250DF1CF00F8927B /* FolderFilesListView.swift in Sources */,
 				0AAD15B0250BFD0C00F8927B /* AuthenticationView.swift in Sources */,
 				0AAD15A2250BEF5600F8927B /* Folder.swift in Sources */,
 				0AAD15AA250BF8C900F8927B /* AppState.swift in Sources */,
@@ -538,10 +556,12 @@
 				0AAD15AE250BFC2800F8927B /* HomeView.swift in Sources */,
 				0AAD15D7250CACC200F8927B /* IfAuthenticatedView.swift in Sources */,
 				0AAD15A8250BF2AB00F8927B /* FirestoreModel.swift in Sources */,
+				0AAD15E3250DF1D900F8927B /* FolderFilesListRowView.swift in Sources */,
 				0AAD15BC250C024300F8927B /* SignInViewModel.swift in Sources */,
 				0AAD156E250BE9A700F8927B /* ContentView.swift in Sources */,
 				0AAD15B6250C00CB00F8927B /* SignInView.swift in Sources */,
 				0AAD156C250BE9A700F8927B /* bookmarker_iosApp.swift in Sources */,
+				0AAD15DB250DEE3F00F8927B /* FolderView.swift in Sources */,
 				0AAD15C3250C1BA500F8927B /* NewFileViewModel.swift in Sources */,
 				0AAD15B4250C00C400F8927B /* SignUpView.swift in Sources */,
 				0AAD15A4250BEF6800F8927B /* FolderUser.swift in Sources */,
