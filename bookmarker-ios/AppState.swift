@@ -14,6 +14,7 @@ class AppState: ObservableObject {
     @Published var authStateFirstChanged: Bool = false
     @Published var selectedTab: Tabs = Tabs.home
     @Published var currentUserFolders = [UserFolder]()
+    @Published var currentHomeTabFolderId: String?
     var authListenerHandle: AuthStateDidChangeListenerHandle?
     var userFoldersListener: ListenerRegistration?
     

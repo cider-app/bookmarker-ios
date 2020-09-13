@@ -30,7 +30,7 @@ struct HomeView: View {
                         }
                     }
                     ForEach(self.appState.currentUserFolders, id: \.id) { userFolder in
-                        NavigationLink(destination: FolderView(folderId: userFolder.id)) {
+                        NavigationLink(destination: FolderView(folderId: userFolder.id), tag: userFolder.id, selection: self.$appState.currentHomeTabFolderId) {
                             UserFoldersListRowView(userFolder: userFolder)
                         }
                         .buttonStyle(PlainButtonStyle())
