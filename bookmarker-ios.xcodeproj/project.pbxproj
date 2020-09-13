@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A87C477250E9B7000BC6B4C /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A87C476250E9B7000BC6B4C /* NotificationsView.swift */; };
 		0AAD156C250BE9A700F8927B /* bookmarker_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD156B250BE9A700F8927B /* bookmarker_iosApp.swift */; };
 		0AAD156E250BE9A700F8927B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD156D250BE9A700F8927B /* ContentView.swift */; };
 		0AAD1570250BE9AA00F8927B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AAD156F250BE9AA00F8927B /* Assets.xcassets */; };
@@ -73,6 +74,7 @@
 /* Begin PBXFileReference section */
 		01663A9E5F153CBE9603DA38 /* Pods_bookmarker_ios_bookmarker_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bookmarker_ios_bookmarker_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		09E8F9F5613752E4D719C502 /* Pods_bookmarker_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bookmarker_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A87C476250E9B7000BC6B4C /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		0AAD1568250BE9A700F8927B /* bookmarker-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bookmarker-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AAD156B250BE9A700F8927B /* bookmarker_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookmarker_iosApp.swift; sourceTree = "<group>"; };
 		0AAD156D250BE9A700F8927B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				0AAD15B3250C00C400F8927B /* SignUpView.swift */,
 				0AAD15AB250BFC1500F8927B /* TabsView.swift */,
 				0AAD15D8250CB74600F8927B /* UserFoldersListRowView.swift */,
+				0A87C476250E9B7000BC6B4C /* NotificationsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 				0AAD15A8250BF2AB00F8927B /* FirestoreModel.swift in Sources */,
 				0AAD15E3250DF1D900F8927B /* FolderFilesListRowView.swift in Sources */,
 				0AAD15BC250C024300F8927B /* SignInViewModel.swift in Sources */,
+				0A87C477250E9B7000BC6B4C /* NotificationsView.swift in Sources */,
 				0AAD156E250BE9A700F8927B /* ContentView.swift in Sources */,
 				0AAD15EB250E0FE700F8927B /* EditFolderView.swift in Sources */,
 				0AAD15B6250C00CB00F8927B /* SignInView.swift in Sources */,
