@@ -292,6 +292,7 @@
 				0A29068E250F0E53003602E7 /* ActivityViewController.swift */,
 				0AAD15AF250BFD0C00F8927B /* AuthenticationView.swift */,
 				0A290686250EE9C3003602E7 /* CurrentUserFoldersPickerView.swift */,
+				0A290692250F52EF003602E7 /* CurrentUserFoldersView.swift */,
 				0AAD15EA250E0FE700F8927B /* EditFolderView.swift */,
 				0AAD15E2250DF1D900F8927B /* FolderFilesListRowView.swift */,
 				0AAD15DA250DEE3F00F8927B /* FolderView.swift */,
@@ -307,13 +308,12 @@
 				0AAD15E4250DF37400F8927B /* NewFolderView.swift */,
 				0AAD15D2250C9FB900F8927B /* ProtectedButtonView.swift */,
 				0AAD15D4250CA82300F8927B /* ProtectedWithPlaceholderView.swift */,
+				0A290690250F1404003602E7 /* SafariView.swift */,
 				0A290688250EF806003602E7 /* SelectableUserFoldersListView.swift */,
 				0AAD15B5250C00CB00F8927B /* SignInView.swift */,
 				0AAD15B3250C00C400F8927B /* SignUpView.swift */,
 				0AAD15AB250BFC1500F8927B /* TabsView.swift */,
 				0AAD15D8250CB74600F8927B /* UserFoldersListRowView.swift */,
-				0A290690250F1404003602E7 /* SafariView.swift */,
-				0A290692250F52EF003602E7 /* CurrentUserFoldersView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
