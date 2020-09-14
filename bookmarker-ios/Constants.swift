@@ -23,6 +23,7 @@ struct Constants {
     static let fileId: String = "file_id"
     static let cornerRadius: CGFloat = 16
     static let link: String = "link"
+    static let imageUrl: String = "image_url"
     static let permissions: String = "permissions"
     static let canEdit: String = "can_edit"
     static let canManageMembers: String = "can_manage_members"
