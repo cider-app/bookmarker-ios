@@ -70,12 +70,12 @@ struct FolderView: View {
         .navigationTitle(self.vm.folder != nil ? self.vm.folder!.title : "")
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                Button(action: {
-                    self.sheetIsPresented = true
-                    self.activeSheet = .add
-                }) {
-                    Image(systemName: Constants.Icon.add)
-                }
+//                Button(action: {
+//                    self.sheetIsPresented = true
+//                    self.activeSheet = .add
+//                }) {
+//                    Image(systemName: Constants.Icon.add)
+//                }
                 
                 Button(action: {
                     self.sheetIsPresented = true

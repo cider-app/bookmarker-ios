@@ -24,7 +24,7 @@ struct TabsView: View {
                         Image(systemName: Constants.Icon.home)
                     }
                     .tag(Tabs.home)
-                NewFileView()
+                NewFolderFileAddLinkView()
                     .tabItem {
                         Image(systemName: Constants.Icon.addFile)
                     }

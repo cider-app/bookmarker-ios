@@ -23,6 +23,7 @@ struct NewFolderFileSelectUserFolderView: View {
         SelectableUserFoldersListView(userFolders: self.appState.currentUserFolders) { (selectedUserFolder) in
             self.createFolderFile(folderId: selectedUserFolder.id)
         }
+        .disabled(self.newFolderFileVM.isLoading)
         .navigationTitle("Choose collection")
     }
 }

@@ -1,16 +1,16 @@
 //
-//  NewFolderFileView.swift
+//  NewFolderFileAddLinkView.swift
 //  bookmarker-ios
 //
-//  Created by Kenneth Ng on 9/13/20.
+//  Created by Kenneth Ng on 9/14/20.
 //
 
 import SwiftUI
 
-struct NewFolderFileView: View {
+struct NewFolderFileAddLinkView: View {
     @EnvironmentObject var appState: AppState
     @StateObject var vm = NewFolderFileViewModel()
-    @Binding var isPresented: Bool
+    @State private var accountViewIsPresented: Bool = false
     
     var body: some View {
         NavigationView {
@@ -23,12 +23,14 @@ struct NewFolderFileView: View {
                     
                 })
                 
-                NavigationLink(destination: NewFolderFileSelectUserFolderView(newFolderFileVM: self.vm), label: {
+                Button(action: {
+                    self.vm.fetchLinkMetadata()
+                }) {
                     Text("Next")
                         .padding()
                         .frame(maxWidth: .infinity)
                         .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color.primary))
-                })
+                }
                 .disabled(self.vm.isLoading || self.vm.link.isEmpty)
                 
                 if let error = self.vm.error {
@@ -37,25 +39,33 @@ struct NewFolderFileView: View {
             }
             .padding()
             .ignoresSafeArea(.keyboard)
-            .navigationTitle(Text("Save Link"))
+            .navigationTitle(Text("New Link"))
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
+                ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
-                        self.isPresented = false
+                        self.accountViewIsPresented = true
                     }) {
-                        Image(systemName: Constants.Icon.close)
+                        Image(systemName: Constants.Icon.account)
+                    }
+                    .sheet(isPresented: $accountViewIsPresented) {
+                        AccountView(isPresented: $accountViewIsPresented)
+                            .environmentObject(self.appState)
                     }
                 }
             }
+            .fullScreenCover(isPresented: self.$vm.editFolderFileViewIsPresented) {
+                NewFolderFileEditView(isPresented: self.$vm.editFolderFileViewIsPresented, newFolderFileVM: self.vm)
+                    .environmentObject(self.appState)
+            }
             .onReceive(NotificationCenter.default.publisher(for: .didCompleteNewFile)) { (_) in
-                self.isPresented = false
+                self.vm.reset()
             }
         }
     }
 }
 
-//struct NewFolderFileView_Previews: PreviewProvider {
+//struct NewFolderFileAddLinkView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        NewFolderFileView()
+//        NewFolderFileAddLinkView()
 //    }
 //}
