@@ -10,7 +10,9 @@ import FirebaseFirestore
 
 struct FolderFile: FirestoreModel {
     var title: String = ""
+    var description: String = ""
     var link: String = ""
+    var imageUrl: String = ""
     
     init(id: String, link: String) {
         self.id = id
@@ -23,7 +25,9 @@ struct FolderFile: FirestoreModel {
     var toDictionary: [String : Any] {
         return [
             Constants.title: title,
-            Constants.link: link
+            Constants.link: link,
+            Constants.description: description,
+            Constants.imageUrl: imageUrl
         ]
     }
     
@@ -35,6 +39,8 @@ struct FolderFile: FirestoreModel {
         self.id = documentSnapshot.documentID
         self.link = link
         self.title = data[Constants.title] as? String ?? ""
+        self.description = data[Constants.description] as? String ?? ""
+        self.imageUrl = data[Constants.imageUrl] as? String ?? ""
     }
     
     static func subcollectionRef(parentDocId: String) -> CollectionReference {
