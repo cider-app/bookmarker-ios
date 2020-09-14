@@ -149,7 +149,9 @@ struct FolderView: View {
                     EditFolderView(isPresented: self.$sheetIsPresented, folder: folder)
                 }
             case .share:
-                ActivityViewController(activityItems: [URL(string: "https://www.yahoo.com")!])
+                if let metadata = self.vm.shareLinkMetadata {
+                    ActivityViewController(activityItems: [metadata])
+                }
             case .viewLink:
                 if let url = URL(string: self.selectedLink) {
                     SafariView(url: url)

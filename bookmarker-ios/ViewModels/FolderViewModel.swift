@@ -8,12 +8,14 @@
 import Foundation
 import FirebaseFirestore
 import FirebaseAuth
+import LinkPresentation
 
 class FolderViewModel: ObservableObject {
     @Published var folder: Folder?
     @Published var folderFiles = [FolderFile]()
     @Published var isLoading: Bool = false
     @Published var currentUserIsMember: Bool = false
+    @Published var shareLinkMetadata: LPLinkMetadata?
     var folderListener: ListenerRegistration?
     var folderFilesListener: ListenerRegistration?
     
@@ -26,6 +28,7 @@ class FolderViewModel: ObservableObject {
             
             if let folder = Folder(documentSnapshot: document) {
                 self.folder = folder
+                self.fetchShareLinkMetadata(urlString: "https://developer.apple.com/documentation/linkpresentation/lpmetadataprovider")
             }
         }
     }
@@ -100,6 +103,25 @@ class FolderViewModel: ObservableObject {
             } else {
                 print("Document does not exist")
                 self.currentUserIsMember = false 
+            }
+        }
+    }
+    
+    func fetchShareLinkMetadata(urlString: String) {
+        let metadataProvider = LPMetadataProvider()
+        let url = URL(string: urlString)!
+        
+        metadataProvider.startFetchingMetadata(for: url) { (metadata, error) in
+            if error != nil {
+                print("Error fetching metadata: \(error!)")
+                self.shareLinkMetadata = nil
+                return
+            }
+         
+            guard let metadata = metadata else { return }
+            
+            DispatchQueue.main.async {
+                self.shareLinkMetadata = metadata
             }
         }
     }

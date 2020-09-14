@@ -10,30 +10,15 @@ import FirebaseFirestore
 
 struct HomeView: View {
     @EnvironmentObject var appState: AppState
+    @StateObject var recentlyCreatedFilesVM = RecentlyCreatedFolderFilesViewModel()
     @State private var accountViewIsPresented: Bool = false
-    @State private var newFolderViewIsPresented: Bool = false
     
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: Constants.verticalSpacing) {
-                    HStack {
-                        Text("My Collections")
-                        Spacer()
-                        Button(action: {
-                            self.newFolderViewIsPresented = true
-                        }) {
-                            Image(systemName: Constants.Icon.addFolder)
-                        }
-                        .sheet(isPresented: self.$newFolderViewIsPresented) {
-                            NewFolderView(isPresented: self.$newFolderViewIsPresented)
-                        }
-                    }
-                    ForEach(self.appState.currentUserFolders, id: \.id) { userFolder in
-                        NavigationLink(destination: FolderView(folderId: userFolder.id), tag: userFolder.id, selection: self.$appState.currentHomeTabFolderId) {
-                            UserFoldersListRowView(userFolder: userFolder)
-                        }
-                        .buttonStyle(PlainButtonStyle())
+                    ForEach(self.recentlyCreatedFilesVM.folderFiles, id: \.id) { folderFile in
+                        FolderFilesListRowView(folderFile: folderFile)
                     }
                 }
                 .padding()
@@ -50,6 +35,12 @@ struct HomeView: View {
                             .environmentObject(self.appState)
                     }
                 }
+            }
+            .onAppear {
+                self.recentlyCreatedFilesVM.listen()
+            }
+            .onDisappear {
+                self.recentlyCreatedFilesVM.unlisten()
             }
         }
     }

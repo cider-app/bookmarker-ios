@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 class NewFolderFileViewModel: ObservableObject {
     @Published var link: String = ""
@@ -17,10 +18,12 @@ class NewFolderFileViewModel: ObservableObject {
             return
         }
         
+        guard let authUser = Auth.auth().currentUser else { return }
+        
         isLoading = true
         
         let ref = FolderFile.subcollectionRef(parentDocId: folderId).document()
-        let newFolderFile = FolderFile(id: ref.documentID, link: link)
+        let newFolderFile = FolderFile(id: ref.documentID, link: link, createdByUserId: authUser.uid)
         
         FolderFile.subcollectionRef(parentDocId: folderId).addDocument(data: newFolderFile.toDictionary) { (error) in
             self.isLoading = false 
