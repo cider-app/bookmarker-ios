@@ -43,5 +43,6 @@ struct Constants {
         static let leave: String = "arrow.left.to.line"
         static let delete: String = "trash"
         static let chat: String = "message"
+        static let share: String = "square.and.arrow.up"
     }
 }
