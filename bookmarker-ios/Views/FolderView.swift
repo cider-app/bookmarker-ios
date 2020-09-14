@@ -14,6 +14,7 @@ struct FolderView: View {
     @State private var activeAlert: FolderAlert = .leave
     @State private var sheetIsPresented: Bool = false
     @State private var activeSheet: FolderSheet = .add
+    @State private var selectedLink: String = ""
     var folderId: String
     
     enum FolderAlert {
@@ -25,6 +26,8 @@ struct FolderView: View {
         case add
         case edit
         case manageMembers
+        case share
+        case viewLink
     }
     
     func leave() {
@@ -53,9 +56,13 @@ struct FolderView: View {
                     }
                 }
                 ForEach(self.vm.folderFiles, id: \.id) { folderFile in
-                    NavigationLink(destination: FolderFileView(folderFile: folderFile), label: {
+                    Button(action: {
+                        self.selectedLink = folderFile.link
+                        self.activeSheet = .viewLink
+                        self.sheetIsPresented = true
+                    }) {
                         FolderFilesListRowView(folderFile: folderFile)
-                    })
+                    }
                 }
             }
             .padding()
@@ -71,7 +78,8 @@ struct FolderView: View {
                 }
                 
                 Button(action: {
-                    
+                    self.sheetIsPresented = true
+                    self.activeSheet = .share
                 }) {
                     Image(systemName: Constants.Icon.share)
                 }
@@ -139,6 +147,13 @@ struct FolderView: View {
             case .manageMembers:
                 if let folder = self.vm.folder {
                     EditFolderView(isPresented: self.$sheetIsPresented, folder: folder)
+                }
+            case .share:
+                ActivityViewController(activityItems: [URL(string: "https://www.yahoo.com")!])
+            case .viewLink:
+                if let url = URL(string: self.selectedLink) {
+                    SafariView(url: url)
+                        .ignoresSafeArea(.all)
                 }
             }
         }
