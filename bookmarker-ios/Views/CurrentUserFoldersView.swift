@@ -17,7 +17,7 @@ struct CurrentUserFoldersView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: Constants.verticalSpacing) {
                     ForEach(self.appState.currentUserFolders, id: \.id) { userFolder in
-                        NavigationLink(destination: FolderView(folderId: userFolder.id), tag: userFolder.id, selection: self.$appState.currentHomeTabFolderId) {
+                        NavigationLink(destination: FolderView(folderId: userFolder.id), tag: userFolder.id, selection: self.$appState.foldersTabNavLinkSelection) {
                             UserFoldersListRowView(userFolder: userFolder)
                         }
                         .buttonStyle(PlainButtonStyle())

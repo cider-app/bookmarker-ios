@@ -33,7 +33,7 @@ struct FolderView: View {
     func leave() {
         self.vm.leave(folderId: folderId) { (error) in
             if error == nil {
-                self.appState.currentHomeTabFolderId = nil
+                self.appState.foldersTabNavLinkSelection = nil
             }
         }
     }
@@ -41,7 +41,7 @@ struct FolderView: View {
     func delete() {
         self.vm.delete(folderId: folderId) { (error) in
             if error == nil {
-                self.appState.currentHomeTabFolderId = nil
+                self.appState.foldersTabNavLinkSelection = nil
             }
         }
     }
