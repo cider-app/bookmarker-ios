@@ -18,6 +18,8 @@
 		0A290691250F1404003602E7 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A290690250F1404003602E7 /* SafariView.swift */; };
 		0A290693250F52EF003602E7 /* CurrentUserFoldersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A290692250F52EF003602E7 /* CurrentUserFoldersView.swift */; };
 		0A290695250F5432003602E7 /* RecentlyCreatedFolderFilesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A290694250F5432003602E7 /* RecentlyCreatedFolderFilesViewModel.swift */; };
+		0A2906972510004C003602E7 /* URLImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2906962510004C003602E7 /* URLImageStore.swift */; };
+		0A2906992510007C003602E7 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2906982510007C003602E7 /* ImageCache.swift */; };
 		0A87C479250EA1DD00BC6B4C /* IfIsFolderCreatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A87C478250EA1DD00BC6B4C /* IfIsFolderCreatorView.swift */; };
 		0A87C47D250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A87C47C250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift */; };
 		0AAD156C250BE9A700F8927B /* bookmarker_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD156B250BE9A700F8927B /* bookmarker_iosApp.swift */; };
@@ -97,6 +99,8 @@
 		0A290690250F1404003602E7 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		0A290692250F52EF003602E7 /* CurrentUserFoldersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserFoldersView.swift; sourceTree = "<group>"; };
 		0A290694250F5432003602E7 /* RecentlyCreatedFolderFilesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyCreatedFolderFilesViewModel.swift; sourceTree = "<group>"; };
+		0A2906962510004C003602E7 /* URLImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageStore.swift; sourceTree = "<group>"; };
+		0A2906982510007C003602E7 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		0A87C478250EA1DD00BC6B4C /* IfIsFolderCreatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfIsFolderCreatorView.swift; sourceTree = "<group>"; };
 		0A87C47C250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfIsFolderCreatorOrCanManageMembersView.swift; sourceTree = "<group>"; };
 		0AAD1568250BE9A700F8927B /* bookmarker-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bookmarker-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +188,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A29069A251000AA003602E7 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				0A2906962510004C003602E7 /* URLImageStore.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
 		0AAD155F250BE9A600F8927B = {
 			isa = PBXGroup;
 			children = (
@@ -215,12 +227,14 @@
 				0AAD15BF250C099A00F8927B /* bookmarker-ios.entitlements */,
 				0AAD1599250BEEEE00F8927B /* Constants.swift */,
 				0AAD1597250BEADD00F8927B /* GoogleService-Info.plist */,
+				0A2906982510007C003602E7 /* ImageCache.swift */,
 				0AAD1574250BE9AA00F8927B /* Info.plist */,
 				0AAD159B250BEF2200F8927B /* Models */,
 				0AAD15C4250C1E2000F8927B /* Notification.Name+didCompleteAuthentication.swift */,
 				0AAD15C6250C1E6800F8927B /* Notification.Name+didCompleteNewFile.swift */,
 				0AAD1571250BE9AA00F8927B /* Preview Content */,
 				0AAD159E250BEF3600F8927B /* Repositories */,
+				0A29069A251000AA003602E7 /* Stores */,
 				0AAD159C250BEF2600F8927B /* ViewModels */,
 				0AAD159D250BEF2C00F8927B /* Views */,
 			);
@@ -622,11 +636,13 @@
 				0AAD15EB250E0FE700F8927B /* EditFolderView.swift in Sources */,
 				0AAD15B6250C00CB00F8927B /* SignInView.swift in Sources */,
 				0A290689250EF806003602E7 /* SelectableUserFoldersListView.swift in Sources */,
+				0A2906992510007C003602E7 /* ImageCache.swift in Sources */,
 				0A290693250F52EF003602E7 /* CurrentUserFoldersView.swift in Sources */,
 				0AAD156C250BE9A700F8927B /* bookmarker_iosApp.swift in Sources */,
 				0AAD15DB250DEE3F00F8927B /* FolderView.swift in Sources */,
 				0AAD15C3250C1BA500F8927B /* NewFileViewModel.swift in Sources */,
 				0AAD15B4250C00C400F8927B /* SignUpView.swift in Sources */,
+				0A2906972510004C003602E7 /* URLImageStore.swift in Sources */,
 				0AAD15A4250BEF6800F8927B /* FolderUser.swift in Sources */,
 				0AAD15B2250BFE7700F8927B /* AccountView.swift in Sources */,
 				0A87C47D250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift in Sources */,
