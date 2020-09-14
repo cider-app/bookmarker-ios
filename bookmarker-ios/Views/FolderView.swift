@@ -53,7 +53,9 @@ struct FolderView: View {
                     }
                 }
                 ForEach(self.vm.folderFiles, id: \.id) { folderFile in
-                    FolderFilesListRowView(folderFile: folderFile)
+                    NavigationLink(destination: FolderFileView(folderFile: folderFile), label: {
+                        FolderFilesListRowView(folderFile: folderFile)
+                    })
                 }
             }
             .padding()
