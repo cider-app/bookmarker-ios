@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0A29067B250EAFA0003602E7 /* IfIsFolderMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29067A250EAFA0003602E7 /* IfIsFolderMemberView.swift */; };
+		0A29067D250EE107003602E7 /* NewFolderFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29067C250EE107003602E7 /* NewFolderFileView.swift */; };
+		0A290681250EE135003602E7 /* NewFolderFileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A290680250EE135003602E7 /* NewFolderFileViewModel.swift */; };
+		0A290683250EE66C003602E7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A290682250EE66C003602E7 /* MainView.swift */; };
+		0A290687250EE9C3003602E7 /* CurrentUserFoldersPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A290686250EE9C3003602E7 /* CurrentUserFoldersPickerView.swift */; };
+		0A290689250EF806003602E7 /* SelectableUserFoldersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A290688250EF806003602E7 /* SelectableUserFoldersListView.swift */; };
+		0A29068B250EF883003602E7 /* NewFolderFileSelectUserFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29068A250EF883003602E7 /* NewFolderFileSelectUserFolderView.swift */; };
 		0A87C479250EA1DD00BC6B4C /* IfIsFolderCreatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A87C478250EA1DD00BC6B4C /* IfIsFolderCreatorView.swift */; };
 		0A87C47D250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A87C47C250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift */; };
 		0AAD156C250BE9A700F8927B /* bookmarker_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD156B250BE9A700F8927B /* bookmarker_iosApp.swift */; };
@@ -77,6 +83,12 @@
 		01663A9E5F153CBE9603DA38 /* Pods_bookmarker_ios_bookmarker_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bookmarker_ios_bookmarker_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		09E8F9F5613752E4D719C502 /* Pods_bookmarker_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bookmarker_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A29067A250EAFA0003602E7 /* IfIsFolderMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfIsFolderMemberView.swift; sourceTree = "<group>"; };
+		0A29067C250EE107003602E7 /* NewFolderFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFolderFileView.swift; sourceTree = "<group>"; };
+		0A290680250EE135003602E7 /* NewFolderFileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFolderFileViewModel.swift; sourceTree = "<group>"; };
+		0A290682250EE66C003602E7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		0A290686250EE9C3003602E7 /* CurrentUserFoldersPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserFoldersPickerView.swift; sourceTree = "<group>"; };
+		0A290688250EF806003602E7 /* SelectableUserFoldersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableUserFoldersListView.swift; sourceTree = "<group>"; };
+		0A29068A250EF883003602E7 /* NewFolderFileSelectUserFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFolderFileSelectUserFolderView.swift; sourceTree = "<group>"; };
 		0A87C478250EA1DD00BC6B4C /* IfIsFolderCreatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfIsFolderCreatorView.swift; sourceTree = "<group>"; };
 		0A87C47C250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfIsFolderCreatorOrCanManageMembersView.swift; sourceTree = "<group>"; };
 		0AAD1568250BE9A700F8927B /* bookmarker-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bookmarker-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -255,6 +267,7 @@
 				0AAD15EE250E11D300F8927B /* EditFolderViewModel.swift */,
 				0AAD15DC250DEE5C00F8927B /* FolderViewModel.swift */,
 				0AAD15C2250C1BA500F8927B /* NewFileViewModel.swift */,
+				0A290680250EE135003602E7 /* NewFolderFileViewModel.swift */,
 				0AAD15E6250DF3D700F8927B /* NewFolderViewModel.swift */,
 				0AAD15BB250C024300F8927B /* SignInViewModel.swift */,
 				0AAD15B7250C022900F8927B /* SignUpViewModel.swift */,
@@ -276,7 +289,11 @@
 				0A87C47C250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift */,
 				0A87C478250EA1DD00BC6B4C /* IfIsFolderCreatorView.swift */,
 				0A29067A250EAFA0003602E7 /* IfIsFolderMemberView.swift */,
+				0A290682250EE66C003602E7 /* MainView.swift */,
 				0AAD15C0250C18D100F8927B /* NewFileView.swift */,
+				0A29067C250EE107003602E7 /* NewFolderFileView.swift */,
+				0A29068A250EF883003602E7 /* NewFolderFileSelectUserFolderView.swift */,
+				0A290688250EF806003602E7 /* SelectableUserFoldersListView.swift */,
 				0AAD15E4250DF37400F8927B /* NewFolderView.swift */,
 				0AAD15D2250C9FB900F8927B /* ProtectedButtonView.swift */,
 				0AAD15D4250CA82300F8927B /* ProtectedWithPlaceholderView.swift */,
@@ -284,6 +301,7 @@
 				0AAD15B3250C00C400F8927B /* SignUpView.swift */,
 				0AAD15AB250BFC1500F8927B /* TabsView.swift */,
 				0AAD15D8250CB74600F8927B /* UserFoldersListRowView.swift */,
+				0A290686250EE9C3003602E7 /* CurrentUserFoldersPickerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -557,6 +575,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AAD15E9250DF40C00F8927B /* Permissions.swift in Sources */,
+				0A290683250EE66C003602E7 /* MainView.swift in Sources */,
 				0AAD15C7250C1E6800F8927B /* Notification.Name+didCompleteNewFile.swift in Sources */,
 				0AAD15DD250DEE5C00F8927B /* FolderViewModel.swift in Sources */,
 				0AAD15A6250BEF7000F8927B /* UserFolder.swift in Sources */,
@@ -565,13 +584,16 @@
 				0A87C479250EA1DD00BC6B4C /* IfIsFolderCreatorView.swift in Sources */,
 				0AAD15DF250DEE9200F8927B /* FolderFile.swift in Sources */,
 				0AAD15B8250C022900F8927B /* SignUpViewModel.swift in Sources */,
+				0A290687250EE9C3003602E7 /* CurrentUserFoldersPickerView.swift in Sources */,
 				0AAD15C1250C18D100F8927B /* NewFileView.swift in Sources */,
 				0AAD15C5250C1E2000F8927B /* Notification.Name+didCompleteAuthentication.swift in Sources */,
+				0A29068B250EF883003602E7 /* NewFolderFileSelectUserFolderView.swift in Sources */,
 				0AAD15EF250E11D300F8927B /* EditFolderViewModel.swift in Sources */,
 				0AAD15B0250BFD0C00F8927B /* AuthenticationView.swift in Sources */,
 				0AAD15A2250BEF5600F8927B /* Folder.swift in Sources */,
 				0AAD15AA250BF8C900F8927B /* AppState.swift in Sources */,
 				0AAD15BE250C065F00F8927B /* AuthenticationViewModel.swift in Sources */,
+				0A290681250EE135003602E7 /* NewFolderFileViewModel.swift in Sources */,
 				0AAD15D9250CB74600F8927B /* UserFoldersListRowView.swift in Sources */,
 				0AAD15D5250CA82300F8927B /* ProtectedWithPlaceholderView.swift in Sources */,
 				0AAD15D3250C9FB900F8927B /* ProtectedButtonView.swift in Sources */,
@@ -584,6 +606,7 @@
 				0AAD156E250BE9A700F8927B /* ContentView.swift in Sources */,
 				0AAD15EB250E0FE700F8927B /* EditFolderView.swift in Sources */,
 				0AAD15B6250C00CB00F8927B /* SignInView.swift in Sources */,
+				0A290689250EF806003602E7 /* SelectableUserFoldersListView.swift in Sources */,
 				0AAD156C250BE9A700F8927B /* bookmarker_iosApp.swift in Sources */,
 				0AAD15DB250DEE3F00F8927B /* FolderView.swift in Sources */,
 				0AAD15C3250C1BA500F8927B /* NewFileViewModel.swift in Sources */,
@@ -591,6 +614,7 @@
 				0AAD15A4250BEF6800F8927B /* FolderUser.swift in Sources */,
 				0AAD15B2250BFE7700F8927B /* AccountView.swift in Sources */,
 				0A87C47D250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift in Sources */,
+				0A29067D250EE107003602E7 /* NewFolderFileView.swift in Sources */,
 				0AAD15E7250DF3D700F8927B /* NewFolderViewModel.swift in Sources */,
 				0AAD15E5250DF37400F8927B /* NewFolderView.swift in Sources */,
 				0AAD159A250BEEEE00F8927B /* Constants.swift in Sources */,

@@ -11,7 +11,7 @@ struct ContentView: View {
     @EnvironmentObject var appState: AppState
     
     var body: some View {
-        TabsView()
+        MainView()
         .onAppear {
             self.appState.listenAuth()
         }
