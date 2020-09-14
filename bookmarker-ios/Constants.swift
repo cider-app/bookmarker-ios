@@ -32,6 +32,7 @@ struct Constants {
     static let verticalSpacing: CGFloat = 16
     static let createdOn: String = "created_on"
     static let modifiedOn: String = "modified_on"
+    static let folderFilesListRowViewSize: CGFloat = 75
     
     struct Icon {
         static let home: String = "house"
