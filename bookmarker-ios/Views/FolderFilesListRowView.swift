@@ -11,7 +11,10 @@ struct FolderFilesListRowView: View {
     var folderFile: FolderFile
     
     var body: some View {
-        Text(folderFile.title)
+        HStack {
+            Text(folderFile.title)
+            Spacer()
+        }
     }
 }
 
