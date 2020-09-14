@@ -14,10 +14,11 @@ class FolderViewModel: ObservableObject {
     @Published var folderFiles = [FolderFile]()
     @Published var isLoading: Bool = false
     @Published var currentUserIsMember: Bool = false
-    var listener: ListenerRegistration?
+    var folderListener: ListenerRegistration?
+    var folderFilesListener: ListenerRegistration?
     
     func listenFolder(folderId: String) {
-        listener = Folder.collectionRef.document(folderId).addSnapshotListener { (documentSnapshot, error) in
+        folderListener = Folder.collectionRef.document(folderId).addSnapshotListener { (documentSnapshot, error) in
             guard let document = documentSnapshot else {
                 print("Error fetching document: \(error!)")
                 return
@@ -30,7 +31,7 @@ class FolderViewModel: ObservableObject {
     }
     
     func listenFolderFiles(folderId: String) {
-        FolderFile.subcollectionRef(parentDocId: folderId).addSnapshotListener { (querySnapshot, error) in
+        folderFilesListener = FolderFile.subcollectionRef(parentDocId: folderId).addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("Error fetching documents: \(error!)")
                 return
@@ -44,7 +45,11 @@ class FolderViewModel: ObservableObject {
     }
     
     func unlistenFolder() {
-        listener?.remove()
+        folderListener?.remove()
+    }
+    
+    func unlistenFolderFiles() {
+        folderFilesListener?.remove()
     }
     
     func leave(folderId: String, completion: ((Error?) -> Void)?) {

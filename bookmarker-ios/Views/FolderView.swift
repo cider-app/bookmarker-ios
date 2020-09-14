@@ -13,7 +13,7 @@ struct FolderView: View {
     @State private var alertIsPresented: Bool = false
     @State private var activeAlert: FolderAlert = .leave
     @State private var sheetIsPresented: Bool = false
-    @State private var activeSheet: FolderSheet = .edit
+    @State private var activeSheet: FolderSheet = .add
     var folderId: String
     
     enum FolderAlert {
@@ -22,6 +22,7 @@ struct FolderView: View {
     }
     
     enum FolderSheet {
+        case add
         case edit
         case manageMembers
     }
@@ -59,7 +60,20 @@ struct FolderView: View {
         }
         .navigationTitle(self.vm.folder != nil ? self.vm.folder!.title : "")
         .toolbar {
-            ToolbarItemGroup(placement: .primaryAction) {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Button(action: {
+                    self.sheetIsPresented = true
+                    self.activeSheet = .add
+                }) {
+                    Image(systemName: Constants.Icon.add)
+                }
+                
+                Button(action: {
+                    
+                }) {
+                    Image(systemName: Constants.Icon.share)
+                }
+                
                 Menu {
                     IfIsFolderCreatorView(folderVM: self.vm) {
                         Button(action: {
@@ -105,13 +119,17 @@ struct FolderView: View {
         }
         .onAppear {
             self.vm.listenFolder(folderId: folderId)
+            self.vm.listenFolderFiles(folderId: folderId)
             self.vm.getCurrentUserMembership(folderId: folderId)
         }
         .onDisappear {
             self.vm.unlistenFolder()
+            self.vm.unlistenFolderFiles()
         }
         .sheet(isPresented: self.$sheetIsPresented) {
             switch self.activeSheet {
+            case .add:
+                NewFolderFileView(isPresented: self.$sheetIsPresented)
             case .edit:
                 if let folder = self.vm.folder {
                     EditFolderView(isPresented: self.$sheetIsPresented, folder: folder)
