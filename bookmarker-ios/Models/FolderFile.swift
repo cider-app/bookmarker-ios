@@ -12,6 +12,11 @@ struct FolderFile: FirestoreModel {
     var title: String = ""
     var link: String = ""
     
+    init(id: String, link: String) {
+        self.id = id
+        self.link = link
+    }
+    
     //  MARK: - FirestoreModel protocol
     var id: String
     
