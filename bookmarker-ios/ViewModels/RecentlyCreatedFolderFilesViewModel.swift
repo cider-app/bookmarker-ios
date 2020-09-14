@@ -15,9 +15,8 @@ class RecentlyCreatedFolderFilesViewModel: ObservableObject {
     
     func listen() {
         guard let authUser = Auth.auth().currentUser else { return }
-        listener = FolderFile.collectionGroupQuery
+        listener = Firestore.firestore().collectionGroup(Constants.folderFiles)
             .whereField(Constants.createdByUserId, isEqualTo: authUser.uid)
-            .order(by: Constants.createdOn)
             .addSnapshotListener({ (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("Error fetching documents: \(error!)")
