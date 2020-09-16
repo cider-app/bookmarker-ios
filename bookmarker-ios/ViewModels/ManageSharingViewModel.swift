@@ -41,6 +41,7 @@ class ManageSharingViewModel: ObservableObject {
         components.scheme = "https"
         components.host = Constants.webUrl
         components.path = Constants.collectionsPath
+        components.path.append("/\(folder.id)")
         guard let link = components.url else {
             print("Could not create web url")
             self.isProcessingLinkSharingRequest = false
