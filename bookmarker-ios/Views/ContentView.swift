@@ -11,7 +11,9 @@ struct ContentView: View {
     @EnvironmentObject var appState: AppState
     
     var body: some View {
-        TabsView()
+        IfAuthenticatedView() {
+            TabsView()
+        }
         .onAppear {
             self.appState.listenAuth()
         }

@@ -17,36 +17,37 @@ struct TabsView: View {
     @EnvironmentObject var appState: AppState
     
     var body: some View {
-        IfAuthenticatedView {
-            TabView(selection: self.$appState.selectedTab) {
-                HomeView()
-                    .tabItem {
-                        Image(systemName: Constants.Icon.home)
-                    }
-                    .tag(Tabs.home)
-                NewFolderFileAddLinkView()
-                    .tabItem {
-                        Image(systemName: Constants.Icon.addFile)
-                    }
-                    .tag(Tabs.newFile)
-                CurrentUserFoldersView()
-                    .tabItem {
-                        Image(systemName: Constants.Icon.folders)
-                    }
-                    .tag(Tabs.folders)
-            }
-            .onAppear {
-                self.appState.listenCurrentUserFolders()
-            }
-            .onDisappear {
-                self.appState.unlistenCurrentUserFolders()
-            }
+        TabView(selection: self.$appState.selectedTab) {
+            HomeView()
+                .tabItem {
+                    Image(systemName: Constants.Icon.home)
+                }
+                .tag(Tabs.home)
+            NewFolderFileAddLinkView()
+                .tabItem {
+                    Image(systemName: Constants.Icon.addFile)
+                }
+                .tag(Tabs.newFile)
+            CurrentUserFoldersView()
+                .tabItem {
+                    Image(systemName: Constants.Icon.folders)
+                }
+                .tag(Tabs.folders)
+        }
+        .onAppear {
+            self.appState.listenCurrentUserFolders()
+        }
+        .onDisappear {
+            self.appState.unlistenCurrentUserFolders()
+        }
+        .onOpenURL { (url) in
+            self.appState.selectedTab = .home
         }
     }
 }
 
-struct TabsView_Previews: PreviewProvider {
-    static var previews: some View {
-        TabsView()
-    }
-}
+//struct TabsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TabsView()
+//    }
+//}
