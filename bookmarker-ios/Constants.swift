@@ -29,10 +29,17 @@ struct Constants {
     static let canEdit: String = "can_edit"
     static let canManageMembers: String = "can_manage_members"
     static let createdByUserId: String = "created_by_user_id"
+    static let shareLink: String = "share_link"
+    static let linkSharingEnabled: String = "link_sharing_enabled"
     static let verticalSpacing: CGFloat = 16
     static let createdOn: String = "created_on"
     static let modifiedOn: String = "modified_on"
     static let folderFilesListRowViewSize: CGFloat = 75
+    static let dynamicLinksDomainURIPrefix: String = "https://bookmarker.page.link"
+    static let webUrl: String = "bookmarker-996f8.web.app"
+    static let collectionsPath: String = "/collections"
+    static let appStoreId: String = "1504978096"
+    static let appName: String = "Cider"
     
     struct Icon {
         static let home: String = "house"

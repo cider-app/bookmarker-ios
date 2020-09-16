@@ -13,7 +13,7 @@ struct FolderView: View {
     @State private var alertIsPresented: Bool = false
     @State private var activeAlert: FolderAlert = .leave
     @State private var sheetIsPresented: Bool = false
-    @State private var activeSheet: FolderSheet = .add
+    @State private var activeSheet: FolderSheet = .edit
     @State private var selectedLink: String = ""
     var folderId: String
     
@@ -25,7 +25,7 @@ struct FolderView: View {
     enum FolderSheet {
         case add
         case edit
-        case manageMembers
+        case manageSharing
         case share
         case viewLink
     }
@@ -77,11 +77,13 @@ struct FolderView: View {
 //                    Image(systemName: Constants.Icon.add)
 //                }
                 
-                Button(action: {
-                    self.sheetIsPresented = true
-                    self.activeSheet = .share
-                }) {
-                    Image(systemName: Constants.Icon.share)
+                IfFolderLinkSharingIsEnabled(folder: self.vm.folder) {
+                    Button(action: {
+                        self.sheetIsPresented = true
+                        self.activeSheet = .share
+                    }) {
+                        Image(systemName: Constants.Icon.share)
+                    }
                 }
                 
                 Menu {
@@ -97,9 +99,9 @@ struct FolderView: View {
                     IfIsFolderCreatorOrCanManageMembersView(folderViewModel: self.vm) {
                         Button(action: {
                             self.sheetIsPresented = true
-                            self.activeSheet = .manageMembers
+                            self.activeSheet = .manageSharing
                         }) {
-                            Label("Manage members", systemImage: Constants.Icon.members)
+                            Label("Manage sharing", systemImage: Constants.Icon.members)
                         }
                     }
                     
@@ -144,9 +146,9 @@ struct FolderView: View {
                 if let folder = self.vm.folder {
                     EditFolderView(isPresented: self.$sheetIsPresented, folder: folder)
                 }
-            case .manageMembers:
+            case .manageSharing:
                 if let folder = self.vm.folder {
-                    EditFolderView(isPresented: self.$sheetIsPresented, folder: folder)
+                    ManageSharingView(isPresented: self.$sheetIsPresented, folder: folder)
                 }
             case .share:
                 if let url = URL(string: "https://firebase.google.com/docs/firestore/query-data/order-limit-data") {

@@ -14,14 +14,16 @@ struct Folder: FirestoreModel {
     var secret: Bool = true
     var permissions: Permissions = Permissions()
     var createdByUserId: String = ""
+    var shareLink: String = ""
     
-    init(id: String, title: String, description: String, secret: Bool = true, permissions: Permissions = Permissions(), createdByUserId: String) {
+    init(id: String, title: String, description: String, secret: Bool = true, permissions: Permissions = Permissions(), createdByUserId: String, shareLink: String = "") {
         self.id = id
         self.title = title
         self.description = description
         self.secret = secret
         self.permissions = permissions
         self.createdByUserId = createdByUserId
+        self.shareLink = shareLink
     }
     
     //  MARK: - FirestoreModel protocol
@@ -33,7 +35,8 @@ struct Folder: FirestoreModel {
             Constants.description: description,
             Constants.secret: secret,
             Constants.permissions: permissions.toDictionary,
-            Constants.createdByUserId: createdByUserId
+            Constants.createdByUserId: createdByUserId,
+            Constants.shareLink: shareLink
         ]
     }
     
@@ -50,6 +53,7 @@ struct Folder: FirestoreModel {
         self.secret = data[Constants.secret] as? Bool ?? true 
         self.permissions = Permissions(data: permissionsData)
         self.createdByUserId = data[Constants.createdByUserId] as? String ?? ""
+        self.shareLink = data[Constants.shareLink] as? String ?? ""
     }
     
     static var collectionRef: CollectionReference {

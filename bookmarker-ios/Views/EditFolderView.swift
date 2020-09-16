@@ -29,12 +29,11 @@ struct EditFolderView: View {
                 Section(header: Text("Description")) {
                     TextField("Name", text: self.$vm.description)
                 }
-                Section(header: Text("Visibility")) {
+                Section(
+                    header: Text("Visibility"),
+                    footer: Text("Secret collections require Face ID or a passcode to access")
+                ) {
                     Toggle("Secret", isOn: self.$vm.secret)
-                }
-                Section(header: Text("Member permissions")) {
-                    Toggle("Members can post", isOn: self.$vm.permissions.canEdit)
-                    Toggle("Members can invite others", isOn: self.$vm.permissions.canManageMembers)
                 }
             }
             .navigationTitle("Edit collection")
@@ -43,13 +42,12 @@ struct EditFolderView: View {
                     Button(action: {
                         self.isPresented = false
                     }) {
-                        Image(systemName: Constants.Icon.close)
+                        Text("Cancel")
                     }
                 }
-                
                 ToolbarItem(placement: .confirmationAction) {
                     Button(action: update) {
-                        Text("Save")
+                        Text("Done")
                     }
                 }
             }
@@ -57,7 +55,6 @@ struct EditFolderView: View {
                 self.vm.title = folder.title
                 self.vm.description = folder.description
                 self.vm.secret = folder.secret
-                self.vm.permissions = folder.permissions
             }
         }
     }

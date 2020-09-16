@@ -6,12 +6,12 @@
 //
 
 import Foundation
+import FirebaseDynamicLinks
 
 class EditFolderViewModel: ObservableObject {
     @Published var title: String = ""
     @Published var description: String = ""
     @Published var secret: Bool = false
-    @Published var permissions: Permissions = Permissions()
     @Published var isLoading: Bool = false
     
     func update(folderId: String, completion: ((Error?) -> Void)?) {
@@ -20,20 +20,15 @@ class EditFolderViewModel: ObservableObject {
         Folder.collectionRef.document(folderId).updateData([
             Constants.title: title,
             Constants.description: description,
-            Constants.secret: secret,
-            Constants.permissions: permissions.toDictionary
+            Constants.secret: secret
         ]) { (error) in
             self.isLoading = false
             
             if let error = error {
                 print("Error updating document: \(error)")
-                if completion != nil {
-                    completion!(error)
-                }
+                completion?(error)
             } else {
-                if completion != nil {
-                    completion!(nil)
-                }
+                completion?(nil)
             }
         }
     }
