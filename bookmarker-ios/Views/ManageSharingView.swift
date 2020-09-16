@@ -10,6 +10,7 @@ import SwiftUI
 struct ManageSharingView: View {
     @StateObject var vm = ManageSharingViewModel()
     @Binding var isPresented: Bool
+    @State private var activityViewIsPresented: Bool = false
     var folder: Folder
     
     var body: some View {
@@ -32,7 +33,7 @@ struct ManageSharingView: View {
                         }
                         
                         Button(action: {
-                            
+                            self.activityViewIsPresented = true
                         }) {
                             HStack {
                                 Text("Share to...")
@@ -68,6 +69,9 @@ struct ManageSharingView: View {
                 self.vm.linkSharingToggleIsOn = !folder.shareLink.isEmpty
                 self.vm.permissions.canEdit = folder.permissions.canEdit
                 self.vm.permissions.canManageMembers = folder.permissions.canManageMembers
+            }
+            .sheet(isPresented: $activityViewIsPresented) {
+                ActivityViewController(activityItems: [self.vm.shareLink])
             }
         }
     }
