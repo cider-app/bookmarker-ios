@@ -12,6 +12,30 @@ struct HomeView: View {
     @EnvironmentObject var appState: AppState
     @StateObject var recentlyCreatedFilesVM = RecentlyCreatedFolderFilesViewModel()
     @State private var accountViewIsPresented: Bool = false
+    @State private var foldersNavLinkIsActive: Bool = false
+    @State private var foldersNavLinkId: String = ""
+    
+    func handleOpenedUrl(_ url: URL) {
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return }
+
+        if let queryItems = components.queryItems {
+            if let linkIndex = queryItems.firstIndex(where: { $0.name == Constants.link }),
+               let link = queryItems[linkIndex].value,
+               let linkUrl = URL(string: link) {
+                guard linkUrl.pathComponents.count >= 3 else { return }
+                let section = linkUrl.pathComponents[1]
+                let detail = linkUrl.pathComponents[2]
+                
+                switch section {
+                case Constants.Path.collections:
+                    self.foldersNavLinkId = detail
+                    self.foldersNavLinkIsActive = true
+                default:
+                    break
+                }
+            }
+        }
+    }
     
     var body: some View {
         NavigationView {
@@ -19,6 +43,9 @@ struct HomeView: View {
                 VStack(alignment: .leading, spacing: Constants.verticalSpacing) {
                     ForEach(self.recentlyCreatedFilesVM.folderFiles, id: \.id) { folderFile in
                         FolderFilesListRowView(folderFile: folderFile)
+                    }
+                    NavigationLink(destination: FolderView(folderId: self.foldersNavLinkId), isActive: $foldersNavLinkIsActive) {
+                        EmptyView()
                     }
                 }
                 .padding()
@@ -41,6 +68,9 @@ struct HomeView: View {
             }
             .onDisappear {
                 self.recentlyCreatedFilesVM.unlisten()
+            }
+            .onOpenURL { (url) in
+                self.handleOpenedUrl(url)
             }
         }
     }
