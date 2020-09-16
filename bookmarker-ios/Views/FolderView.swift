@@ -151,7 +151,7 @@ struct FolderView: View {
                     ManageSharingView(isPresented: self.$sheetIsPresented, folder: folder)
                 }
             case .share:
-                if let url = URL(string: "https://firebase.google.com/docs/firestore/query-data/order-limit-data") {
+                if let folder = self.vm.folder, let url = URL(string: folder.shareLink) {
                     ActivityViewController(activityItems: [url])
                 }
             case .viewLink:

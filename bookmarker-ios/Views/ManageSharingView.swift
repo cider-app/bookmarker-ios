@@ -71,7 +71,9 @@ struct ManageSharingView: View {
                 self.vm.permissions.canManageMembers = folder.permissions.canManageMembers
             }
             .sheet(isPresented: $activityViewIsPresented) {
-                ActivityViewController(activityItems: [self.vm.shareLink])
+                if let url = URL(string: self.vm.shareLink) {
+                    ActivityViewController(activityItems: [url])
+                }
             }
         }
     }
