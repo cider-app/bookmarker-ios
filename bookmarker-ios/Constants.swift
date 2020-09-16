@@ -58,4 +58,8 @@ struct Constants {
         static let share: String = "square.and.arrow.up"
         static let folders: String = "rectangle.grid.1x2" //"rectangle.on.rectangle.angled"
     }
+    
+    struct Path {
+        static let collections: String = "collections"
+    }
 }
