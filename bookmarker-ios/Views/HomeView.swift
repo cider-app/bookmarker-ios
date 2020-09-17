@@ -10,10 +10,10 @@ import FirebaseFirestore
 
 struct HomeView: View {
     @EnvironmentObject var appState: AppState
-    @StateObject var recentlyCreatedFilesVM = RecentlyCreatedFolderFilesViewModel()
     @State private var accountViewIsPresented: Bool = false
-    @State private var foldersNavLinkIsActive: Bool = false
-    @State private var foldersNavLinkId: String = ""
+    @State private var deepLinkFolderNavLinkIsActive: Bool = false
+    @State private var deepLinkFolderNavLinkId: String = ""
+    @State private var newFolderFileViewIsPresented: Bool = false
     
     func handleOpenedUrl(_ url: URL) {
         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return }
@@ -28,8 +28,8 @@ struct HomeView: View {
                 
                 switch section {
                 case Constants.Path.collections:
-                    self.foldersNavLinkId = detail
-                    self.foldersNavLinkIsActive = true
+                    self.deepLinkFolderNavLinkId = detail
+                    self.deepLinkFolderNavLinkIsActive = true
                 default:
                     break
                 }
@@ -41,10 +41,13 @@ struct HomeView: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: Constants.verticalSpacing) {
-                    ForEach(self.recentlyCreatedFilesVM.folderFiles, id: \.id) { folderFile in
-                        FolderFilesListRowView(folderFile: folderFile)
+                    ForEach(self.appState.currentUserFolders, id: \.id) { userFolder in
+                        NavigationLink(destination: FolderView(folderId: userFolder.id), tag: userFolder.id, selection: self.$appState.foldersTabNavLinkSelection) {
+                            UserFoldersListRowView(userFolder: userFolder)
+                        }
+                        .buttonStyle(PlainButtonStyle())
                     }
-                    NavigationLink(destination: FolderView(folderId: self.foldersNavLinkId), isActive: $foldersNavLinkIsActive) {
+                    NavigationLink(destination: FolderView(folderId: self.deepLinkFolderNavLinkId), isActive: self.$deepLinkFolderNavLinkIsActive) {
                         EmptyView()
                     }
                 }
@@ -62,6 +65,14 @@ struct HomeView: View {
                             .environmentObject(self.appState)
                     }
                 }
+                
+                ToolbarItem(placement: .primaryAction) {
+                    Button(action: {
+                        self.newFolderFileViewIsPresented = true
+                    }) {
+                        Image(systemName: Constants.Icon.write)
+                    }
+                }
             }
             .onAppear {
                 self.recentlyCreatedFilesVM.listen()
@@ -71,6 +82,10 @@ struct HomeView: View {
             }
             .onOpenURL { (url) in
                 self.handleOpenedUrl(url)
+            }
+            .sheet(isPresented: $newFolderFileViewIsPresented) {
+                NewFolderFileView()
+                    .environmentObject(self.appState)
             }
         }
     }

@@ -57,6 +57,8 @@ struct Constants {
         static let chat: String = "message"
         static let share: String = "square.and.arrow.up"
         static let folders: String = "rectangle.grid.1x2" //"rectangle.on.rectangle.angled"
+        static let back: String = "chevron.left"
+        static let write: String = "square.and.pencil"
     }
     
     struct Path {

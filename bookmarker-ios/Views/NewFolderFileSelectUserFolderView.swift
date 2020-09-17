@@ -9,10 +9,12 @@ import SwiftUI
 
 struct NewFolderFileSelectUserFolderView: View {
     @EnvironmentObject var appState: AppState
-    @ObservedObject var newFolderFileVM: NewFolderFileViewModel
+    @ObservedObject var vm: NewFolderFileViewModel
     
     func createFolderFile(folderId: String) {
-        self.newFolderFileVM.create(folderId: folderId) { (error) in
+        self.vm.selectedFolderId = folderId
+        
+        self.vm.create() { (error) in
             if error == nil {
                 NotificationCenter.default.post(name: .didCompleteNewFile, object: nil)
             }
@@ -23,7 +25,7 @@ struct NewFolderFileSelectUserFolderView: View {
         SelectableUserFoldersListView(userFolders: self.appState.currentUserFolders) { (selectedUserFolder) in
             self.createFolderFile(folderId: selectedUserFolder.id)
         }
-        .disabled(self.newFolderFileVM.isLoading)
+        .disabled(self.vm.isLoading)
         .navigationTitle("Choose collection")
     }
 }

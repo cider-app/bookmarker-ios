@@ -9,47 +9,32 @@ import SwiftUI
 
 struct NewFolderFileView: View {
     @EnvironmentObject var appState: AppState
+    @Environment(\.presentationMode) var presentationMode
     @StateObject var vm = NewFolderFileViewModel()
-    @Binding var isPresented: Bool
+    var currentFolderId: String?
+    
+    init(currentFolderId: String? = nil) {
+        self.currentFolderId = currentFolderId
+    }
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading, spacing: Constants.verticalSpacing) {
-                TextField("https://...", text: self.$vm.link, onEditingChanged: { (isEditingChanged) in
-                    if isEditingChanged {
-                        self.vm.error = nil
-                    }
-                }, onCommit: {
-                    
-                })
-                
-                NavigationLink(destination: NewFolderFileSelectUserFolderView(newFolderFileVM: self.vm), label: {
-                    Text("Next")
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color.primary))
-                })
-                .disabled(self.vm.isLoading || self.vm.link.isEmpty)
-                
-                if let error = self.vm.error {
-                    Text(error)
-                }
-            }
-            .padding()
-            .ignoresSafeArea(.keyboard)
-            .navigationTitle(Text("Save Link"))
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button(action: {
-                        self.isPresented = false
-                    }) {
-                        Image(systemName: Constants.Icon.close)
+            NewFolderFileAddLinkView(vm: self.vm)
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Image(systemName: Constants.Icon.close)
+                        }
                     }
                 }
-            }
-            .onReceive(NotificationCenter.default.publisher(for: .didCompleteNewFile)) { (_) in
-                self.isPresented = false
-            }
+                .onAppear {
+                    self.vm.selectedFolderId = currentFolderId
+                }
+                .onReceive(NotificationCenter.default.publisher(for: .didCompleteNewFile)) { (_) in
+                    self.presentationMode.wrappedValue.dismiss()
+                }
         }
     }
 }

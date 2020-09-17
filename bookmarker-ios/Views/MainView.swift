@@ -11,15 +11,13 @@ struct MainView: View {
     @EnvironmentObject var appState: AppState
     
     var body: some View {
-        IfAuthenticatedView {
-            HomeView()
+        HomeView()
             .onAppear {
                 self.appState.listenCurrentUserFolders()
             }
             .onDisappear {
                 self.appState.unlistenCurrentUserFolders()
             }
-        }
     }
 }
 

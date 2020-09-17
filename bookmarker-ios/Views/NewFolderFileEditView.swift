@@ -8,59 +8,47 @@
 import SwiftUI
 
 struct NewFolderFileEditView: View {
-    @Binding var isPresented: Bool
-    @ObservedObject var newFolderFileVM: NewFolderFileViewModel
+    @ObservedObject var vm: NewFolderFileViewModel
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                VStack(alignment: .leading, spacing: Constants.verticalSpacing) {
-                    Group {
-                        if self.newFolderFileVM.metadata != nil {
-                            VStack {
-                                if let image = self.newFolderFileVM.image {
-                                    Image(uiImage: image)
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(maxHeight: 120)
-                                }
-                                HStack {
-                                    VStack {
-                                        Text(self.newFolderFileVM.title)
-                                            .font(.largeTitle)
-                                        Text(self.newFolderFileVM.description)
-                                    }
-                                    Spacer()
-                                }
-                                .padding()
+        ZStack {
+            VStack(alignment: .leading, spacing: Constants.verticalSpacing) {
+                Group {
+                    if self.vm.metadata != nil {
+                        VStack {
+                            if let image = self.vm.image {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(maxHeight: 120)
                             }
-                        } else {
-                            Text("No metadata found")
-                        }
-                    }
-                    
-                    Spacer()
-                }
-                VStack {
-                    Spacer()
-                    
-                    NavigationLink(destination: NewFolderFileSelectUserFolderView(newFolderFileVM: self.newFolderFileVM)) {
-                        Text("Next")
+                            HStack {
+                                VStack {
+                                    Text(self.vm.title)
+                                        .font(.largeTitle)
+                                    Text(self.vm.description)
+                                }
+                                Spacer()
+                            }
                             .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color.primary))
+                        }
+                    } else {
+                        Text("No metadata found")
                     }
-                    .padding()
                 }
+                
+                Spacer()
             }
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button(action: {
-                        self.isPresented = false
-                    }) {
-                        Image(systemName: Constants.Icon.close)
-                    }
+            VStack {
+                Spacer()
+                
+                NavigationLink(destination: NewFolderFileSelectUserFolderView(vm: self.vm)) {
+                    Text("Next")
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color.primary))
                 }
+                .padding()
             }
         }
     }

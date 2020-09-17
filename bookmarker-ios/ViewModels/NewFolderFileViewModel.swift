@@ -18,17 +18,18 @@ class NewFolderFileViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var metadata: LPLinkMetadata?
     @Published var error: String?
-    @Published var editFolderFileViewIsPresented: Bool = false
+    @Published var selectedFolderId: String?
+    @Published var editFileNavLinkIsActive: Bool = false
     
-    func create(folderId: String, completion: ((Error?) -> Void)?) {
-        guard let authUser = Auth.auth().currentUser else { return }
+    func create(completion: ((Error?) -> Void)?) {
+        guard let authUser = Auth.auth().currentUser, let selectedFolderId = self.selectedFolderId else { return }
         
         isLoading = true
         
-        let ref = FolderFile.subcollectionRef(parentDocId: folderId).document()
+        let ref = FolderFile.subcollectionRef(parentDocId: selectedFolderId).document()
         let newFolderFile = FolderFile(id: ref.documentID, link: link, createdByUserId: authUser.uid)
         
-        FolderFile.subcollectionRef(parentDocId: folderId).addDocument(data: newFolderFile.toDictionary) { (error) in
+        FolderFile.subcollectionRef(parentDocId: selectedFolderId).addDocument(data: newFolderFile.toDictionary) { (error) in
             self.isLoading = false 
             if let error = error {
                 print("Error add folder file: \(error)")
@@ -60,8 +61,8 @@ class NewFolderFileViewModel: ObservableObject {
                 self.metadata = metadata
                 self.title = metadata.title ?? ""
                 self.description = metadata.description
-                self.editFolderFileViewIsPresented = true
                 self.isLoading = false
+                self.editFileNavLinkIsActive = true
             }
             
             if let imageProvider = metadata.imageProvider {
@@ -78,17 +79,5 @@ class NewFolderFileViewModel: ObservableObject {
                 }
             }
         }
-    }
-    
-    func reset() {
-        self.link = ""
-        self.title = ""
-        self.description = ""
-        self.imageUrl = ""
-        self.image = nil
-        self.metadata = nil
-        self.error = nil
-        self.isLoading = false
-        self.editFolderFileViewIsPresented = false 
     }
 }

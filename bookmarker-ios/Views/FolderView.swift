@@ -70,12 +70,12 @@ struct FolderView: View {
         .navigationTitle(self.vm.folder != nil ? self.vm.folder!.title : "")
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-//                Button(action: {
-//                    self.sheetIsPresented = true
-//                    self.activeSheet = .add
-//                }) {
-//                    Image(systemName: Constants.Icon.add)
-//                }
+                Button(action: {
+                    self.sheetIsPresented = true
+                    self.activeSheet = .add
+                }) {
+                    Image(systemName: Constants.Icon.add)
+                }
                 
                 IfFolderLinkSharingIsEnabled(folder: self.vm.folder) {
                     Button(action: {
@@ -141,7 +141,7 @@ struct FolderView: View {
         .sheet(isPresented: self.$sheetIsPresented) {
             switch self.activeSheet {
             case .add:
-                NewFolderFileView(isPresented: self.$sheetIsPresented)
+                NewFolderFileView(currentFolderId: self.folderId)
             case .edit:
                 if let folder = self.vm.folder {
                     EditFolderView(isPresented: self.$sheetIsPresented, folder: folder)

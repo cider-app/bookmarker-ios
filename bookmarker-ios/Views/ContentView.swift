@@ -12,7 +12,7 @@ struct ContentView: View {
     
     var body: some View {
         IfAuthenticatedView() {
-            TabsView()
+            MainView()
         }
         .onAppear {
             self.appState.listenAuth()
