@@ -19,5 +19,10 @@ target 'bookmarker-ios' do
   target 'bookmarker-iosUITests' do
     # Pods for testing
   end
+end
 
+target 'share-extension' do
+  use_frameworks!
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
 end

@@ -28,6 +28,15 @@
 		0A2906AC25129218003602E7 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2906AB25129218003602E7 /* ShareViewController.swift */; };
 		0A2906AF25129218003602E7 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A2906AD25129218003602E7 /* MainInterface.storyboard */; };
 		0A2906B325129218003602E7 /* share-extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0A2906A925129218003602E7 /* share-extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0A2906BB251293F5003602E7 /* EmbeddedShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2906BA251293F5003602E7 /* EmbeddedShareViewController.swift */; };
+		0A2906BD2512942E003602E7 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2906BC2512942E003602E7 /* NavigationViewController.swift */; };
+		0A2906BF25129651003602E7 /* CurrentUserFoldersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2906BE25129651003602E7 /* CurrentUserFoldersTableViewController.swift */; };
+		0A2906C12512A040003602E7 /* WebService.js in Resources */ = {isa = PBXBuildFile; fileRef = 0A2906C02512A040003602E7 /* WebService.js */; };
+		0A2906C42512A457003602E7 /* UserFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2906C32512A457003602E7 /* UserFolder.swift */; };
+		0A2906C62512A486003602E7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2906C52512A486003602E7 /* Constants.swift */; };
+		0A2906C82512D0EC003602E7 /* FirestoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2906C72512D0EC003602E7 /* FirestoreModel.swift */; };
+		0A2906CC2512D6B8003602E7 /* FolderFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2906CB2512D6B8003602E7 /* FolderFile.swift */; };
+		0A2906CE2512E016003602E7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A2906CD2512E016003602E7 /* GoogleService-Info.plist */; };
 		0A87C479250EA1DD00BC6B4C /* IfIsFolderCreatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A87C478250EA1DD00BC6B4C /* IfIsFolderCreatorView.swift */; };
 		0A87C47D250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A87C47C250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift */; };
 		0AAD156C250BE9A700F8927B /* bookmarker_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD156B250BE9A700F8927B /* bookmarker_iosApp.swift */; };
@@ -74,6 +83,7 @@
 		1E5403FD8D760BCBF3B25356 /* Pods_bookmarker_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E8F9F5613752E4D719C502 /* Pods_bookmarker_iosTests.framework */; };
 		5B82A64943D35DD1A3DE80F6 /* Pods_bookmarker_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9BE1EFB93C783B8D13001C /* Pods_bookmarker_ios.framework */; };
 		A11E113C8FF189D9E7D792A5 /* Pods_bookmarker_ios_bookmarker_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01663A9E5F153CBE9603DA38 /* Pods_bookmarker_ios_bookmarker_iosUITests.framework */; };
+		E1833920401F778EDB5324DC /* Pods_share_extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74D6DB81A58E6B2268834941 /* Pods_share_extension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +150,15 @@
 		0A2906AE25129218003602E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		0A2906B025129218003602E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A2906B82512922B003602E7 /* share-extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "share-extension.entitlements"; sourceTree = "<group>"; };
+		0A2906BA251293F5003602E7 /* EmbeddedShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedShareViewController.swift; sourceTree = "<group>"; };
+		0A2906BC2512942E003602E7 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		0A2906BE25129651003602E7 /* CurrentUserFoldersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserFoldersTableViewController.swift; sourceTree = "<group>"; };
+		0A2906C02512A040003602E7 /* WebService.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = WebService.js; sourceTree = "<group>"; };
+		0A2906C32512A457003602E7 /* UserFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFolder.swift; sourceTree = "<group>"; };
+		0A2906C52512A486003602E7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0A2906C72512D0EC003602E7 /* FirestoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreModel.swift; sourceTree = "<group>"; };
+		0A2906CB2512D6B8003602E7 /* FolderFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFile.swift; sourceTree = "<group>"; };
+		0A2906CD2512E016003602E7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0A87C478250EA1DD00BC6B4C /* IfIsFolderCreatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfIsFolderCreatorView.swift; sourceTree = "<group>"; };
 		0A87C47C250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfIsFolderCreatorOrCanManageMembersView.swift; sourceTree = "<group>"; };
 		0AAD1568250BE9A700F8927B /* bookmarker-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bookmarker-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,6 +213,9 @@
 		29718C85EEAF7D71CE678E6A /* Pods-bookmarker-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarker-ios.release.xcconfig"; path = "Target Support Files/Pods-bookmarker-ios/Pods-bookmarker-ios.release.xcconfig"; sourceTree = "<group>"; };
 		4FA59607AA8CE2FE6F748143 /* Pods-bookmarker-ios-bookmarker-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarker-ios-bookmarker-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-bookmarker-ios-bookmarker-iosUITests/Pods-bookmarker-ios-bookmarker-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5435476D096B387ABE1E451B /* Pods-bookmarker-iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarker-iosTests.debug.xcconfig"; path = "Target Support Files/Pods-bookmarker-iosTests/Pods-bookmarker-iosTests.debug.xcconfig"; sourceTree = "<group>"; };
+		603EDFC9C98C7D6BE7743470 /* Pods-share-extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-share-extension.debug.xcconfig"; path = "Target Support Files/Pods-share-extension/Pods-share-extension.debug.xcconfig"; sourceTree = "<group>"; };
+		74D6DB81A58E6B2268834941 /* Pods_share_extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_share_extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		981323AE443EBA0B5C5A0514 /* Pods-share-extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-share-extension.release.xcconfig"; path = "Target Support Files/Pods-share-extension/Pods-share-extension.release.xcconfig"; sourceTree = "<group>"; };
 		A9B2F20F3898F6F82A3B7992 /* Pods-bookmarker-ios-bookmarker-iosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarker-ios-bookmarker-iosUITests.release.xcconfig"; path = "Target Support Files/Pods-bookmarker-ios-bookmarker-iosUITests/Pods-bookmarker-ios-bookmarker-iosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AF9BE1EFB93C783B8D13001C /* Pods_bookmarker_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bookmarker_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFAE4CFBE315B779B961B1B4 /* Pods-bookmarker-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarker-ios.debug.xcconfig"; path = "Target Support Files/Pods-bookmarker-ios/Pods-bookmarker-ios.debug.xcconfig"; sourceTree = "<group>"; };
@@ -204,6 +226,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1833920401F778EDB5324DC /* Pods_share_extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,12 +268,37 @@
 		0A2906AA25129218003602E7 /* share-extension */ = {
 			isa = PBXGroup;
 			children = (
-				0A2906B82512922B003602E7 /* share-extension.entitlements */,
-				0A2906AB25129218003602E7 /* ShareViewController.swift */,
-				0A2906AD25129218003602E7 /* MainInterface.storyboard */,
+				0A2906C52512A486003602E7 /* Constants.swift */,
+				0A2906CD2512E016003602E7 /* GoogleService-Info.plist */,
 				0A2906B025129218003602E7 /* Info.plist */,
+				0A2906AD25129218003602E7 /* MainInterface.storyboard */,
+				0A2906C22512A44A003602E7 /* Models */,
+				0A2906B82512922B003602E7 /* share-extension.entitlements */,
+				0A2906B9251293C2003602E7 /* ViewControllers */,
+				0A2906C02512A040003602E7 /* WebService.js */,
 			);
 			path = "share-extension";
+			sourceTree = "<group>";
+		};
+		0A2906B9251293C2003602E7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0A2906BA251293F5003602E7 /* EmbeddedShareViewController.swift */,
+				0A2906BC2512942E003602E7 /* NavigationViewController.swift */,
+				0A2906AB25129218003602E7 /* ShareViewController.swift */,
+				0A2906BE25129651003602E7 /* CurrentUserFoldersTableViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0A2906C22512A44A003602E7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0A2906C72512D0EC003602E7 /* FirestoreModel.swift */,
+				0A2906CB2512D6B8003602E7 /* FolderFile.swift */,
+				0A2906C32512A457003602E7 /* UserFolder.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		0AAD155F250BE9A600F8927B = {
@@ -412,6 +460,8 @@
 				A9B2F20F3898F6F82A3B7992 /* Pods-bookmarker-ios-bookmarker-iosUITests.release.xcconfig */,
 				5435476D096B387ABE1E451B /* Pods-bookmarker-iosTests.debug.xcconfig */,
 				1F11715738755AC992E82316 /* Pods-bookmarker-iosTests.release.xcconfig */,
+				603EDFC9C98C7D6BE7743470 /* Pods-share-extension.debug.xcconfig */,
+				981323AE443EBA0B5C5A0514 /* Pods-share-extension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -422,6 +472,7 @@
 				AF9BE1EFB93C783B8D13001C /* Pods_bookmarker_ios.framework */,
 				01663A9E5F153CBE9603DA38 /* Pods_bookmarker_ios_bookmarker_iosUITests.framework */,
 				09E8F9F5613752E4D719C502 /* Pods_bookmarker_iosTests.framework */,
+				74D6DB81A58E6B2268834941 /* Pods_share_extension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -433,6 +484,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0A2906B425129218003602E7 /* Build configuration list for PBXNativeTarget "share-extension" */;
 			buildPhases = (
+				C8B266EF96E1E9406EAA2437 /* [CP] Check Pods Manifest.lock */,
 				0A2906A525129218003602E7 /* Sources */,
 				0A2906A625129218003602E7 /* Frameworks */,
 				0A2906A725129218003602E7 /* Resources */,
@@ -558,6 +610,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A2906AF25129218003602E7 /* MainInterface.storyboard in Resources */,
+				0A2906C12512A040003602E7 /* WebService.js in Resources */,
+				0A2906CE2512E016003602E7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,6 +725,28 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-bookmarker-ios-bookmarker-iosUITests/Pods-bookmarker-ios-bookmarker-iosUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C8B266EF96E1E9406EAA2437 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-share-extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E325E489E888091A07B824A7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -695,7 +771,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A2906BD2512942E003602E7 /* NavigationViewController.swift in Sources */,
+				0A2906BB251293F5003602E7 /* EmbeddedShareViewController.swift in Sources */,
+				0A2906BF25129651003602E7 /* CurrentUserFoldersTableViewController.swift in Sources */,
 				0A2906AC25129218003602E7 /* ShareViewController.swift in Sources */,
+				0A2906C42512A457003602E7 /* UserFolder.swift in Sources */,
+				0A2906C82512D0EC003602E7 /* FirestoreModel.swift in Sources */,
+				0A2906C62512A486003602E7 /* Constants.swift in Sources */,
+				0A2906CC2512D6B8003602E7 /* FolderFile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -812,11 +895,13 @@
 /* Begin XCBuildConfiguration section */
 		0A2906B525129218003602E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 603EDFC9C98C7D6BE7743470 /* Pods-share-extension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "share-extension/share-extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KDPC3776KJ;
 				INFOPLIST_FILE = "share-extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -832,11 +917,13 @@
 		};
 		0A2906B625129218003602E7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 981323AE443EBA0B5C5A0514 /* Pods-share-extension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "share-extension/share-extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KDPC3776KJ;
 				INFOPLIST_FILE = "share-extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
