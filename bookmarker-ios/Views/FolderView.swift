@@ -67,14 +67,14 @@ struct FolderView: View {
             }
             .padding()
         }
-        .navigationTitle(self.vm.folder != nil ? self.vm.folder!.title : "")
+        .navigationBarTitle(self.vm.folder != nil ? self.vm.folder!.title : "", displayMode: .large)
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button(action: {
                     self.sheetIsPresented = true
                     self.activeSheet = .add
                 }) {
-                    Image(systemName: Constants.Icon.add)
+                    Image(systemName: Constants.Icon.write)
                 }
                 
                 IfFolderLinkSharingIsEnabled(folder: self.vm.folder) {
