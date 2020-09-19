@@ -48,7 +48,7 @@ struct FolderView: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: Constants.verticalSpacing) {
+            LazyVStack(alignment: .leading, spacing: Constants.verticalSpacing) {
                 if let folder = self.vm.folder {
                     HStack {
                         Text(folder.description)
