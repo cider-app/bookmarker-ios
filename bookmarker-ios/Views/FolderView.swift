@@ -67,7 +67,7 @@ struct FolderView: View {
             }
             .padding()
         }
-        .navigationBarTitle(self.vm.folder != nil ? self.vm.folder!.title : "", displayMode: .large)
+        .navigationBarTitle(self.vm.folder != nil ? self.vm.folder!.title : "", displayMode: .inline)
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button(action: {
