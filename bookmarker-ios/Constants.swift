@@ -40,6 +40,8 @@ struct Constants {
     static let collectionsPath: String = "/collections"
     static let appStoreId: String = "1504978096"
     static let appName: String = "Cider"
+    static let recentlyCreatedFolderFilesGridWidth: CGFloat = 100
+    static let recentlyCreatedFolderFilesGridHeight: CGFloat = 100
     
     struct Icon {
         static let home: String = "house"

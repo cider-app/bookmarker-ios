@@ -19,6 +19,9 @@ struct UserFoldersListRowView: View {
             }
             Spacer()
         }
+        .padding()
+        .frame(maxWidth: .infinity)
+        .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color(.systemGray6)))
     }
 }
 

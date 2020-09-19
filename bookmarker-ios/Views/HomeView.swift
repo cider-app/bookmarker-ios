@@ -10,6 +10,7 @@ import FirebaseFirestore
 
 struct HomeView: View {
     @EnvironmentObject var appState: AppState
+    @StateObject var vm = HomeViewModel()
     @State private var accountViewIsPresented: Bool = false
     @State private var deepLinkFolderNavLinkIsActive: Bool = false
     @State private var deepLinkFolderNavLinkId: String = ""
@@ -41,12 +42,19 @@ struct HomeView: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: Constants.verticalSpacing) {
-                    ForEach(self.appState.currentUserFolders, id: \.id) { userFolder in
-                        NavigationLink(destination: FolderView(folderId: userFolder.id), tag: userFolder.id, selection: self.$appState.foldersTabNavLinkSelection) {
-                            UserFoldersListRowView(userFolder: userFolder)
-                        }
-                        .buttonStyle(PlainButtonStyle())
+                    Section(header: Text("Recently Saved")) {
+                        RecentlyCreatedFolderFilesView()
                     }
+                    
+                    Section(header: Text("Collections")) {
+                        ForEach(self.appState.currentUserFolders, id: \.id) { userFolder in
+                            NavigationLink(destination: FolderView(folderId: userFolder.id), tag: userFolder.id, selection: self.$appState.foldersTabNavLinkSelection) {
+                                UserFoldersListRowView(userFolder: userFolder)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                        }
+                    }
+                    
                     NavigationLink(destination: FolderView(folderId: self.deepLinkFolderNavLinkId), isActive: self.$deepLinkFolderNavLinkIsActive) {
                         EmptyView()
                     }
@@ -74,12 +82,7 @@ struct HomeView: View {
                     }
                 }
             }
-            .onAppear {
-                self.recentlyCreatedFilesVM.listen()
-            }
-            .onDisappear {
-                self.recentlyCreatedFilesVM.unlisten()
-            }
+            .navigationBarTitle("", displayMode: .inline)
             .onOpenURL { (url) in
                 self.handleOpenedUrl(url)
             }

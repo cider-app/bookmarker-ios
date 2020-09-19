@@ -8,15 +8,25 @@
 import SwiftUI
 
 struct RecentlyCreatedFolderFilesView: View {
-    @StateObject var recentlyCreatedFilesVM = RecentlyCreatedFolderFilesViewModel()
+    @StateObject var vm = RecentlyCreatedFolderFilesViewModel()
+    
+    let rows = [
+        GridItem(.fixed(Constants.recentlyCreatedFolderFilesGridHeight))
+    ]
     
     var body: some View {
-        ScrollView {
-            HStack {
-                ForEach(self.recentlyCreatedFilesVM.folderFiles, id: \.id) { folderFile in
-                    FolderFilesListRowView(folderFile: folderFile)
+        ScrollView(.horizontal, showsIndicators: false) {
+            LazyHGrid(rows: rows, alignment: .center) {
+                ForEach(self.vm.folderFiles, id: \.id) { folderFile in
+                    FolderFilesListGridView(folderFile: folderFile)
                 }
             }
+        }
+        .onAppear {
+            self.vm.listen()
+        }
+        .onDisappear {
+            self.vm.unlisten()
         }
     }
 }
