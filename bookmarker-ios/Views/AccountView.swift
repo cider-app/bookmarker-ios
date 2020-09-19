@@ -21,6 +21,11 @@ struct AccountView: View {
                         }
                     }
                     Section {
+                        NavigationLink(destination: AccountPrivacyAndSecurityView()) {
+                            Label("Privacy & Security", systemImage: Constants.Icon.security)
+                        }
+                    }
+                    Section {
                         Button(action: {
                             self.appState.signOut { (error) in
                                 if error == nil {

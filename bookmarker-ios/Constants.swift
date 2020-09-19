@@ -61,6 +61,7 @@ struct Constants {
         static let folders: String = "rectangle.grid.1x2" //"rectangle.on.rectangle.angled"
         static let back: String = "chevron.left"
         static let write: String = "square.and.pencil"
+        static let security: String = "checkmark.shield.fill"
     }
     
     struct Path {
