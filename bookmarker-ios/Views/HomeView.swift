@@ -90,6 +90,16 @@ struct HomeView: View {
                 NewFolderFileView()
                     .environmentObject(self.appState)
             }
+            .background(NavigationConfigurator(configure: { (nc) in
+                nc.navigationBar.barTintColor = .systemBackground
+                nc.navigationBar.tintColor = UIColor(.primary)
+                nc.navigationBar.isTranslucent = false
+                
+                let appearance = UINavigationBarAppearance()
+                appearance.shadowColor = .clear
+                nc.navigationBar.standardAppearance = appearance
+                nc.navigationBar.scrollEdgeAppearance = appearance
+            }))
         }
     }
 }

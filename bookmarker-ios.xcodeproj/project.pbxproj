@@ -40,6 +40,7 @@
 		0A2906D025142E8F003602E7 /* RecentlyCreatedFolderFilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2906CF25142E8F003602E7 /* RecentlyCreatedFolderFilesView.swift */; };
 		0A2906D225142EEF003602E7 /* FolderFilesListGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2906D125142EEF003602E7 /* FolderFilesListGridView.swift */; };
 		0A2906D4251431BE003602E7 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2906D3251431BE003602E7 /* HomeViewModel.swift */; };
+		0A2906D62515F36F003602E7 /* NavigationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2906D52515F36F003602E7 /* NavigationConfigurator.swift */; };
 		0A87C479250EA1DD00BC6B4C /* IfIsFolderCreatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A87C478250EA1DD00BC6B4C /* IfIsFolderCreatorView.swift */; };
 		0A87C47D250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A87C47C250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift */; };
 		0AAD156C250BE9A700F8927B /* bookmarker_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD156B250BE9A700F8927B /* bookmarker_iosApp.swift */; };
@@ -165,6 +166,7 @@
 		0A2906CF25142E8F003602E7 /* RecentlyCreatedFolderFilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyCreatedFolderFilesView.swift; sourceTree = "<group>"; };
 		0A2906D125142EEF003602E7 /* FolderFilesListGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFilesListGridView.swift; sourceTree = "<group>"; };
 		0A2906D3251431BE003602E7 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		0A2906D52515F36F003602E7 /* NavigationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationConfigurator.swift; sourceTree = "<group>"; };
 		0A87C478250EA1DD00BC6B4C /* IfIsFolderCreatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfIsFolderCreatorView.swift; sourceTree = "<group>"; };
 		0A87C47C250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfIsFolderCreatorOrCanManageMembersView.swift; sourceTree = "<group>"; };
 		0AAD1568250BE9A700F8927B /* bookmarker-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bookmarker-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -449,6 +451,7 @@
 				0AAD15B3250C00C400F8927B /* SignUpView.swift */,
 				0AAD15AB250BFC1500F8927B /* TabsView.swift */,
 				0AAD15D8250CB74600F8927B /* UserFoldersListRowView.swift */,
+				0A2906D52515F36F003602E7 /* NavigationConfigurator.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -853,6 +856,7 @@
 				0AAD15E7250DF3D700F8927B /* NewFolderViewModel.swift in Sources */,
 				0AAD15E5250DF37400F8927B /* NewFolderView.swift in Sources */,
 				0AAD159A250BEEEE00F8927B /* Constants.swift in Sources */,
+				0A2906D62515F36F003602E7 /* NavigationConfigurator.swift in Sources */,
 				0A29067B250EAFA0003602E7 /* IfIsFolderMemberView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
