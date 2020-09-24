@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AccountView: View {
     @EnvironmentObject var appState: AppState
-    @Binding var isPresented: Bool
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView {
@@ -29,7 +29,7 @@ struct AccountView: View {
                         Button(action: {
                             self.appState.signOut { (error) in
                                 if error == nil {
-                                    self.isPresented = false
+                                    self.presentationMode.wrappedValue.dismiss()
                                 }
                             }
                         }) {
@@ -41,7 +41,7 @@ struct AccountView: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(action: {
-                        self.isPresented = false
+                        self.presentationMode.wrappedValue.dismiss()
                     }) {
                         Image(systemName: Constants.Icon.close)
                     }
