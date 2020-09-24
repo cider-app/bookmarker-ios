@@ -33,7 +33,7 @@ struct CurrentUserFoldersView: View {
                         Image(systemName: Constants.Icon.account)
                     }
                     .sheet(isPresented: $accountViewIsPresented) {
-                        AccountView(isPresented: $accountViewIsPresented)
+                        AccountView()
                             .environmentObject(self.appState)
                     }
                 }
@@ -45,7 +45,7 @@ struct CurrentUserFoldersView: View {
                         Image(systemName: Constants.Icon.add)
                     }
                     .sheet(isPresented: self.$newFolderViewIsPresented) {
-                        NewFolderView(isPresented: self.$newFolderViewIsPresented)
+                        NewFolderView()
                     }
                 }
             }

@@ -9,12 +9,12 @@ import SwiftUI
 
 struct NewFolderView: View {
     @StateObject var vm = NewFolderViewModel()
-    @Binding var isPresented: Bool
+    @Environment(\.presentationMode) var presentationMode
     
     func create() {
         self.vm.createFolder { (error) in
             if error == nil {
-                self.isPresented = false
+                self.presentationMode.wrappedValue.dismiss()
             }
         }
     }
@@ -42,7 +42,7 @@ struct NewFolderView: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(action: {
-                        self.isPresented = false
+                        self.presentationMode.wrappedValue.dismiss()
                     }) {
                         Image(systemName: Constants.Icon.close)
                     }
