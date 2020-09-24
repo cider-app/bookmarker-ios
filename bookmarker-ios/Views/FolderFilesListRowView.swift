@@ -13,8 +13,19 @@ struct FolderFilesListRowView: View {
     
     var body: some View {
         HStack {
-            Text(folderFile.title)
+            VStack(alignment: .leading) {
+                Text(folderFile.title)
+                    .font(Font.system(.headline).weight(Constants.fontWeight))
+                    .foregroundColor(Color(.label))
+                    .lineLimit(nil)
+                    .fixedSize(horizontal: false, vertical: true)
+                
+                Spacer()
+            }
+            .padding(.vertical)
+            
             Spacer()
+            
             if let image = self.imageLoader.image {
                 Image(uiImage: image)
                     .resizable()
@@ -22,6 +33,9 @@ struct FolderFilesListRowView: View {
                     .frame(width: Constants.folderFilesListRowViewSize, height: Constants.folderFilesListRowViewSize)
                     .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
             }
+        }
+        .onAppear {
+            self.imageLoader.loadImage(urlString: folderFile.imageUrl)
         }
     }
 }

@@ -9,20 +9,20 @@ import SwiftUI
 
 struct EditFolderView: View {
     @StateObject var vm = EditFolderViewModel()
-    @Binding var isPresented: Bool
+    @Environment(\.presentationMode) var presentationMode
     var folder: Folder
     
     func update() {
         self.vm.update(folderId: self.folder.id) { (error) in
             if error == nil {
-                self.isPresented = false
+                self.presentationMode.wrappedValue.dismiss()
             }
         }
     }
     
     var body: some View {
         NavigationView {
-            Form {
+            VStack {
                 Section(header: Text("Name")) {
                     TextField("Name", text: self.$vm.title)
                 }
@@ -35,12 +35,15 @@ struct EditFolderView: View {
                 ) {
                     Toggle("Secret", isOn: self.$vm.secret)
                 }
+                Section {
+                    ColorGridPickerView()
+                }
             }
             .navigationTitle("Edit collection")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(action: {
-                        self.isPresented = false
+                        self.presentationMode.wrappedValue.dismiss()
                     }) {
                         Text("Cancel")
                     }

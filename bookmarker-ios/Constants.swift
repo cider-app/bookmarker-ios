@@ -21,7 +21,7 @@ struct Constants {
     static let userId: String = "user_id"
     static let folderId: String = "folder_id"
     static let fileId: String = "file_id"
-    static let cornerRadius: CGFloat = 16
+    static let cornerRadius: CGFloat = 20
     static let link: String = "link"
     static let imageUrl: String = "image_url"
     static let favicon: String = "favicon"
@@ -34,20 +34,25 @@ struct Constants {
     static let verticalSpacing: CGFloat = 16
     static let createdOn: String = "created_on"
     static let modifiedOn: String = "modified_on"
-    static let folderFilesListRowViewSize: CGFloat = 75
+    static let folderFilesListRowViewSize: CGFloat = 100
     static let dynamicLinksDomainURIPrefix: String = "https://bookmarker.page.link"
     static let webUrl: String = "bookmarker-996f8.web.app"
     static let collectionsPath: String = "/collections"
     static let appStoreId: String = "1504978096"
     static let appName: String = "Cider"
     static let recentlyCreatedFolderFilesGridWidth: CGFloat = 100
-    static let recentlyCreatedFolderFilesGridHeight: CGFloat = 100
+    static let recentlyCreatedFolderFilesGridHeight: CGFloat = 150
+    static let fontWeight: Font.Weight = .bold
+    static let iconFontTextStyle: Font.TextStyle = .title2
+    static let iconPrimaryButtonShadow: CGFloat = 4
+    static let sectionHeaderFontTextStyle: Font.TextStyle = .subheadline
+    static let logoFontTextStyle: Font.TextStyle = .title
     
     struct Icon {
         static let home: String = "house"
         static let messages: String = "message"
         static let close: String = "xmark"
-        static let account: String = "person.crop.circle"
+        static let account: String = "person.fill"
         static let more: String = "ellipsis"
         static let addFolder: String = "plus.rectangle.on.rectangle"
         static let addFile: String = "plus.app"

@@ -11,13 +11,15 @@ struct MainView: View {
     @EnvironmentObject var appState: AppState
     
     var body: some View {
-        HomeView()
-            .onAppear {
-                self.appState.listenCurrentUserFolders()
-            }
-            .onDisappear {
-                self.appState.unlistenCurrentUserFolders()
-            }
+        NavigationView {
+            HomeView()
+                .onAppear {
+                    self.appState.listenCurrentUserFolders()
+                }
+                .onDisappear {
+                    self.appState.unlistenCurrentUserFolders()
+                }
+        }
     }
 }
 

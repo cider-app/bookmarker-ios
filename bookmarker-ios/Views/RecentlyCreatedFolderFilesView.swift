@@ -11,16 +11,18 @@ struct RecentlyCreatedFolderFilesView: View {
     @StateObject var vm = RecentlyCreatedFolderFilesViewModel()
     
     let rows = [
-        GridItem(.fixed(Constants.recentlyCreatedFolderFilesGridHeight))
+        GridItem(.fixed(200))
     ]
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            LazyHGrid(rows: rows, alignment: .center) {
+            LazyHGrid(rows: rows, alignment: .top, spacing: Constants.verticalSpacing) {
                 ForEach(self.vm.folderFiles, id: \.id) { folderFile in
-                    FolderFilesListGridView(folderFile: folderFile)
+                    FolderFilesGridCellView(folderFile: folderFile)
+                        .frame(width: 150)
                 }
             }
+            .padding(.leading)
         }
         .onAppear {
             self.vm.listen()
