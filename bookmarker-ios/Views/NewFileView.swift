@@ -49,7 +49,7 @@ struct NewFileView: View {
             }
             .sheet(isPresented: $sheetIsPresented) {
                 if activeSheet == Sheet.account {
-                    AccountView(isPresented: $sheetIsPresented)
+                    AccountView()
                         .environmentObject(self.appState)
                 } else if activeSheet == Sheet.selectFolder {
                     Text("Select folder")
