@@ -14,6 +14,7 @@
 		0A264E58251C5E3200566C43 /* ColorGridCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A264E57251C5E3200566C43 /* ColorGridCellView.swift */; };
 		0A264E5A251C5F8500566C43 /* ColorPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A264E59251C5F8500566C43 /* ColorPickerViewModel.swift */; };
 		0A264E5C251C5F9D00566C43 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A264E5B251C5F9D00566C43 /* Color.swift */; };
+		0A264E5E251E71B100566C43 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A264E5D251E71B100566C43 /* Helper.swift */; };
 		0A29067B250EAFA0003602E7 /* IfIsFolderMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29067A250EAFA0003602E7 /* IfIsFolderMemberView.swift */; };
 		0A29067D250EE107003602E7 /* NewFolderFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29067C250EE107003602E7 /* NewFolderFileView.swift */; };
 		0A290681250EE135003602E7 /* NewFolderFileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A290680250EE135003602E7 /* NewFolderFileViewModel.swift */; };
@@ -147,6 +148,7 @@
 		0A264E57251C5E3200566C43 /* ColorGridCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGridCellView.swift; sourceTree = "<group>"; };
 		0A264E59251C5F8500566C43 /* ColorPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewModel.swift; sourceTree = "<group>"; };
 		0A264E5B251C5F9D00566C43 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		0A264E5D251E71B100566C43 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		0A29067A250EAFA0003602E7 /* IfIsFolderMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfIsFolderMemberView.swift; sourceTree = "<group>"; };
 		0A29067C250EE107003602E7 /* NewFolderFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFolderFileView.swift; sourceTree = "<group>"; };
 		0A290680250EE135003602E7 /* NewFolderFileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFolderFileViewModel.swift; sourceTree = "<group>"; };
@@ -358,8 +360,10 @@
 				0AAD156F250BE9AA00F8927B /* Assets.xcassets */,
 				0AAD156B250BE9A700F8927B /* bookmarker_iosApp.swift */,
 				0AAD15BF250C099A00F8927B /* bookmarker-ios.entitlements */,
+				0A264E5B251C5F9D00566C43 /* Color.swift */,
 				0AAD1599250BEEEE00F8927B /* Constants.swift */,
 				0AAD1597250BEADD00F8927B /* GoogleService-Info.plist */,
+				0A264E5D251E71B100566C43 /* Helper.swift */,
 				0A2906982510007C003602E7 /* ImageCache.swift */,
 				0AAD1574250BE9AA00F8927B /* Info.plist */,
 				0AAD159B250BEF2200F8927B /* Models */,
@@ -370,7 +374,6 @@
 				0A29069A251000AA003602E7 /* Stores */,
 				0AAD159C250BEF2600F8927B /* ViewModels */,
 				0AAD159D250BEF2C00F8927B /* Views */,
-				0A264E5B251C5F9D00566C43 /* Color.swift */,
 			);
 			path = "bookmarker-ios";
 			sourceTree = "<group>";
@@ -882,6 +885,7 @@
 				0AAD156C250BE9A700F8927B /* bookmarker_iosApp.swift in Sources */,
 				0AAD15DB250DEE3F00F8927B /* FolderView.swift in Sources */,
 				0AAD15C3250C1BA500F8927B /* NewFileViewModel.swift in Sources */,
+				0A264E5E251E71B100566C43 /* Helper.swift in Sources */,
 				0AAD15B4250C00C400F8927B /* SignUpView.swift in Sources */,
 				0A2906D82515F88F003602E7 /* AccountPrivacyAndSecurityView.swift in Sources */,
 				0A2906972510004C003602E7 /* URLImageStore.swift in Sources */,
