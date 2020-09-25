@@ -15,7 +15,7 @@ struct UserFoldersListRowView: View {
             Text(userFolder.emoji)
                 .font(.largeTitle)
                 .padding()
-                .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color("Color1")))
+                .background(RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous).fill(Color("Color1")))
             
             Text(userFolder.title)
                 .font(Font.system(.title3).weight(Constants.fontWeight))
@@ -29,7 +29,7 @@ struct UserFoldersListRowView: View {
                 .foregroundColor(Color(.quaternaryLabel))
         }
         .padding()
-        .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color(.systemBackground)))
+        .background(RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous).fill(Color(.systemBackground)))
         .clipped()
         .shadow(color: Color(.systemGray4).opacity(0.2), radius: 4, x: 0, y: 6)
     }
