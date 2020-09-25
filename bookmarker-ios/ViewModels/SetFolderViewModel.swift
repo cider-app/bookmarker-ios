@@ -61,9 +61,9 @@ class SetFolderViewModel: ObservableObject {
         let folderUserRef = FolderUser.subcollectionRef(parentDocId: folderRef.documentID).document(authUser.uid)
         let userFolderRef = UserFolder.subcollectionRef(parentDocId: authUser.uid).document(folderRef.documentID)
         
-        let folder = Folder(id: folderRef.documentID, title: title, description: description, secret: secret, permissions: permissions, createdByUserId: authUser.uid)
+        let folder = Folder(id: folderRef.documentID, title: title, description: description, secret: secret, permissions: permissions, emoji: emoji, color: color, createdByUserId: authUser.uid)
         let folderUser = FolderUser(id: authUser.uid)
-        let userFolder = UserFolder(id: folderRef.documentID, title: title, description: description, secret: secret)
+        let userFolder = UserFolder(id: folderRef.documentID, title: title, description: description, secret: secret, emoji: emoji, color: color)
         
         batch.setData(folder.toDictionary, forDocument: folderRef)
         batch.setData(folderUser.toDictionary, forDocument: folderUserRef)

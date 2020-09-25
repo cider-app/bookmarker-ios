@@ -60,70 +60,11 @@ struct HomeView: View {
                             .padding(.top)
                     ) {
                         LazyVStack(spacing: 16) {
-                            NavigationLink(destination: FolderView(folderId: "vNgSFFeuYo05X59iNxfY")) {
-                                HStack {
-                                    Text("🥐")
-                                        .font(.largeTitle)
-                                        .padding()
-                                        .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color("Color1")))
-                                    
-                                    Text("Recipes")
-                                        .font(Font.system(.title3).weight(Constants.fontWeight))
-                                        .foregroundColor(Color.primary)
-                                        .padding(.leading)
-                                    
-                                    Spacer()
-                                    
-                                    Image(systemName: "chevron.compact.right")
-                                        .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
-                                        .foregroundColor(Color(.quaternaryLabel))
+                            ForEach(self.appState.currentUserFolders, id: \.id) { userFolder in
+                                NavigationLink(destination: FolderView(folderId: userFolder.id), tag: userFolder.id, selection: self.$appState.foldersTabNavLinkSelection) {
+                                    UserFoldersListRowView(userFolder: userFolder)
                                 }
                             }
-//                            .buttonStyle(PlainButtonStyle())
-                            .padding()
-                            .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color(.systemBackground)))
-                            .clipped()
-                            .shadow(color: Color(.systemGray4).opacity(0.2), radius: 4, x: 0, y: 6)
-                            
-                            HStack {
-                                Text("🎬").font(.largeTitle)
-                                    .padding()
-                                    .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color("Color2")))
-                                
-                                Text("Moves to watch")
-                                    .font(Font.system(.title3).weight(Constants.fontWeight))
-                                    .padding(.leading)
-                                
-                                Spacer()
-                                
-                                Image(systemName: "chevron.compact.right")
-                                    .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
-                                    .foregroundColor(Color(.quaternaryLabel))
-                            }
-                            .padding()
-                            .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color(.systemBackground)))
-                            .clipped()
-                            .shadow(color: Color(.systemGray2).opacity(0.2), radius: 4, x: 0, y: 6)
-                            
-                            HStack {
-                                Text("🚣🏻‍♂️").font(.largeTitle)
-                                    .padding()
-                                    .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color("Color3")))
-                                
-                                Text("Nature")
-                                    .font(Font.system(.title3).weight(Constants.fontWeight))
-                                    .padding(.leading)
-                                
-                                Spacer()
-                                
-                                Image(systemName: "chevron.compact.right")
-                                    .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
-                                    .foregroundColor(Color(.quaternaryLabel))
-                            }
-                            .padding()
-                            .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color(.systemBackground)))
-                            .clipped()
-                            .shadow(color: Color(.systemGray2).opacity(0.2), radius: 4, x: 0, y: 6)
                         }
                         .padding(.horizontal)
                         

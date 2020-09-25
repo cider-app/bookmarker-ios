@@ -18,7 +18,7 @@ struct Folder: FirestoreModel {
     var emoji: String = Constants.defaultFolderEmoji
     var color: String = Constants.defaultFolderColor
     
-    init(id: String, title: String, description: String, secret: Bool = true, permissions: Permissions = Permissions(), emoji: String = Constants.defaultFolderEmoji, color: String = Constants.defaultFolderColor, createdByUserId: String, shareLink: String = "") {
+    init(id: String, title: String, description: String, secret: Bool = true, permissions: Permissions, emoji: String, color: String, createdByUserId: String, shareLink: String = "") {
         self.id = id
         self.title = title
         self.description = description
