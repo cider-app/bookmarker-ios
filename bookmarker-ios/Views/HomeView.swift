@@ -51,14 +51,10 @@ struct HomeView: View {
                         header:
                             HStack {
                                 Text("Recently Saved")
-                                    .textCase(.uppercase)
                                 
                                 Spacer()
                             }
-                            .font(Font.system(Constants.sectionHeaderFontTextStyle).weight(Constants.fontWeight))
-                            .foregroundColor(Color(.tertiaryLabel))
-                            .padding(.horizontal)
-                            .padding(.top)
+                            .modifier(SectionHeaderViewModifier())
                     ) {
                         RecentlyCreatedFolderFilesView()
                     }
@@ -67,7 +63,6 @@ struct HomeView: View {
                         header:
                             HStack {
                                 Text("My Collections")
-                                    .textCase(.uppercase)
                                 
                                 Spacer()
                                 
@@ -79,10 +74,7 @@ struct HomeView: View {
                                 }
                                 .foregroundColor(Color(.secondaryLabel))
                             }
-                            .font(Font.system(Constants.sectionHeaderFontTextStyle).weight(Constants.fontWeight))
-                            .foregroundColor(Color(.tertiaryLabel))
-                            .padding(.horizontal)
-                            .padding(.top)
+                            .modifier(SectionHeaderViewModifier())
                     ) {
                         LazyVStack(spacing: 16) {
                             ForEach(self.appState.currentUserFolders, id: \.id) { userFolder in

@@ -63,14 +63,10 @@ struct SetFolderView: View {
                                 header:
                                     HStack {
                                         Text("Name")
-                                            .textCase(.uppercase)
-                                            .font(Font.system(Constants.sectionHeaderFontTextStyle).weight(Constants.fontWeight))
-                                            .foregroundColor(Color(.tertiaryLabel))
 
                                         Spacer()
                                     }
-                                    .padding(.top)
-                                    .padding(.horizontal)
+                                    .modifier(SectionHeaderViewModifier())
                             ) {
                                 TextField("Name", text: self.$vm.title)
                                     .padding()
@@ -81,14 +77,10 @@ struct SetFolderView: View {
                                 header:
                                     HStack {
                                         Text("Description")
-                                            .textCase(.uppercase)
-                                            .font(Font.system(Constants.sectionHeaderFontTextStyle).weight(Constants.fontWeight))
-                                            .foregroundColor(Color(.tertiaryLabel))
 
                                         Spacer()
                                     }
-                                    .padding(.top)
-                                    .padding(.horizontal)
+                                    .modifier(SectionHeaderViewModifier())
                             ) {
                                 TextField("Description", text: self.$vm.description)
                                     .padding()
@@ -99,14 +91,10 @@ struct SetFolderView: View {
                                 header:
                                     HStack {
                                         Text("Visibility")
-                                            .textCase(.uppercase)
-                                            .font(Font.system(Constants.sectionHeaderFontTextStyle).weight(Constants.fontWeight))
-                                            .foregroundColor(Color(.tertiaryLabel))
 
                                         Spacer()
                                     }
-                                    .padding(.top)
-                                    .padding(.horizontal),
+                                    .modifier(SectionHeaderViewModifier()),
                                 footer:
                                     HStack {
                                         Text("Secret collections require Face ID or a passcode to access")
@@ -125,14 +113,10 @@ struct SetFolderView: View {
                                 header:
                                     HStack {
                                         Text("Sharing")
-                                            .textCase(.uppercase)
-                                            .font(Font.system(Constants.sectionHeaderFontTextStyle).weight(Constants.fontWeight))
-                                            .foregroundColor(Color(.tertiaryLabel))
 
                                         Spacer()
                                     }
-                                    .padding(.top)
-                                    .padding(.horizontal)
+                                    .modifier(SectionHeaderViewModifier())
                             ) {
                                 Toggle("Members can post", isOn: self.$vm.permissions.canEdit)
                                     .padding(.horizontal)
@@ -144,14 +128,10 @@ struct SetFolderView: View {
                                 header:
                                     HStack {
                                         Text("Color")
-                                            .textCase(.uppercase)
-                                            .font(Font.system(Constants.sectionHeaderFontTextStyle).weight(Constants.fontWeight))
-                                            .foregroundColor(Color(.tertiaryLabel))
 
                                         Spacer()
                                     }
-                                    .padding(.top)
-                                    .padding(.horizontal)
+                                    .modifier(SectionHeaderViewModifier())
                             ) {
                                 ColorGridPickerView()
                             }
