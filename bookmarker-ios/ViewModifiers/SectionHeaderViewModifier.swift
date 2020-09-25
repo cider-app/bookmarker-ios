@@ -14,7 +14,6 @@ struct SectionHeaderViewModifier: ViewModifier {
             .textCase(.uppercase)
             .font(Font.system(Constants.sectionHeaderFontTextStyle).weight(Constants.fontWeight))
             .foregroundColor(Color(.tertiaryLabel))
-            .padding(.horizontal)
             .padding(.top)
     }
 }

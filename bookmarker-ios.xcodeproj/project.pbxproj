@@ -16,6 +16,8 @@
 		0A264E5C251C5F9D00566C43 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A264E5B251C5F9D00566C43 /* Color.swift */; };
 		0A264E5E251E71B100566C43 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A264E5D251E71B100566C43 /* Helper.swift */; };
 		0A2673B3251E90DA00B5E24E /* SectionHeaderViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2673B2251E90DA00B5E24E /* SectionHeaderViewModifier.swift */; };
+		0A2673B6251E94CF00B5E24E /* TextFieldViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2673B5251E94CF00B5E24E /* TextFieldViewModifier.swift */; };
+		0A2673B8251E976A00B5E24E /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2673B7251E976A00B5E24E /* PrimaryButtonStyle.swift */; };
 		0A29067B250EAFA0003602E7 /* IfIsFolderMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29067A250EAFA0003602E7 /* IfIsFolderMemberView.swift */; };
 		0A29067D250EE107003602E7 /* NewFolderFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29067C250EE107003602E7 /* NewFolderFileView.swift */; };
 		0A290681250EE135003602E7 /* NewFolderFileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A290680250EE135003602E7 /* NewFolderFileViewModel.swift */; };
@@ -149,6 +151,8 @@
 		0A264E5B251C5F9D00566C43 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		0A264E5D251E71B100566C43 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		0A2673B2251E90DA00B5E24E /* SectionHeaderViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderViewModifier.swift; sourceTree = "<group>"; };
+		0A2673B5251E94CF00B5E24E /* TextFieldViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewModifier.swift; sourceTree = "<group>"; };
+		0A2673B7251E976A00B5E24E /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		0A29067A250EAFA0003602E7 /* IfIsFolderMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfIsFolderMemberView.swift; sourceTree = "<group>"; };
 		0A29067C250EE107003602E7 /* NewFolderFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFolderFileView.swift; sourceTree = "<group>"; };
 		0A290680250EE135003602E7 /* NewFolderFileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFolderFileViewModel.swift; sourceTree = "<group>"; };
@@ -287,8 +291,17 @@
 			isa = PBXGroup;
 			children = (
 				0A2673B2251E90DA00B5E24E /* SectionHeaderViewModifier.swift */,
+				0A2673B5251E94CF00B5E24E /* TextFieldViewModifier.swift */,
 			);
 			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
+		0A2673B9251E984100B5E24E /* ButtonStyles */ = {
+			isa = PBXGroup;
+			children = (
+				0A2673B7251E976A00B5E24E /* PrimaryButtonStyle.swift */,
+			);
+			path = ButtonStyles;
 			sourceTree = "<group>";
 		};
 		0A29069A251000AA003602E7 /* Stores */ = {
@@ -366,6 +379,7 @@
 				0AAD156F250BE9AA00F8927B /* Assets.xcassets */,
 				0AAD156B250BE9A700F8927B /* bookmarker_iosApp.swift */,
 				0AAD15BF250C099A00F8927B /* bookmarker-ios.entitlements */,
+				0A2673B9251E984100B5E24E /* ButtonStyles */,
 				0A264E5B251C5F9D00566C43 /* Color.swift */,
 				0AAD1599250BEEEE00F8927B /* Constants.swift */,
 				0AAD1597250BEADD00F8927B /* GoogleService-Info.plist */,
@@ -848,6 +862,7 @@
 				0AAD15A0250BEF4E00F8927B /* User.swift in Sources */,
 				0A87C479250EA1DD00BC6B4C /* IfIsFolderCreatorView.swift in Sources */,
 				0AAD15DF250DEE9200F8927B /* FolderFile.swift in Sources */,
+				0A2673B6251E94CF00B5E24E /* TextFieldViewModifier.swift in Sources */,
 				0A29069C251006EA003602E7 /* NewFolderFileEditView.swift in Sources */,
 				0AAD15B8250C022900F8927B /* SignUpViewModel.swift in Sources */,
 				0A2906D025142E8F003602E7 /* RecentlyCreatedFolderFilesView.swift in Sources */,
@@ -895,6 +910,7 @@
 				0AAD15B4250C00C400F8927B /* SignUpView.swift in Sources */,
 				0A2906D82515F88F003602E7 /* AccountPrivacyAndSecurityView.swift in Sources */,
 				0A2906972510004C003602E7 /* URLImageStore.swift in Sources */,
+				0A2673B8251E976A00B5E24E /* PrimaryButtonStyle.swift in Sources */,
 				0AAD15A4250BEF6800F8927B /* FolderUser.swift in Sources */,
 				0AAD15B2250BFE7700F8927B /* AccountView.swift in Sources */,
 				0A87C47D250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift in Sources */,

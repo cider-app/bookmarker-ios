@@ -69,10 +69,10 @@ struct SetFolderView: View {
                                     .modifier(SectionHeaderViewModifier())
                             ) {
                                 TextField("Name", text: self.$vm.title)
-                                    .padding()
-                                    .overlay(RoundedRectangle(cornerRadius: Constants.cornerRadius).stroke(Color(.systemGray6), lineWidth: 2))
-                                    .padding(.horizontal)
+                                    .modifier(TextFieldViewModifier())
                             }
+                            .padding(.horizontal)
+                            
                             Section(
                                 header:
                                     HStack {
@@ -83,10 +83,11 @@ struct SetFolderView: View {
                                     .modifier(SectionHeaderViewModifier())
                             ) {
                                 TextField("Description", text: self.$vm.description)
-                                    .padding()
-                                    .overlay(RoundedRectangle(cornerRadius: Constants.cornerRadius).stroke(Color(.systemGray6), lineWidth: 2))
-                                    .padding(.horizontal)
+                                    .modifier(TextFieldViewModifier())
+                                    
                             }
+                            .padding(.horizontal)
+                            
                             Section(
                                 header:
                                     HStack {
@@ -103,11 +104,10 @@ struct SetFolderView: View {
                                         
                                         Spacer()
                                     }
-                                    .padding(.horizontal)
                             ) {
                                 Toggle("Secret", isOn: self.$vm.secret)
-                                    .padding(.horizontal)
                             }
+                            .padding(.horizontal)
                             
                             Section(
                                 header:
@@ -119,10 +119,9 @@ struct SetFolderView: View {
                                     .modifier(SectionHeaderViewModifier())
                             ) {
                                 Toggle("Members can post", isOn: self.$vm.permissions.canEdit)
-                                    .padding(.horizontal)
                                 Toggle("Members can invite others", isOn: self.$vm.permissions.canManageMembers)
-                                    .padding(.horizontal)
                             }
+                            .padding(.horizontal)
                             
                             Section(
                                 header:
@@ -132,6 +131,7 @@ struct SetFolderView: View {
                                         Spacer()
                                     }
                                     .modifier(SectionHeaderViewModifier())
+                                    .padding(.horizontal)
                             ) {
                                 ColorGridPickerView()
                             }
@@ -140,11 +140,8 @@ struct SetFolderView: View {
                     
                     Button(action: set) {
                         Text("Save")
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous).fill(Color.primary))
-                            .foregroundColor(Color(.systemBackground))
                     }
+                    .buttonStyle(PrimaryButtonStyle())
                     .padding()
                 }
             }
