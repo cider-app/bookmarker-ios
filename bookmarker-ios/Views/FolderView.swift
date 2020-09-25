@@ -91,35 +91,43 @@ struct FolderView: View {
                             self.sheetIsPresented = true
                             self.activeSheet = .edit
                         }) {
-                            HStack(spacing: 16) {
-                                VStack {
+                            VStack {
+                                HStack {
+                                    Spacer()
+                                    
                                     Text("🥐")
                                         .font(.largeTitle)
                                         .padding()
                                         .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color("Color1")))
+                                    
+                                    Spacer()
                                 }
                                 
-                                VStack {
-                                    if let folder = self.vm.folder {
-                                        HStack {
-                                            Text(folder.title)
-                                                .font(Font.system(.largeTitle).weight(Constants.fontWeight))
-                                            
-                                            Spacer()
-                                        }
+                                if let folder = self.vm.folder {
+                                    HStack {
+                                        Spacer()
                                         
-                                        HStack {
-                                            Text(folder.description)
-                                                .font(Font.system(.title3))
-                                                .foregroundColor(Color(.secondaryLabel))
-                                            
-                                            Spacer()
-                                        }
+                                        Text(folder.title)
+                                            .font(Font.system(.largeTitle).weight(Constants.fontWeight))
+                                        
+                                        Spacer()
+                                    }
+                                    
+                                    HStack {
+                                        Spacer()
+                                        
+                                        Text(folder.description)
+                                            .font(Font.system(.title3))
+                                            .foregroundColor(Color(.secondaryLabel))
+                                        
+                                        Spacer()
                                     }
                                 }
                             }
                         }
                     }
+                    
+                    Divider()
                     
                     ForEach(self.vm.folderFiles, id: \.id) { folderFile in
                         Button(action: {
