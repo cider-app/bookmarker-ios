@@ -42,6 +42,23 @@ struct EditFolderView: View {
                     
                     ScrollView {
                         VStack {
+                            Section {
+                                HStack {
+                                    Spacer()
+                                    
+                                    Button(action: {
+                                        
+                                    }) {
+                                        Text("🥐")
+                                            .font(.largeTitle)
+                                            .padding()
+                                            .background(RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous).fill(Color("Color1")))
+                                    }
+                                    
+                                    Spacer()
+                                }
+                            }
+                            
                             Section(
                                 header:
                                     HStack {
