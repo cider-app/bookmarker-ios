@@ -32,6 +32,8 @@ struct FolderFilesListRowView: View {
                     .scaledToFill()
                     .frame(width: Constants.folderFilesListRowViewSize, height: Constants.folderFilesListRowViewSize)
                     .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+                    .clipped()
+                    .shadow(color: Color(.systemGray2).opacity(0.2), radius: 4, x: 0, y: 4)
             }
         }
         .onAppear {

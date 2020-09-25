@@ -50,27 +50,116 @@ struct FolderView: View {
     
     var body: some View {
         VStack {
-            HStack {
+            HStack(spacing: 24) {
                 Button(action: {
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
                     Image(systemName: Constants.Icon.back)
                         .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
                         .foregroundColor(Color.primary)
-                        .padding(.horizontal)
                 }
                 
-                if let folder = self.vm.folder {
-                    Menu {
-                        IfIsFolderCreatorView(folderVM: self.vm) {
-                            Button(action: {
-                                self.sheetIsPresented = true
-                                self.activeSheet = .edit
-                            }) {
-                                Label("Edit collection", systemImage: Constants.Icon.edit)
+                Spacer()
+
+                Button(action: {
+                    self.sheetIsPresented = true
+                    self.activeSheet = .add
+                }) {
+                    Image(systemName: Constants.Icon.add)
+                        .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
+                        .foregroundColor(Color.primary)
+                }
+                
+                IfFolderLinkSharingIsEnabled(folder: self.vm.folder) {
+                    Button(action: {
+                        self.sheetIsPresented = true
+                        self.activeSheet = .share
+                    }) {
+                        Image(systemName: Constants.Icon.share)
+                            .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
+                            .foregroundColor(Color.primary)
+                    }
+                }
+            }
+            .padding(.top)
+            .padding(.horizontal)
+            
+            ScrollView {
+                LazyVStack(alignment: .leading) {
+                    IfIsFolderCreatorView(folderVM: self.vm) {
+                        Button(action: {
+                            self.sheetIsPresented = true
+                            self.activeSheet = .edit
+                        }) {
+                            HStack(spacing: 16) {
+                                VStack {
+                                    Text("🥐")
+                                        .font(.largeTitle)
+                                        .padding()
+                                        .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color("Color1")))
+                                }
+                                
+                                VStack {
+                                    if let folder = self.vm.folder {
+                                        HStack {
+                                            Text(folder.title)
+                                                .font(Font.system(.largeTitle).weight(Constants.fontWeight))
+                                            
+                                            Spacer()
+                                        }
+                                        
+                                        HStack {
+                                            Text(folder.description)
+                                                .font(Font.system(.title3))
+                                                .foregroundColor(Color(.secondaryLabel))
+                                            
+                                            Spacer()
+                                        }
+                                    }
+                                }
                             }
                         }
-                        
+                    }
+                    
+                    ForEach(self.vm.folderFiles, id: \.id) { folderFile in
+                        Button(action: {
+                            self.selectedLink = folderFile.link
+                            self.activeSheet = .viewLink
+                            self.sheetIsPresented = true
+                        }) {
+                            FolderFilesListRowView(folderFile: folderFile)
+                                .padding(.top)
+                        }
+                    }
+                    
+                    if let folder = self.vm.folder {
+                        NavigationLink(destination: EditFolderView(folder: folder), isActive: $editNavLinkIsActive) {
+                            EmptyView()
+                        }
+                    }
+                }
+                .padding(.top)
+                .padding(.horizontal)
+            }
+        }
+        .navigationBarHidden(true)
+        .navigationTitle(self.vm.folder != nil ? self.vm.folder!.title : "")
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(
+            trailing:
+                HStack {
+                    Button(action: {
+                        self.sheetIsPresented = true
+                        self.activeSheet = .add
+                    }) {
+                        HStack {
+                            Image(systemName: Constants.Icon.add)
+                        }
+                        .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
+                        .foregroundColor(Color.primary)
+                    }
+                    
+                    Menu {
                         IfIsFolderCreatorOrCanManageMembersView(folderViewModel: self.vm) {
                             Button(action: {
                                 self.sheetIsPresented = true
@@ -98,79 +187,13 @@ struct FolderView: View {
                             }
                         }
                     } label: {
-                        Text(folder.title)
-                            .font(Font.system(.title).weight(Constants.fontWeight))
-                            .foregroundColor(Color.primary)
-                    }
-                }
-                
-                Spacer()
-                
-                IfFolderLinkSharingIsEnabled(folder: self.vm.folder) {
-                    Button(action: {
-                        self.sheetIsPresented = true
-                        self.activeSheet = .share
-                    }) {
-                        Image(systemName: Constants.Icon.share)
+                        Image(systemName: Constants.Icon.more)
                             .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
                             .foregroundColor(Color.primary)
                             .padding(.leading)
                     }
                 }
-                
-                Button(action: {
-                    self.sheetIsPresented = true
-                    self.activeSheet = .add
-                }) {
-                    HStack {
-                        Image(systemName: Constants.Icon.add)
-                    }
-                    .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
-                    .foregroundColor(Color.primary)
-                    .padding(.horizontal)
-//                    .padding(8)
-//                    .padding(.horizontal, 8)
-//                    .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color.green))
-//                    .clipped()
-//                    .shadow(color: Color.gray.opacity(0.25), radius: 4, x: 0, y: 4)
-//                    .padding(.horizontal)
-                }
-            }
-            .padding(.vertical)
-            
-            ScrollView {
-                LazyVStack(alignment: .leading) {
-                    if let folder = self.vm.folder {
-                        HStack {
-                            Text(folder.description)
-                                .font(Font.system(.title3))
-                                .foregroundColor(Color(.secondaryLabel))
-                            Spacer()
-                        }
-                        .padding(.horizontal)
-                    }
-                    
-                    ForEach(self.vm.folderFiles, id: \.id) { folderFile in
-                        Button(action: {
-                            self.selectedLink = folderFile.link
-                            self.activeSheet = .viewLink
-                            self.sheetIsPresented = true
-                        }) {
-                            FolderFilesListRowView(folderFile: folderFile)
-                                .padding(.top)
-                                .padding(.horizontal)
-                        }
-                    }
-                    
-                    if let folder = self.vm.folder {
-                        NavigationLink(destination: EditFolderView(folder: folder), isActive: $editNavLinkIsActive) {
-                            EmptyView()
-                        }
-                    }
-                }
-            }
-        }
-        .navigationBarHidden(true)
+        )
         .onAppear {
             self.vm.listenFolder(folderId: folderId)
             self.vm.listenFolderFiles(folderId: folderId)

@@ -21,34 +21,6 @@ struct HomeView: View {
                 .ignoresSafeArea()
             
             VStack(alignment: .leading) {
-                HStack(spacing: 24) {
-                    Text("Home")
-                        .font(Font.system(.largeTitle).weight(.heavy))
-                        .foregroundColor(Color.primary)
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        self.vm.sheetIsPresented = true
-                        self.vm.activeSheet = .account
-                    }) {
-                        Image(systemName: Constants.Icon.account)
-                            .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
-                            .foregroundColor(Color.primary)
-                    }
-                    
-                    Button(action: {
-                        self.vm.sheetIsPresented = true
-                        self.vm.activeSheet = .add
-                    }) {
-                        Image(systemName: Constants.Icon.add)
-                            .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
-                            .foregroundColor(Color.primary)
-                    }
-                }
-                .padding(.horizontal)
-                .padding(.top)
-                
                 ScrollView(.vertical) {
                     Section(
                         header:
@@ -87,21 +59,109 @@ struct HomeView: View {
                             .padding(.horizontal)
                             .padding(.top)
                     ) {
-                        LazyVGrid(columns: columns) {
-                            ForEach(self.appState.currentUserFolders, id: \.id) { userFolder in
-                                NavigationLink(destination: FolderView(folderId: userFolder.id), tag: userFolder.id, selection: self.$appState.foldersTabNavLinkSelection) {
-                                    UserFoldersGridCellView(userFolder: userFolder)
+                        LazyVStack(spacing: 16) {
+                            NavigationLink(destination: FolderView(folderId: "vNgSFFeuYo05X59iNxfY")) {
+                                HStack {
+                                    Text("🥐")
+                                        .font(.largeTitle)
+                                        .padding()
+                                        .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color("Color1")))
+                                    
+                                    Text("Recipes")
+                                        .font(Font.system(.title3).weight(Constants.fontWeight))
+                                        .foregroundColor(Color.primary)
+                                        .padding(.leading)
+                                    
+                                    Spacer()
+                                    
+                                    Image(systemName: "chevron.compact.right")
+                                        .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
+                                        .foregroundColor(Color(.quaternaryLabel))
                                 }
-                                .frame(height: 200)
-                                .buttonStyle(PlainButtonStyle())
                             }
+//                            .buttonStyle(PlainButtonStyle())
+                            .padding()
+                            .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color(.systemBackground)))
+                            .clipped()
+                            .shadow(color: Color(.systemGray4).opacity(0.2), radius: 4, x: 0, y: 6)
+                            
+                            HStack {
+                                Text("🎬").font(.largeTitle)
+                                    .padding()
+                                    .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color("Color2")))
+                                
+                                Text("Moves to watch")
+                                    .font(Font.system(.title3).weight(Constants.fontWeight))
+                                    .padding(.leading)
+                                
+                                Spacer()
+                                
+                                Image(systemName: "chevron.compact.right")
+                                    .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
+                                    .foregroundColor(Color(.quaternaryLabel))
+                            }
+                            .padding()
+                            .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color(.systemBackground)))
+                            .clipped()
+                            .shadow(color: Color(.systemGray2).opacity(0.2), radius: 4, x: 0, y: 6)
+                            
+                            HStack {
+                                Text("🚣🏻‍♂️").font(.largeTitle)
+                                    .padding()
+                                    .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color("Color3")))
+                                
+                                Text("Nature")
+                                    .font(Font.system(.title3).weight(Constants.fontWeight))
+                                    .padding(.leading)
+                                
+                                Spacer()
+                                
+                                Image(systemName: "chevron.compact.right")
+                                    .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
+                                    .foregroundColor(Color(.quaternaryLabel))
+                            }
+                            .padding()
+                            .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color(.systemBackground)))
+                            .clipped()
+                            .shadow(color: Color(.systemGray2).opacity(0.2), radius: 4, x: 0, y: 6)
                         }
                         .padding(.horizontal)
+                        
+//                        LazyVGrid(columns: columns) {
+//                            ForEach(self.appState.currentUserFolders, id: \.id) { userFolder in
+//                                NavigationLink(destination: FolderView(folderId: userFolder.id), tag: userFolder.id, selection: self.$appState.foldersTabNavLinkSelection) {
+//                                    UserFoldersGridCellView(userFolder: userFolder)
+//                                }
+//                                .frame(height: 200)
+//                                .buttonStyle(PlainButtonStyle())
+//                            }
+//                        }
+//                        .padding(.horizontal)
                     }
                 }
             }
         }
-        .navigationBarHidden(true)
+        .navigationTitle("Home")
+        .navigationBarItems(
+            leading:
+                Button(action: {
+                    self.vm.sheetIsPresented = true
+                    self.vm.activeSheet = .account
+                }) {
+                    Image(systemName: Constants.Icon.account)
+                        .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
+                        .foregroundColor(Color.primary)
+                },
+            trailing:
+                Button(action: {
+                    self.vm.sheetIsPresented = true
+                    self.vm.activeSheet = .add
+                }) {
+                    Image(systemName: Constants.Icon.add)
+                        .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
+                        .foregroundColor(Color.primary)
+                }
+            )
         .onOpenURL { (url) in
             self.vm.handleOpenedUrl(url)
         }

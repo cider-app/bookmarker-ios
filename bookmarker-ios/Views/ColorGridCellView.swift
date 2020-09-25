@@ -14,8 +14,6 @@ struct ColorGridCellView: View {
         color
             .frame(width: 50, height: 50)
             .clipShape(Circle())
-            .overlay(Circle().stroke(Color.white, lineWidth: 4))
-            .shadow(radius: 4)
     }
 }
 

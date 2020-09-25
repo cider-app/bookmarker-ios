@@ -18,7 +18,7 @@ struct ColorGridPickerView: View {
     ]
     
     let rows = [
-        GridItem(.fixed(200))
+        GridItem(.fixed(75))
     ]
     
     var body: some View {
@@ -28,6 +28,7 @@ struct ColorGridPickerView: View {
                     ColorGridCellView(color: color)
                 }
             }
+            .padding(.leading)
         }
     }
 }

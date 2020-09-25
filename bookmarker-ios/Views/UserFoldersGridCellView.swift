@@ -13,10 +13,15 @@ struct UserFoldersGridCellView: View {
     var body: some View {
         VStack {
             HStack {
+                Text("🛳")
+                    .font(.largeTitle)
+                    
+                Spacer()
+            }
+            
+            HStack {
                 Text(userFolder.title)
                     .font(Font.system(.title3).weight(Constants.fontWeight))
-                    .foregroundColor(Color.white)
-                    .multilineTextAlignment(.leading)
                 
                 Spacer()
             }
@@ -25,7 +30,9 @@ struct UserFoldersGridCellView: View {
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color.yellow))
+        .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color(.systemBackground)))
+        .clipped()
+        .shadow(color: Color(.systemGray4), radius: 4, x: 0, y: 4)
     }
 }
 
