@@ -21,6 +21,8 @@ struct Constants {
     static let userId: String = "user_id"
     static let folderId: String = "folder_id"
     static let fileId: String = "file_id"
+    static let emoji: String = "emoji"
+    static let color: String = "color"
     static let cornerRadius: CGFloat = 20
     static let link: String = "link"
     static let imageUrl: String = "image_url"
@@ -47,6 +49,8 @@ struct Constants {
     static let iconPrimaryButtonShadow: CGFloat = 4
     static let sectionHeaderFontTextStyle: Font.TextStyle = .subheadline
     static let logoFontTextStyle: Font.TextStyle = .title
+    static let defaultFolderEmoji: String = "🥳"
+    static let defaultFolderColor: String = "#FF93E0"
     
     struct Icon {
         static let home: String = "house"

@@ -15,8 +15,10 @@ struct Folder: FirestoreModel {
     var permissions: Permissions = Permissions()
     var createdByUserId: String = ""
     var shareLink: String = ""
+    var emoji: String = Constants.defaultFolderEmoji
+    var color: String = Constants.defaultFolderColor
     
-    init(id: String, title: String, description: String, secret: Bool = true, permissions: Permissions = Permissions(), createdByUserId: String, shareLink: String = "") {
+    init(id: String, title: String, description: String, secret: Bool = true, permissions: Permissions = Permissions(), emoji: String = Constants.defaultFolderEmoji, color: String = Constants.defaultFolderColor, createdByUserId: String, shareLink: String = "") {
         self.id = id
         self.title = title
         self.description = description
@@ -24,6 +26,8 @@ struct Folder: FirestoreModel {
         self.permissions = permissions
         self.createdByUserId = createdByUserId
         self.shareLink = shareLink
+        self.emoji = emoji
+        self.color = color
     }
     
     //  MARK: - FirestoreModel protocol
@@ -36,7 +40,9 @@ struct Folder: FirestoreModel {
             Constants.secret: secret,
             Constants.permissions: permissions.toDictionary,
             Constants.createdByUserId: createdByUserId,
-            Constants.shareLink: shareLink
+            Constants.shareLink: shareLink,
+            Constants.color: color,
+            Constants.emoji: emoji
         ]
     }
     
@@ -54,6 +60,8 @@ struct Folder: FirestoreModel {
         self.permissions = Permissions(data: permissionsData)
         self.createdByUserId = data[Constants.createdByUserId] as? String ?? ""
         self.shareLink = data[Constants.shareLink] as? String ?? ""
+        self.emoji = data[Constants.emoji] as? String ?? Constants.defaultFolderEmoji
+        self.color = data[Constants.color] as? String ?? Constants.defaultFolderColor
     }
     
     static var collectionRef: CollectionReference {
