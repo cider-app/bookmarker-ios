@@ -109,6 +109,7 @@ struct FolderView: View {
                                         
                                         Text(folder.title)
                                             .font(Font.system(.largeTitle).weight(Constants.fontWeight))
+                                            .foregroundColor(Color.primary)
                                         
                                         Spacer()
                                     }
