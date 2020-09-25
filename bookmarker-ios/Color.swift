@@ -13,4 +13,5 @@ extension Color {
     static let Color4B8F8C = Color("4B8F8C")
     static let Color9A7AA0 = Color("9A7AA0")
     static let Color020887 = Color("020887")
+    static let primaryColor = Color("PrimaryColor")
 }
