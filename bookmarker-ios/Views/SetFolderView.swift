@@ -32,9 +32,8 @@ struct SetFolderView: View {
                             self.presentationMode.wrappedValue.dismiss()
                         }) {
                             Image(systemName: Constants.Icon.close)
-                                .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
-                                .foregroundColor(Color.primary)
                         }
+                        .buttonStyle(NavigationBarIconButtonStyle())
                         
                         Spacer()
                     }

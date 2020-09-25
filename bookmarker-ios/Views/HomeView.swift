@@ -27,9 +27,8 @@ struct HomeView: View {
                         self.vm.activeSheet = .account
                     }) {
                         Image(systemName: Constants.Icon.account)
-                            .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
-                            .foregroundColor(Color.primary)
                     }
+                    .buttonStyle(NavigationBarIconButtonStyle())
                     
                     Spacer()
                     
@@ -38,9 +37,8 @@ struct HomeView: View {
                         self.vm.activeSheet = .add
                     }) {
                         Image(systemName: Constants.Icon.add)
-                            .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
-                            .foregroundColor(Color.primary)
                     }
+                    .buttonStyle(NavigationBarIconButtonStyle())
                 }
                 .padding(.top)
                 .padding(.horizontal)
@@ -55,6 +53,7 @@ struct HomeView: View {
                                 Spacer()
                             }
                             .modifier(SectionHeaderViewModifier())
+                            .padding(.horizontal)
                     ) {
                         RecentlyCreatedFolderFilesView()
                     }
@@ -83,7 +82,6 @@ struct HomeView: View {
                                 }
                             }
                         }
-                        .padding(.horizontal)
                         
 //                        LazyVGrid(columns: columns) {
 //                            ForEach(self.appState.currentUserFolders, id: \.id) { userFolder in
@@ -96,6 +94,7 @@ struct HomeView: View {
 //                        }
 //                        .padding(.horizontal)
                     }
+                    .padding(.horizontal)
                 }
             }
         }

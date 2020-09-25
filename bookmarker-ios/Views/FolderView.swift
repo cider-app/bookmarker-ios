@@ -55,9 +55,8 @@ struct FolderView: View {
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
                     Image(systemName: Constants.Icon.back)
-                        .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
-                        .foregroundColor(Color.primary)
                 }
+                .buttonStyle(NavigationBarIconButtonStyle())
                 
                 Spacer()
 
@@ -66,9 +65,8 @@ struct FolderView: View {
                     self.activeSheet = .add
                 }) {
                     Image(systemName: Constants.Icon.add)
-                        .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
-                        .foregroundColor(Color.primary)
                 }
+                .buttonStyle(NavigationBarIconButtonStyle())
                 
                 IfFolderLinkSharingIsEnabled(folder: self.vm.folder) {
                     Button(action: {
@@ -76,9 +74,8 @@ struct FolderView: View {
                         self.activeSheet = .share
                     }) {
                         Image(systemName: Constants.Icon.share)
-                            .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
-                            .foregroundColor(Color.primary)
                     }
+                    .buttonStyle(NavigationBarIconButtonStyle())
                 }
             }
             .padding(.top)
