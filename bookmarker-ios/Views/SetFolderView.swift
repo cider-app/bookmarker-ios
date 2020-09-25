@@ -1,5 +1,5 @@
 //
-//  EditFolderView.swift
+//  SetFolderView.swift
 //  bookmarker-ios
 //
 //  Created by Kenneth Ng on 9/13/20.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct EditFolderView: View {
-    @StateObject var vm = EditFolderViewModel()
+struct SetFolderView: View {
+    @StateObject var vm = SetFolderViewModel()
     @Environment(\.presentationMode) var presentationMode
     var folder: Folder
     
@@ -179,6 +179,6 @@ struct EditFolderView: View {
 
 //struct EditFolderView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        EditFolderView()
+//        SetFolderView()
 //    }
 //}

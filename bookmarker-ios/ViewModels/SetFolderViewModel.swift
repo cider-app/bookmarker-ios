@@ -1,5 +1,5 @@
 //
-//  EditFolderViewModel.swift
+//  SetFolderViewModel.swift
 //  bookmarker-ios
 //
 //  Created by Kenneth Ng on 9/13/20.
@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseDynamicLinks
 
-class EditFolderViewModel: ObservableObject {
+class SetFolderViewModel: ObservableObject {
     @Published var title: String = ""
     @Published var description: String = ""
     @Published var secret: Bool = false

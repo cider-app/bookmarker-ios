@@ -142,7 +142,7 @@ struct FolderView: View {
                     }
                     
                     if let folder = self.vm.folder {
-                        NavigationLink(destination: EditFolderView(folder: folder), isActive: $editNavLinkIsActive) {
+                        NavigationLink(destination: SetFolderView(folder: folder), isActive: $editNavLinkIsActive) {
                             EmptyView()
                         }
                     }
@@ -216,7 +216,7 @@ struct FolderView: View {
             switch self.activeSheet {
             case .edit:
                 if let folder = self.vm.folder {
-                    EditFolderView(folder: folder)
+                    SetFolderView(folder: folder)
                 }
             case .add:
                 NewFolderFileView(currentFolderId: self.folderId)
