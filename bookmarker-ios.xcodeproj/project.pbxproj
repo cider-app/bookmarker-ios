@@ -19,6 +19,7 @@
 		0A2673B6251E94CF00B5E24E /* TextFieldViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2673B5251E94CF00B5E24E /* TextFieldViewModifier.swift */; };
 		0A2673B8251E976A00B5E24E /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2673B7251E976A00B5E24E /* PrimaryButtonStyle.swift */; };
 		0A2673BB251E98E600B5E24E /* NavigationBarIconButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2673BA251E98E600B5E24E /* NavigationBarIconButtonStyle.swift */; };
+		0A2673BD251E9AE600B5E24E /* PrimaryToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2673BC251E9AE600B5E24E /* PrimaryToggleStyle.swift */; };
 		0A29067B250EAFA0003602E7 /* IfIsFolderMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29067A250EAFA0003602E7 /* IfIsFolderMemberView.swift */; };
 		0A29067D250EE107003602E7 /* NewFolderFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29067C250EE107003602E7 /* NewFolderFileView.swift */; };
 		0A290681250EE135003602E7 /* NewFolderFileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A290680250EE135003602E7 /* NewFolderFileViewModel.swift */; };
@@ -155,6 +156,7 @@
 		0A2673B5251E94CF00B5E24E /* TextFieldViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewModifier.swift; sourceTree = "<group>"; };
 		0A2673B7251E976A00B5E24E /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		0A2673BA251E98E600B5E24E /* NavigationBarIconButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarIconButtonStyle.swift; sourceTree = "<group>"; };
+		0A2673BC251E9AE600B5E24E /* PrimaryToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryToggleStyle.swift; sourceTree = "<group>"; };
 		0A29067A250EAFA0003602E7 /* IfIsFolderMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfIsFolderMemberView.swift; sourceTree = "<group>"; };
 		0A29067C250EE107003602E7 /* NewFolderFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFolderFileView.swift; sourceTree = "<group>"; };
 		0A290680250EE135003602E7 /* NewFolderFileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFolderFileViewModel.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 			children = (
 				0A2673BA251E98E600B5E24E /* NavigationBarIconButtonStyle.swift */,
 				0A2673B7251E976A00B5E24E /* PrimaryButtonStyle.swift */,
+				0A2673BC251E9AE600B5E24E /* PrimaryToggleStyle.swift */,
 			);
 			path = ButtonStyles;
 			sourceTree = "<group>";
@@ -877,6 +880,7 @@
 				0A29068B250EF883003602E7 /* NewFolderFileSelectUserFolderView.swift in Sources */,
 				0A290695250F5432003602E7 /* RecentlyCreatedFolderFilesViewModel.swift in Sources */,
 				0AAD15EF250E11D300F8927B /* SetFolderViewModel.swift in Sources */,
+				0A2673BD251E9AE600B5E24E /* PrimaryToggleStyle.swift in Sources */,
 				0AAD15B0250BFD0C00F8927B /* AuthenticationView.swift in Sources */,
 				0AAD15A2250BEF5600F8927B /* Folder.swift in Sources */,
 				0AAD15AA250BF8C900F8927B /* AppState.swift in Sources */,
