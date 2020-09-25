@@ -18,6 +18,7 @@
 		0A2673B3251E90DA00B5E24E /* SectionHeaderViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2673B2251E90DA00B5E24E /* SectionHeaderViewModifier.swift */; };
 		0A2673B6251E94CF00B5E24E /* TextFieldViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2673B5251E94CF00B5E24E /* TextFieldViewModifier.swift */; };
 		0A2673B8251E976A00B5E24E /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2673B7251E976A00B5E24E /* PrimaryButtonStyle.swift */; };
+		0A2673BB251E98E600B5E24E /* NavigationBarIconButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2673BA251E98E600B5E24E /* NavigationBarIconButtonStyle.swift */; };
 		0A29067B250EAFA0003602E7 /* IfIsFolderMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29067A250EAFA0003602E7 /* IfIsFolderMemberView.swift */; };
 		0A29067D250EE107003602E7 /* NewFolderFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A29067C250EE107003602E7 /* NewFolderFileView.swift */; };
 		0A290681250EE135003602E7 /* NewFolderFileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A290680250EE135003602E7 /* NewFolderFileViewModel.swift */; };
@@ -153,6 +154,7 @@
 		0A2673B2251E90DA00B5E24E /* SectionHeaderViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderViewModifier.swift; sourceTree = "<group>"; };
 		0A2673B5251E94CF00B5E24E /* TextFieldViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewModifier.swift; sourceTree = "<group>"; };
 		0A2673B7251E976A00B5E24E /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
+		0A2673BA251E98E600B5E24E /* NavigationBarIconButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarIconButtonStyle.swift; sourceTree = "<group>"; };
 		0A29067A250EAFA0003602E7 /* IfIsFolderMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfIsFolderMemberView.swift; sourceTree = "<group>"; };
 		0A29067C250EE107003602E7 /* NewFolderFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFolderFileView.swift; sourceTree = "<group>"; };
 		0A290680250EE135003602E7 /* NewFolderFileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFolderFileViewModel.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 		0A2673B9251E984100B5E24E /* ButtonStyles */ = {
 			isa = PBXGroup;
 			children = (
+				0A2673BA251E98E600B5E24E /* NavigationBarIconButtonStyle.swift */,
 				0A2673B7251E976A00B5E24E /* PrimaryButtonStyle.swift */,
 			);
 			path = ButtonStyles;
@@ -887,6 +890,7 @@
 				0AAD15AE250BFC2800F8927B /* HomeView.swift in Sources */,
 				0AAD15D7250CACC200F8927B /* IfAuthenticatedView.swift in Sources */,
 				0A290691250F1404003602E7 /* SafariView.swift in Sources */,
+				0A2673BB251E98E600B5E24E /* NavigationBarIconButtonStyle.swift in Sources */,
 				0A2906A02510282C003602E7 /* IfFolderLinkSharingIsEnabled.swift in Sources */,
 				0A264E5A251C5F8500566C43 /* ColorPickerViewModel.swift in Sources */,
 				0A264E58251C5E3200566C43 /* ColorGridCellView.swift in Sources */,
