@@ -21,6 +21,31 @@ struct HomeView: View {
                 .ignoresSafeArea()
             
             VStack(alignment: .leading) {
+                HStack {
+                    Button(action: {
+                        self.vm.sheetIsPresented = true
+                        self.vm.activeSheet = .account
+                    }) {
+                        Image(systemName: Constants.Icon.account)
+                            .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
+                            .foregroundColor(Color.primary)
+                    }
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        self.vm.sheetIsPresented = true
+                        self.vm.activeSheet = .add
+                    }) {
+                        Image(systemName: Constants.Icon.add)
+                            .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
+                            .foregroundColor(Color.primary)
+                    }
+                }
+                .padding(.top)
+                .padding(.horizontal)
+                .padding(.bottom, 8)
+                
                 ScrollView(.vertical) {
                     Section(
                         header:
@@ -82,27 +107,7 @@ struct HomeView: View {
                 }
             }
         }
-        .navigationTitle("Home")
-        .navigationBarItems(
-            leading:
-                Button(action: {
-                    self.vm.sheetIsPresented = true
-                    self.vm.activeSheet = .account
-                }) {
-                    Image(systemName: Constants.Icon.account)
-                        .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
-                        .foregroundColor(Color.primary)
-                },
-            trailing:
-                Button(action: {
-                    self.vm.sheetIsPresented = true
-                    self.vm.activeSheet = .add
-                }) {
-                    Image(systemName: Constants.Icon.add)
-                        .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
-                        .foregroundColor(Color.primary)
-                }
-            )
+        .navigationBarHidden(true)
         .onOpenURL { (url) in
             self.vm.handleOpenedUrl(url)
         }
@@ -117,87 +122,6 @@ struct HomeView: View {
                 SetFolderView()
             }
         }
-        
-//        ZStack {
-//            Color(.systemGray6)
-//                .ignoresSafeArea()
-//
-//            VStack {
-//                ScrollView {
-//                    VStack(alignment: .leading) {
-//                        HStack {
-//                            Text("Home")
-//                                .font(Font.system(.title).weight(.heavy))
-//                                .foregroundColor(Color.primary)
-//                                .padding(.horizontal)
-//
-//                            Spacer()
-//
-//                            Button(action: {
-//                                self.sheetIsPresented = true
-//                                self.activeSheet = .add
-//                            }) {
-//                                HStack {
-//                                    Image(systemName: Constants.Icon.add)
-//                                }
-//                                .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
-//                                .foregroundColor(Color.primary)
-//        //                        .padding(8)
-//        //                        .padding(.horizontal, 8)
-//        //                        .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color.green))
-//        //                        .clipped()
-//        //                        .shadow(color: Color.gray.opacity(0.25), radius: 4, x: 0, y: 6)
-//                            }
-//
-//                            Button(action: {
-//                                self.sheetIsPresented = true
-//                                self.activeSheet = .account
-//                            }) {
-//                                Image(systemName: Constants.Icon.account)
-//                                    .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
-//                                    .foregroundColor(Color.primary)
-//                                    .padding(.horizontal)
-//                            }
-//                        }
-//                        .padding(.top)
-//
-//                        Section(
-//                            header:
-//                                Text("Recently Saved")
-//                                .padding(.horizontal)
-//                                .padding(.vertical)
-//                                .textCase(.uppercase)
-//                                .font(Font.system(Constants.sectionHeaderFontTextStyle).weight(.heavy))
-//                                .foregroundColor(Color(.tertiaryLabel))
-//                        ) {
-//                            RecentlyCreatedFolderFilesView()
-//                        }
-//
-//                        Section(
-//                            header:
-//                                Text("Collections")
-//                                .padding(.horizontal)
-//                                .padding(.vertical)
-//                                .textCase(.uppercase)
-//                                .font(Font.system(Constants.sectionHeaderFontTextStyle).weight(.heavy))
-//                                .foregroundColor(Color(.tertiaryLabel))
-//
-//                        ) {
-//                            ForEach(self.appState.currentUserFolders, id: \.id) { userFolder in
-//                                NavigationLink(destination: FolderView(folderId: userFolder.id), tag: userFolder.id, selection: self.$appState.foldersTabNavLinkSelection) {
-//                                    UserFoldersListRowView(userFolder: userFolder)
-//                                }
-//                                .buttonStyle(PlainButtonStyle())
-//                            }
-//                        }
-//
-//                        NavigationLink(destination: FolderView(folderId: self.deepLinkFolderNavLinkId), isActive: self.$deepLinkFolderNavLinkIsActive) {
-//                            EmptyView()
-//                        }
-//                    }
-//                }
-//            }
-//        }
     }
 }
 
