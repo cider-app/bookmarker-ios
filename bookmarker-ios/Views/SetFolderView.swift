@@ -105,6 +105,7 @@ struct SetFolderView: View {
                                     }
                             ) {
                                 Toggle("Secret", isOn: self.$vm.secret)
+                                    .toggleStyle(PrimaryToggleStyle())
                             }
                             .padding(.horizontal)
                             
@@ -118,7 +119,9 @@ struct SetFolderView: View {
                                     .modifier(SectionHeaderViewModifier())
                             ) {
                                 Toggle("Members can post", isOn: self.$vm.permissions.canEdit)
+                                    .toggleStyle(PrimaryToggleStyle())
                                 Toggle("Members can invite others", isOn: self.$vm.permissions.canManageMembers)
+                                    .toggleStyle(PrimaryToggleStyle())
                             }
                             .padding(.horizontal)
                             
