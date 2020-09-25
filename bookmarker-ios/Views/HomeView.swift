@@ -173,7 +173,7 @@ struct HomeView: View {
                 AccountView()
                     .environmentObject(self.appState)
             } else if self.vm.activeSheet == .newFolder {
-                NewFolderView()
+                SetFolderView()
             }
         }
         

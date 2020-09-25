@@ -10,7 +10,6 @@ import SwiftUI
 struct CurrentUserFoldersView: View {
     @EnvironmentObject var appState: AppState
     @State private var accountViewIsPresented: Bool = false
-    @State private var newFolderViewIsPresented: Bool = false
     
     var body: some View {
         NavigationView {
@@ -35,17 +34,6 @@ struct CurrentUserFoldersView: View {
                     .sheet(isPresented: $accountViewIsPresented) {
                         AccountView()
                             .environmentObject(self.appState)
-                    }
-                }
-                
-                ToolbarItem(placement: .primaryAction) {
-                    Button(action: {
-                        self.newFolderViewIsPresented = true
-                    }) {
-                        Image(systemName: Constants.Icon.add)
-                    }
-                    .sheet(isPresented: self.$newFolderViewIsPresented) {
-                        NewFolderView()
                     }
                 }
             }

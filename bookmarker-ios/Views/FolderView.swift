@@ -92,18 +92,18 @@ struct FolderView: View {
                             self.activeSheet = .edit
                         }) {
                             VStack {
-                                HStack {
-                                    Spacer()
-                                    
-                                    Text("🥐")
-                                        .font(.largeTitle)
-                                        .padding()
-                                        .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color("Color1")))
-                                    
-                                    Spacer()
-                                }
-                                
                                 if let folder = self.vm.folder {
+                                    HStack {
+                                        Spacer()
+                                        
+                                        Text(folder.emoji)
+                                            .font(.largeTitle)
+                                            .padding()
+                                            .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color("Color1")))
+                                        
+                                        Spacer()
+                                    }
+                                    
                                     HStack {
                                         Spacer()
                                         

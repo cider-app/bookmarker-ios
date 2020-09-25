@@ -10,10 +10,10 @@ import SwiftUI
 struct SetFolderView: View {
     @StateObject var vm = SetFolderViewModel()
     @Environment(\.presentationMode) var presentationMode
-    var folder: Folder
+    var folder: Folder? = nil
     
-    func update() {
-        self.vm.update(folderId: self.folder.id) { (error) in
+    func set() {
+        self.vm.set(folder: folder) { (error) in
             if error == nil {
                 self.presentationMode.wrappedValue.dismiss()
             }
@@ -49,7 +49,7 @@ struct SetFolderView: View {
                                     Button(action: {
                                         
                                     }) {
-                                        Text("🥐")
+                                        Text(self.vm.emoji)
                                             .font(.largeTitle)
                                             .padding()
                                             .background(RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous).fill(Color("Color1")))
@@ -118,7 +118,26 @@ struct SetFolderView: View {
                                     .padding(.horizontal)
                             ) {
                                 Toggle("Secret", isOn: self.$vm.secret)
-                                    .padding()
+                                    .padding(.horizontal)
+                            }
+                            
+                            Section(
+                                header:
+                                    HStack {
+                                        Text("Sharing")
+                                            .textCase(.uppercase)
+                                            .font(Font.system(Constants.sectionHeaderFontTextStyle).weight(Constants.fontWeight))
+                                            .foregroundColor(Color(.tertiaryLabel))
+
+                                        Spacer()
+                                    }
+                                    .padding(.top)
+                                    .padding(.horizontal)
+                            ) {
+                                Toggle("Members can post", isOn: self.$vm.permissions.canEdit)
+                                    .padding(.horizontal)
+                                Toggle("Members can invite others", isOn: self.$vm.permissions.canManageMembers)
+                                    .padding(.horizontal)
                             }
                             
                             Section(
@@ -139,7 +158,7 @@ struct SetFolderView: View {
                         }
                     }
                     
-                    Button(action: update) {
+                    Button(action: set) {
                         Text("Save")
                             .padding()
                             .frame(maxWidth: .infinity)
@@ -150,28 +169,15 @@ struct SetFolderView: View {
                 }
             }
             .navigationBarHidden(true)
-            .navigationTitle("Edit collection")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(
-                leading:
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Text("Cancel")
-//                            .font(Font.system(.body).weight(Constants.fontWeight))
-                            .foregroundColor(Color.primary)
-                    },
-                trailing:
-                    Button(action: update) {
-                        Text("Done")
-//                            .font(Font.system(.body).weight(Constants.fontWeight))
-                            .foregroundColor(Color.primary)
-                    }
-                )
             .onAppear {
-                self.vm.title = folder.title
-                self.vm.description = folder.description
-                self.vm.secret = folder.secret
+                if let folder = self.folder {
+                    self.vm.title = folder.title
+                    self.vm.description = folder.description
+                    self.vm.secret = folder.secret
+                    self.vm.permissions = folder.permissions
+                    self.vm.color = folder.color
+                    self.vm.emoji = folder.emoji
+                }
             }
         }
     }

@@ -89,8 +89,6 @@
 		0AAD15DD250DEE5C00F8927B /* FolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15DC250DEE5C00F8927B /* FolderViewModel.swift */; };
 		0AAD15DF250DEE9200F8927B /* FolderFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15DE250DEE9200F8927B /* FolderFile.swift */; };
 		0AAD15E3250DF1D900F8927B /* FolderFilesListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15E2250DF1D900F8927B /* FolderFilesListRowView.swift */; };
-		0AAD15E5250DF37400F8927B /* NewFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15E4250DF37400F8927B /* NewFolderView.swift */; };
-		0AAD15E7250DF3D700F8927B /* NewFolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15E6250DF3D700F8927B /* NewFolderViewModel.swift */; };
 		0AAD15E9250DF40C00F8927B /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15E8250DF40C00F8927B /* Permissions.swift */; };
 		0AAD15EB250E0FE700F8927B /* SetFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15EA250E0FE700F8927B /* SetFolderView.swift */; };
 		0AAD15EF250E11D300F8927B /* SetFolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15EE250E11D300F8927B /* SetFolderViewModel.swift */; };
@@ -232,8 +230,6 @@
 		0AAD15DC250DEE5C00F8927B /* FolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewModel.swift; sourceTree = "<group>"; };
 		0AAD15DE250DEE9200F8927B /* FolderFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFile.swift; sourceTree = "<group>"; };
 		0AAD15E2250DF1D900F8927B /* FolderFilesListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFilesListRowView.swift; sourceTree = "<group>"; };
-		0AAD15E4250DF37400F8927B /* NewFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFolderView.swift; sourceTree = "<group>"; };
-		0AAD15E6250DF3D700F8927B /* NewFolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFolderViewModel.swift; sourceTree = "<group>"; };
 		0AAD15E8250DF40C00F8927B /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
 		0AAD15EA250E0FE700F8927B /* SetFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFolderView.swift; sourceTree = "<group>"; };
 		0AAD15EE250E11D300F8927B /* SetFolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFolderViewModel.swift; sourceTree = "<group>"; };
@@ -428,7 +424,6 @@
 				0A2906A3251136BA003602E7 /* ManageSharingViewModel.swift */,
 				0AAD15C2250C1BA500F8927B /* NewFileViewModel.swift */,
 				0A290680250EE135003602E7 /* NewFolderFileViewModel.swift */,
-				0AAD15E6250DF3D700F8927B /* NewFolderViewModel.swift */,
 				0A290694250F5432003602E7 /* RecentlyCreatedFolderFilesViewModel.swift */,
 				0AAD15EE250E11D300F8927B /* SetFolderViewModel.swift */,
 				0AAD15BB250C024300F8927B /* SignInViewModel.swift */,
@@ -470,7 +465,6 @@
 				0A29069B251006EA003602E7 /* NewFolderFileEditView.swift */,
 				0A29068A250EF883003602E7 /* NewFolderFileSelectUserFolderView.swift */,
 				0A29067C250EE107003602E7 /* NewFolderFileView.swift */,
-				0AAD15E4250DF37400F8927B /* NewFolderView.swift */,
 				0AAD15D2250C9FB900F8927B /* ProtectedButtonView.swift */,
 				0AAD15D4250CA82300F8927B /* ProtectedWithPlaceholderView.swift */,
 				0A2906CF25142E8F003602E7 /* RecentlyCreatedFolderFilesView.swift */,
@@ -893,8 +887,6 @@
 				0AAD15B2250BFE7700F8927B /* AccountView.swift in Sources */,
 				0A87C47D250EA7E400BC6B4C /* IfIsFolderCreatorOrCanManageMembersView.swift in Sources */,
 				0A29067D250EE107003602E7 /* NewFolderFileView.swift in Sources */,
-				0AAD15E7250DF3D700F8927B /* NewFolderViewModel.swift in Sources */,
-				0AAD15E5250DF37400F8927B /* NewFolderView.swift in Sources */,
 				0AAD159A250BEEEE00F8927B /* Constants.swift in Sources */,
 				0A2906D62515F36F003602E7 /* NavigationConfigurator.swift in Sources */,
 				0A29067B250EAFA0003602E7 /* IfIsFolderMemberView.swift in Sources */,
