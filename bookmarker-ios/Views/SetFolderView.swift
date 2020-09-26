@@ -67,7 +67,7 @@ struct SetFolderView: View {
                                     }
                                     .modifier(SectionHeaderViewModifier())
                             ) {
-                                TextField("Name", text: self.$vm.title)
+                                TextField("Enter a name", text: self.$vm.title)
                                     .modifier(TextFieldViewModifier())
                             }
                             .padding(.horizontal)
@@ -81,7 +81,7 @@ struct SetFolderView: View {
                                     }
                                     .modifier(SectionHeaderViewModifier())
                             ) {
-                                TextField("Description", text: self.$vm.description)
+                                TextField("Enter a description", text: self.$vm.description)
                                     .modifier(TextFieldViewModifier())
                                     
                             }
