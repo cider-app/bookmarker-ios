@@ -13,7 +13,14 @@ struct PrimaryButtonStyle: ButtonStyle {
             .padding()
             .font(Font.system(.title3).weight(Constants.fontWeight))
             .frame(maxWidth: .infinity)
-            .background(RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous).fill(Color.primaryColor))
+            .background(
+                RoundedRectangle(
+                    cornerRadius: Constants.cornerRadius,
+                    style: .continuous
+                )
+                .fill(Color.primaryColor)
+            )
             .foregroundColor(Color(.systemBackground))
+            .saturation(configuration.isPressed ? Constants.buttonPressedSaturation : 1)
     }
 }

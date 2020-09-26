@@ -51,6 +51,7 @@ struct Constants {
     static let logoFontTextStyle: Font.TextStyle = .title
     static let defaultFolderEmoji: String = "🥳"
     static let defaultFolderColor: String = "#FF93E0"
+    static let buttonPressedSaturation: Double = 0.5
     
     struct Icon {
         static let home: String = "house"
@@ -71,6 +72,7 @@ struct Constants {
         static let back: String = "chevron.left"
         static let write: String = "square.and.pencil"
         static let security: String = "checkmark.shield.fill"
+        static let compactForward: String = "chevron.compact.right"
     }
     
     struct Path {
