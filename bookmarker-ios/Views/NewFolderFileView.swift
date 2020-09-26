@@ -19,22 +19,27 @@ struct NewFolderFileView: View {
     
     var body: some View {
         NavigationView {
-            NewFolderFileAddLinkView(vm: self.vm)
-                .toolbar {
-                    ToolbarItem(placement: .cancellationAction) {
-                        Button(action: {
-                            self.presentationMode.wrappedValue.dismiss()
-                        }) {
-                            Image(systemName: Constants.Icon.close)
-                        }
+            VStack {
+                HStack {
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image(systemName: Constants.Icon.close)
                     }
+                    .buttonStyle(NavigationBarIconButtonStyle())
+                    
+                    Spacer()
                 }
-                .onAppear {
-                    self.vm.selectedFolderId = currentFolderId
-                }
-                .onReceive(NotificationCenter.default.publisher(for: .didCompleteNewFile)) { (_) in
-                    self.presentationMode.wrappedValue.dismiss()
-                }
+                .padding()
+                
+                NewFolderFileAddLinkView(vm: self.vm)
+            }
+            .onAppear {
+                self.vm.selectedFolderId = currentFolderId
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .didCompleteNewFile)) { (_) in
+                self.presentationMode.wrappedValue.dismiss()
+            }
         }
     }
 }
