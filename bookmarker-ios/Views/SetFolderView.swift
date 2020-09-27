@@ -98,11 +98,10 @@ struct SetFolderView: View {
                                 footer:
                                     HStack {
                                         Text("Secret collections require Face ID or a passcode to access")
-                                            .font(Font.system(.caption))
-                                            .foregroundColor(Color(.tertiaryLabel))
                                         
                                         Spacer()
                                     }
+                                    .modifier(SectionFooterViewModifier())
                             ) {
                                 Toggle("Secret", isOn: self.$vm.secret)
                                     .toggleStyle(PrimaryToggleStyle())
