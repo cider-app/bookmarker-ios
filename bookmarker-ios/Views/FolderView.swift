@@ -110,8 +110,7 @@ struct FolderView: View {
                         .modifier(NavigationBarIconViewModifier())
                 }
             }
-            .padding(.top)
-            .padding(.horizontal)
+            .modifier(NavigationBarViewModifier())
             
             ScrollView {
                 LazyVStack(alignment: .leading) {
