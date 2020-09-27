@@ -13,6 +13,7 @@ class ManageSharingViewModel: ObservableObject {
     @Published var linkSharingToggleIsOn: Bool = false
     @Published var permissions: Permissions = Permissions()
     @Published var shareLink: String = ""
+    @Published var secret: Bool = false
     @Published var isLoading: Bool = false
     @Published var isProcessingLinkSharingRequest: Bool = false
     @Published var linkSharingFooterMessage: String = ""
