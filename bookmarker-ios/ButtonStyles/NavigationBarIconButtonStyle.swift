@@ -10,7 +10,6 @@ import SwiftUI
 struct NavigationBarIconButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
-            .foregroundColor(Color.primary)
+            .modifier(NavigationBarIconViewModifier())
     }
 }

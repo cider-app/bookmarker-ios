@@ -77,6 +77,38 @@ struct FolderView: View {
                     }
                     .buttonStyle(NavigationBarIconButtonStyle())
                 }
+                
+                Menu {
+                    IfIsFolderCreatorOrCanManageMembersView(folderViewModel: self.vm) {
+                        Button(action: {
+                            self.sheetIsPresented = true
+                            self.activeSheet = .manageSharing
+                        }) {
+                            Label("Manage sharing", systemImage: Constants.Icon.members)
+                        }
+                    }
+                    
+                    IfIsFolderMemberView(folderVM: self.vm) {
+                        Button(action: {
+                            self.alertIsPresented = true
+                            self.activeAlert = .leave
+                        }) {
+                            Label("Leave collection", systemImage: Constants.Icon.leave)
+                        }
+                    }
+                    
+                    IfIsFolderCreatorView(folderVM: self.vm) {
+                        Button(action: {
+                            self.alertIsPresented = true
+                            self.activeAlert = .delete
+                        }) {
+                            Label("Delete collection", systemImage: Constants.Icon.delete)
+                        }
+                    }
+                } label: {
+                    Image(systemName: Constants.Icon.more)
+                        .modifier(NavigationBarIconViewModifier())
+                }
             }
             .padding(.top)
             .padding(.horizontal)
@@ -149,57 +181,6 @@ struct FolderView: View {
             }
         }
         .navigationBarHidden(true)
-        .navigationTitle(self.vm.folder != nil ? self.vm.folder!.title : "")
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(
-            trailing:
-                HStack {
-                    Button(action: {
-                        self.sheetIsPresented = true
-                        self.activeSheet = .add
-                    }) {
-                        HStack {
-                            Image(systemName: Constants.Icon.add)
-                        }
-                        .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
-                        .foregroundColor(Color.primary)
-                    }
-                    
-                    Menu {
-                        IfIsFolderCreatorOrCanManageMembersView(folderViewModel: self.vm) {
-                            Button(action: {
-                                self.sheetIsPresented = true
-                                self.activeSheet = .manageSharing
-                            }) {
-                                Label("Manage sharing", systemImage: Constants.Icon.members)
-                            }
-                        }
-                        
-                        IfIsFolderMemberView(folderVM: self.vm) {
-                            Button(action: {
-                                self.alertIsPresented = true
-                                self.activeAlert = .leave
-                            }) {
-                                Label("Leave collection", systemImage: Constants.Icon.leave)
-                            }
-                        }
-                        
-                        IfIsFolderCreatorView(folderVM: self.vm) {
-                            Button(action: {
-                                self.alertIsPresented = true
-                                self.activeAlert = .delete
-                            }) {
-                                Label("Delete collection", systemImage: Constants.Icon.delete)
-                            }
-                        }
-                    } label: {
-                        Image(systemName: Constants.Icon.more)
-                            .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
-                            .foregroundColor(Color.primary)
-                            .padding(.leading)
-                    }
-                }
-        )
         .onAppear {
             self.vm.listenFolder(folderId: folderId)
             self.vm.listenFolderFiles(folderId: folderId)
