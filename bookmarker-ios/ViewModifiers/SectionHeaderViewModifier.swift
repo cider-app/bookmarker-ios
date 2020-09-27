@@ -15,5 +15,6 @@ struct SectionHeaderViewModifier: ViewModifier {
             .font(Font.system(Constants.sectionHeaderFontTextStyle).weight(Constants.fontWeight))
             .foregroundColor(Color(.tertiaryLabel))
             .padding(.top)
+            .padding(.top)
     }
 }
