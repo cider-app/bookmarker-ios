@@ -200,7 +200,7 @@ struct FolderView: View {
                 NewFolderFileView(currentFolderId: self.folderId)
             case .manageSharing:
                 if let folder = self.vm.folder {
-                    ManageSharingView(isPresented: self.$sheetIsPresented, folder: folder)
+                    ManageSharingView(folder: folder)
                 }
             case .share:
                 if let folder = self.vm.folder, let url = URL(string: folder.shareLink) {
