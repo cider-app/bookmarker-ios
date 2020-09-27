@@ -18,7 +18,7 @@ struct ColorGridPickerView: View {
     ]
     
     let rows = [
-        GridItem(.fixed(75))
+        GridItem(.adaptive(minimum: 50))
     ]
     
     var body: some View {
