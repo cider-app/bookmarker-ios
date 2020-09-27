@@ -20,7 +20,7 @@ struct PrimaryButtonStyle: ButtonStyle {
                 )
                 .fill(Color.primaryColor)
             )
-            .foregroundColor(Color(.systemBackground))
+            .foregroundColor(Color.white)
             .saturation(configuration.isPressed ? Constants.buttonPressedSaturation : 1)
     }
 }
