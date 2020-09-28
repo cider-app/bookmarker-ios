@@ -22,12 +22,12 @@ struct FolderFilesGridCellView: View {
                     Color(.systemGray5)
                 }
             }
-            .frame(width: 150, height: 120)
-            .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+            .frame(width: 130, height: 100)
+            .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous))
             
             HStack {
                 Text(folderFile.title)
-                    .font(Font.system(.subheadline).weight(Constants.fontWeight))
+                    .font(Font.system(.subheadline))
                 
                 Spacer()
             }

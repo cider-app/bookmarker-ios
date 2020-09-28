@@ -39,6 +39,7 @@ struct NewFolderFileSelectUserFolderView: View {
             SelectableUserFoldersListView(userFolders: self.appState.currentUserFolders) { (selectedUserFolder) in
                 self.createFolderFile(folderId: selectedUserFolder.id)
             }
+            .padding()
         }
         .disabled(self.vm.isLoading)
         .navigationBarHidden(true)

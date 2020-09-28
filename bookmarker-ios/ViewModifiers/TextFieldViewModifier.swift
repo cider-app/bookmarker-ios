@@ -16,7 +16,7 @@ struct TextFieldViewModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .font(Font.system(.body).weight(Constants.fontWeight))
+            .font(Font.system(.body))
             .padding()
             .overlay(variant == Variant.outlined ?
                 RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous).stroke(Color(.systemGray6), lineWidth: 2)

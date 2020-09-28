@@ -19,6 +19,8 @@ struct FolderView: View {
     @State private var editNavLinkIsActive: Bool = false
     var folderId: String
     
+    @State private var text: String = ""
+    
     enum FolderAlert {
         case leave
         case delete
@@ -49,134 +51,107 @@ struct FolderView: View {
     }
     
     var body: some View {
-        VStack {
-            HStack(spacing: 24) {
-                Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
-                }) {
-                    Image(systemName: Constants.Icon.back)
-                }
-                .buttonStyle(NavigationBarIconButtonStyle())
-                
-                Spacer()
-
-                Button(action: {
-                    self.sheetIsPresented = true
-                    self.activeSheet = .add
-                }) {
-                    Image(systemName: Constants.Icon.add)
-                }
-                .buttonStyle(NavigationBarIconButtonStyle())
-                
-                IfFolderLinkSharingIsEnabled(folder: self.vm.folder) {
+        ZStack {
+            VStack {
+                HStack(spacing: 24) {
                     Button(action: {
-                        self.sheetIsPresented = true
-                        self.activeSheet = .share
+                        self.presentationMode.wrappedValue.dismiss()
                     }) {
-                        Image(systemName: Constants.Icon.share)
+                        Image(systemName: Constants.Icon.back)
                     }
                     .buttonStyle(NavigationBarIconButtonStyle())
-                }
-                
-                Menu {
-                    IfIsFolderCreatorOrCanManageMembersView(folderViewModel: self.vm) {
-                        Button(action: {
-                            self.sheetIsPresented = true
-                            self.activeSheet = .manageSharing
-                        }) {
-                            Label("Manage sharing", systemImage: Constants.Icon.members)
-                        }
-                    }
+                    .padding()
+                    .background(RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous).fill(Color(.systemGray6)))
                     
-                    IfIsFolderMemberView(folderVM: self.vm) {
-                        Button(action: {
-                            self.alertIsPresented = true
-                            self.activeAlert = .leave
-                        }) {
-                            Label("Leave collection", systemImage: Constants.Icon.leave)
-                        }
-                    }
-                    
-                    IfIsFolderCreatorView(folderVM: self.vm) {
-                        Button(action: {
-                            self.alertIsPresented = true
-                            self.activeAlert = .delete
-                        }) {
-                            Label("Delete collection", systemImage: Constants.Icon.delete)
-                        }
-                    }
-                } label: {
-                    Image(systemName: Constants.Icon.more)
-                        .modifier(NavigationBarIconViewModifier())
-                }
-            }
-            .modifier(NavigationBarViewModifier())
-            
-            ScrollView {
-                LazyVStack(alignment: .leading) {
-                    IfIsFolderCreatorView(folderVM: self.vm) {
-                        Button(action: {
-                            self.sheetIsPresented = true
-                            self.activeSheet = .edit
-                        }) {
-                            VStack {
-                                if let folder = self.vm.folder {
-                                    HStack {
-                                        Spacer()
-                                        
-                                        Text(folder.emoji)
-                                            .font(.largeTitle)
-                                            .padding()
-                                            .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color("Color1")))
-                                        
-                                        Spacer()
-                                    }
-                                    
-                                    HStack {
-                                        Spacer()
-                                        
-                                        Text(folder.title)
-                                            .font(Font.system(.largeTitle).weight(Constants.fontWeight))
-                                            .foregroundColor(Color.primary)
-                                        
-                                        Spacer()
-                                    }
-                                    
-                                    HStack {
-                                        Spacer()
-                                        
-                                        Text(folder.description)
-                                            .font(Font.system(.title3))
-                                            .foregroundColor(Color(.secondaryLabel))
-                                        
-                                        Spacer()
-                                    }
+                    Spacer()
+
+                    if let folder = self.vm.folder {
+                        Menu {
+                            IfIsFolderCreatorView(folderVM: self.vm) {
+                                Button(action: {
+                                    self.sheetIsPresented = true
+                                    self.activeSheet = .edit
+                                }) {
+                                    Label("Edit collection", systemImage: Constants.Icon.edit)
                                 }
                             }
+                            
+                            IfIsFolderCreatorOrCanManageMembersView(folderViewModel: self.vm) {
+                                Button(action: {
+                                    self.sheetIsPresented = true
+                                    self.activeSheet = .manageSharing
+                                }) {
+                                    Label("Manage sharing", systemImage: Constants.Icon.members)
+                                }
+                            }
+        
+                            IfIsFolderMemberView(folderVM: self.vm) {
+                                Button(action: {
+                                    self.alertIsPresented = true
+                                    self.activeAlert = .leave
+                                }) {
+                                    Label("Leave collection", systemImage: Constants.Icon.leave)
+                                }
+                            }
+        
+                            IfIsFolderCreatorView(folderVM: self.vm) {
+                                Button(action: {
+                                    self.alertIsPresented = true
+                                    self.activeAlert = .delete
+                                }) {
+                                    Label("Delete collection", systemImage: Constants.Icon.delete)
+                                }
+                            }
+                        } label: {
+                            Text("\(folder.emoji) \(folder.title)")
+                                .font(Font.system(.title2).weight(Constants.fontWeight))
+                                .foregroundColor(Color.primary)
                         }
                     }
                     
-                    Divider()
+                    Spacer()
                     
-                    ForEach(self.vm.folderFiles, id: \.id) { folderFile in
+                    IfFolderLinkSharingIsEnabled(folder: self.vm.folder) {
                         Button(action: {
-                            self.selectedLink = folderFile.link
-                            self.activeSheet = .viewLink
                             self.sheetIsPresented = true
+                            self.activeSheet = .share
                         }) {
-                            FolderFilesListRowView(folderFile: folderFile)
-                                .padding(.top)
+                            Image(systemName: Constants.Icon.share)
                         }
-                    }
-                    
-                    if let folder = self.vm.folder {
-                        NavigationLink(destination: SetFolderView(folder: folder), isActive: $editNavLinkIsActive) {
-                            EmptyView()
-                        }
+                        .buttonStyle(NavigationBarIconButtonStyle())
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous).fill(Color(.systemGray6)))
                     }
                 }
-                .padding(.top)
                 .padding(.horizontal)
+                
+                FolderFilesListView(folderFiles: self.vm.folderFiles)
+                    .padding(.horizontal)
+                
+                if let folder = self.vm.folder {
+                    NavigationLink(destination: SetFolderView(folder: folder), isActive: $editNavLinkIsActive) {
+                        EmptyView()
+                    }
+                }
+                
+                HStack {
+                    TextField("Save link", text: self.$text)
+                        .modifier(TextFieldViewModifier(variant: .filled))
+                    
+                    Spacer()
+                    
+                    if !self.text.isEmpty {
+                        Button(action: {
+                            
+                        }) {
+                            Text("Save")
+                        }
+                        .buttonStyle(PrimaryButtonStyle())
+                    }
+                }
+                .padding(.horizontal)
+                .padding(.top, 8)
+                .padding(.bottom)
             }
         }
         .navigationBarHidden(true)

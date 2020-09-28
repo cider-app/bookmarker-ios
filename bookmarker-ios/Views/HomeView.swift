@@ -12,6 +12,8 @@ struct HomeView: View {
     @EnvironmentObject var appState: AppState
     @StateObject var vm = HomeViewModel()
     
+    @State private var text: String = ""
+    
     var columns: [GridItem] =
              Array(repeating: .init(.flexible()), count: 2)
     
@@ -22,63 +24,44 @@ struct HomeView: View {
             
             VStack(alignment: .leading) {
                 HStack {
+                    Spacer()
+                    
                     Button(action: {
                         self.vm.sheetIsPresented = true
                         self.vm.activeSheet = .account
                     }) {
                         Image(systemName: Constants.Icon.account)
+                            .font(Font.system(.title2).weight(Constants.fontWeight))
+                            .foregroundColor(Color(.systemGray))
                     }
-                    .buttonStyle(NavigationBarIconButtonStyle())
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        self.vm.sheetIsPresented = true
-                        self.vm.activeSheet = .add
-                    }) {
-                        Image(systemName: Constants.Icon.add)
-                    }
-                    .buttonStyle(NavigationBarIconButtonStyle())
                 }
-                .padding(.top)
-                .padding(.horizontal)
-                .padding(.bottom, 8)
+                .modifier(NavigationBarViewModifier())
                 
                 ScrollView(.vertical) {
-                    Section(
-                        header:
-                            HStack {
-                                Text("Recently Saved")
-                                
-                                Spacer()
-                            }
-                            .modifier(SectionHeaderViewModifier())
-                            .padding(.horizontal)
-                    ) {
-                        RecentlyCreatedFolderFilesView()
-                    }
-                    
                     Section(
                         header:
                             HStack {
                                 Text("My Collections")
                                 
                                 Spacer()
-                                
-                                Button(action: {
-                                    self.vm.sheetIsPresented = true
-                                    self.vm.activeSheet = .newFolder
-                                }) {
-                                    Image(systemName: Constants.Icon.addFolder)
-                                }
-                                .foregroundColor(Color(.secondaryLabel))
                             }
                             .modifier(SectionHeaderViewModifier())
                     ) {
                         LazyVStack(spacing: 16) {
                             ForEach(self.appState.currentUserFolders, id: \.id) { userFolder in
                                 NavigationLink(destination: FolderView(folderId: userFolder.id), tag: userFolder.id, selection: self.$appState.foldersTabNavLinkSelection) {
-                                    UserFoldersListRowView(userFolder: userFolder)
+                                    ZStack {
+                                        UserFoldersListRowView(userFolder: userFolder)
+                                        
+                                        HStack {
+                                            Spacer()
+                                            
+                                            Image(systemName: Constants.Icon.compactForward)
+                                                .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
+                                                .foregroundColor(Color(.quaternaryLabel))
+                                        }
+                                        .padding()
+                                    }
                                 }
                             }
                         }
@@ -96,6 +79,28 @@ struct HomeView: View {
                     }
                     .padding(.horizontal)
                 }
+            }
+            
+            VStack {
+                Spacer()
+                
+                HStack {
+                    Spacer()
+                    
+                    Button(action: {
+                        self.vm.sheetIsPresented = true
+                        self.vm.activeSheet = .newFolder
+                    }) {
+                        HStack {
+                            Image(systemName: Constants.Icon.addFolder)
+                            Text("New")
+                        }
+                    }
+                    .buttonStyle(PrimaryButtonStyle())
+                    
+                    Spacer()
+                }
+                .padding()
             }
         }
         .navigationBarHidden(true)

@@ -19,10 +19,25 @@ struct RecentlyCreatedFolderFilesView: View {
             LazyHGrid(rows: rows, alignment: .top, spacing: Constants.verticalSpacing) {
                 ForEach(self.vm.folderFiles, id: \.id) { folderFile in
                     FolderFilesGridCellView(folderFile: folderFile)
-                        .frame(width: 150)
+                        .frame(width: 130)
                 }
+                
+                VStack {
+                    Spacer()
+                    
+                    Button(action: {}) {
+                        HStack {
+                            Text("More")
+                            Image(systemName: Constants.Icon.arrowRight)
+                        }
+                    }
+                    .buttonStyle(SecondaryButtonStyle())
+                    
+                    Spacer()
+                }
+                .padding()
             }
-            .padding(.leading)
+            .padding(.horizontal)
         }
         .onAppear {
             self.vm.listen()

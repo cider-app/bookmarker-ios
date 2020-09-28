@@ -44,8 +44,8 @@ struct Constants {
     static let appName: String = "Cider"
     static let recentlyCreatedFolderFilesGridWidth: CGFloat = 100
     static let recentlyCreatedFolderFilesGridHeight: CGFloat = 150
-    static let fontWeight: Font.Weight = .bold
-    static let iconFontTextStyle: Font.TextStyle = .title2
+    static let fontWeight: Font.Weight = .heavy
+    static let iconFontTextStyle: Font.TextStyle = .title3
     static let iconPrimaryButtonShadow: CGFloat = 4
     static let sectionHeaderFontTextStyle: Font.TextStyle = .subheadline
     static let logoFontTextStyle: Font.TextStyle = .title
@@ -57,9 +57,9 @@ struct Constants {
         static let home: String = "house"
         static let messages: String = "message"
         static let close: String = "xmark"
-        static let account: String = "person.fill"
+        static let account: String = "person.crop.circle.fill"
         static let more: String = "ellipsis"
-        static let addFolder: String = "plus.rectangle.on.rectangle"
+        static let addFolder: String = "rectangle.badge.plus"
         static let addFile: String = "plus.app"
         static let add: String = "plus"
         static let edit: String = "pencil"
@@ -73,6 +73,8 @@ struct Constants {
         static let write: String = "square.and.pencil"
         static let security: String = "checkmark.shield.fill"
         static let compactForward: String = "chevron.compact.right"
+        static let arrowLeft: String = "arrow.left"
+        static let arrowRight: String = "arrow.right"
     }
     
     struct Path {

@@ -12,7 +12,7 @@ struct SectionHeaderViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .textCase(.uppercase)
-            .font(Font.system(Constants.sectionHeaderFontTextStyle).weight(Constants.fontWeight))
+            .font(Font.system(Constants.sectionHeaderFontTextStyle).weight(.medium))
             .foregroundColor(Color(.tertiaryLabel))
             .padding(.top)
             .padding(.top)

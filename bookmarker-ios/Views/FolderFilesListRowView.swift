@@ -12,15 +12,18 @@ struct FolderFilesListRowView: View {
     var folderFile: FolderFile
     
     var body: some View {
-        HStack {
+        HStack(alignment: .center) {
             VStack(alignment: .leading) {
                 Text(folderFile.title)
-                    .font(Font.system(.headline).weight(Constants.fontWeight))
+                    .font(Font.system(.headline).weight(.semibold))
                     .foregroundColor(Color(.label))
-                    .lineLimit(nil)
-                    .fixedSize(horizontal: false, vertical: true)
+                    .lineLimit(3)
                 
-                Spacer()
+                Text(folderFile.link)
+                    .font(Font.system(.subheadline).weight(.regular))
+                    .foregroundColor(Color(.secondaryLabel))
+                    .lineLimit(1)
+                    .padding(.top, 4)
             }
             .padding(.vertical)
             
@@ -31,11 +34,11 @@ struct FolderFilesListRowView: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: Constants.folderFilesListRowViewSize, height: Constants.folderFilesListRowViewSize)
-                    .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
-                    .clipped()
-                    .shadow(color: Color(.systemGray2).opacity(0.2), radius: 4, x: 0, y: 4)
+                    .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous))
+                    .padding(.leading)
             }
         }
+        .padding(.vertical, 4)
         .onAppear {
             self.imageLoader.loadImage(urlString: folderFile.imageUrl)
         }

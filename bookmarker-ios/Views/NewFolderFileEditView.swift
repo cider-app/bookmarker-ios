@@ -50,14 +50,14 @@ struct NewFolderFileEditView: View {
                             Text("No metadata found")
                         }
                     }
-                    
-                    NavigationLink(destination: NewFolderFileSelectUserFolderView(vm: self.vm)) {
-                        Text("Next")
-                    }
-                    .buttonStyle(PrimaryButtonStyle())
-                    .padding()
                 }
             }
+            
+            NavigationLink(destination: NewFolderFileSelectUserFolderView(vm: self.vm)) {
+                Text("Next")
+            }
+            .buttonStyle(PrimaryButtonStyle())
+            .padding()
         }
         .navigationBarHidden(true)
     }

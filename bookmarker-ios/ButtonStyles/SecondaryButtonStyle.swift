@@ -1,13 +1,13 @@
 //
-//  PrimaryButtonStyle.swift
+//  SecondaryButtonStyle.swift
 //  bookmarker-ios
 //
-//  Created by Kenneth Ng on 9/25/20.
+//  Created by Kenneth Ng on 9/27/20.
 //
 
 import SwiftUI
 
-struct PrimaryButtonStyle: ButtonStyle {
+struct SecondaryButtonStyle : ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding()
@@ -17,9 +17,9 @@ struct PrimaryButtonStyle: ButtonStyle {
                     cornerRadius: Constants.cornerRadius,
                     style: .continuous
                 )
-                .fill(Color.primaryColor)
+                .fill(Color(.systemGray6))
             )
-            .foregroundColor(Color.white)
+            .foregroundColor(Color(.systemGray))
             .saturation(configuration.isPressed ? Constants.buttonPressedSaturation : 1)
     }
 }

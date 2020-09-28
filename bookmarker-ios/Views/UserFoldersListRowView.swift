@@ -14,24 +14,21 @@ struct UserFoldersListRowView: View {
         HStack {
             Text(userFolder.emoji)
                 .font(.largeTitle)
-                .padding()
-                .background(RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous).fill(Color("Color1")))
+//                .padding()
+//                .background(RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous).fill(Color(.systemGray6)))
             
             Text(userFolder.title)
                 .font(Font.system(.title3).weight(Constants.fontWeight))
+                .lineLimit(1)
                 .foregroundColor(Color.primary)
                 .padding(.leading)
             
             Spacer()
-            
-            Image(systemName: "chevron.compact.right")
-                .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
-                .foregroundColor(Color(.quaternaryLabel))
         }
         .padding()
         .background(RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous).fill(Color(.systemBackground)))
-        .clipped()
-        .shadow(color: Color(.systemGray4).opacity(0.2), radius: 4, x: 0, y: 6)
+//        .clipped()
+//        .shadow(color: Color(.systemGray4).opacity(0.2), radius: 4, x: 0, y: 6)
     }
 }
 

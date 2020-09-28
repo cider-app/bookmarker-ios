@@ -11,6 +11,6 @@ struct NavigationBarIconViewModifier : ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(Font.system(Constants.iconFontTextStyle).weight(Constants.fontWeight))
-            .foregroundColor(Color.primary)
+            .foregroundColor(Color(.systemGray))
     }
 }
