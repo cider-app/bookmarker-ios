@@ -34,14 +34,9 @@ struct SetFolderView: View {
                             }) {
                                 Image(systemName: Constants.Icon.close)
                             }
-                            .buttonStyle(SecondaryButtonStyle())
+                            .buttonStyle(CustomButtonStyle(variant: .contained, color: .secondary, fullWidth: false, alignment: .center))
                             
                             Spacer()
-                            
-                            Button(action: set) {
-                                Text("Save")
-                            }
-                            .buttonStyle(PrimaryButtonStyle())
                         }
                         
                         HStack {
@@ -59,8 +54,7 @@ struct SetFolderView: View {
                         Spacer()
                         
                         Text(self.vm.emoji)
-                            .font(.largeTitle)
-                            .padding()
+                            .font(.system(size: 60))
                         
                         Spacer()
                     }
@@ -69,8 +63,20 @@ struct SetFolderView: View {
                         .modifier(TextFieldViewModifier(variant: .filled))
                         .padding()
                     
+                    Toggle("Secret", isOn: self.$vm.secret)
+                        .toggleStyle(PrimaryToggleStyle())
+                        .padding()
+                    
                     EmojiPickerView(selectedEmoji: self.$vm.emoji)
                         .ignoresSafeArea(.all)
+                        .padding(.top)
+                    
+                    Button(action: set) {
+                        Text("Save")
+                    }
+                    .buttonStyle(CustomButtonStyle(variant: .contained, color: .primary, fullWidth: true, alignment: .center))
+                    .padding(.horizontal)
+                    .padding(.bottom)
                 }
             }
             .navigationBarHidden(true)
