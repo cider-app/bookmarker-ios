@@ -37,13 +37,18 @@ struct SetFolderView: View {
                             .buttonStyle(SecondaryButtonStyle())
                             
                             Spacer()
+                            
+                            Button(action: set) {
+                                Text("Save")
+                            }
+                            .buttonStyle(PrimaryButtonStyle())
                         }
                         
                         HStack {
                             Spacer()
                             
-                            Text("New Collection")
-                                .font(Font.system(.title2).weight(Constants.fontWeight))
+                            Text(folder != nil ? "Edit Collection" : "New Collection")
+                                .font(Font.system(.title3).weight(Constants.fontWeight))
                                 .foregroundColor(Color.primary)
                             
                             Spacer()
@@ -55,14 +60,9 @@ struct SetFolderView: View {
                     HStack {
                         Spacer()
                         
-                        Button(action: {
-                            
-                        }) {
-                            Text(self.vm.emoji)
-                                .font(.largeTitle)
-                                .padding()
-                                .background(RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous).fill(Color(.systemGray6)))
-                        }
+                        Text(self.vm.emoji)
+                            .font(.largeTitle)
+                            .padding()
                         
                         Spacer()
                     }
@@ -73,13 +73,9 @@ struct SetFolderView: View {
                         .padding(.top)
                         .padding(.top)
                     
-                    Spacer()
-                    
-                    Button(action: set) {
-                        Text("Save")
-                    }
-                    .buttonStyle(PrimaryButtonStyle())
-                    .padding()
+                    EmojiPickerView(selectedEmoji: self.$vm.emoji)
+                        .padding()
+                        .ignoresSafeArea(.all)
                 }
             }
             .navigationBarHidden(true)
