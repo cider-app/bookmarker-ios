@@ -48,8 +48,7 @@ struct SetFolderView: View {
                             Spacer()
                             
                             Text(folder != nil ? "Edit Collection" : "New Collection")
-                                .font(Font.system(.title3).weight(Constants.fontWeight))
-                                .foregroundColor(Color.primary)
+                                .modifier(NavigationTitleViewModifier())
                             
                             Spacer()
                         }

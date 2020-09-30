@@ -105,6 +105,9 @@
 		0AAD15E9250DF40C00F8927B /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15E8250DF40C00F8927B /* Permissions.swift */; };
 		0AAD15EB250E0FE700F8927B /* SetFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15EA250E0FE700F8927B /* SetFolderView.swift */; };
 		0AAD15EF250E11D300F8927B /* SetFolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD15EE250E11D300F8927B /* SetFolderViewModel.swift */; };
+		0AC39B5025245E7E00CFB158 /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC39B4F25245E7E00CFB158 /* CustomButtonStyle.swift */; };
+		0AC39B52252463DA00CFB158 /* NavigationTitleViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC39B51252463DA00CFB158 /* NavigationTitleViewModifier.swift */; };
+		0AC39B54252465F500CFB158 /* CustomMenuStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC39B53252465F500CFB158 /* CustomMenuStyle.swift */; };
 		0AE802972522EBBB005C0DE9 /* SelectableEmojisGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE802962522EBBB005C0DE9 /* SelectableEmojisGridView.swift */; };
 		1E5403FD8D760BCBF3B25356 /* Pods_bookmarker_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E8F9F5613752E4D719C502 /* Pods_bookmarker_iosTests.framework */; };
 		5B82A64943D35DD1A3DE80F6 /* Pods_bookmarker_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9BE1EFB93C783B8D13001C /* Pods_bookmarker_ios.framework */; };
@@ -260,6 +263,9 @@
 		0AAD15E8250DF40C00F8927B /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
 		0AAD15EA250E0FE700F8927B /* SetFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFolderView.swift; sourceTree = "<group>"; };
 		0AAD15EE250E11D300F8927B /* SetFolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFolderViewModel.swift; sourceTree = "<group>"; };
+		0AC39B4F25245E7E00CFB158 /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
+		0AC39B51252463DA00CFB158 /* NavigationTitleViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitleViewModifier.swift; sourceTree = "<group>"; };
+		0AC39B53252465F500CFB158 /* CustomMenuStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuStyle.swift; sourceTree = "<group>"; };
 		0AE802962522EBBB005C0DE9 /* SelectableEmojisGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableEmojisGridView.swift; sourceTree = "<group>"; };
 		1F11715738755AC992E82316 /* Pods-bookmarker-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarker-iosTests.release.xcconfig"; path = "Target Support Files/Pods-bookmarker-iosTests/Pods-bookmarker-iosTests.release.xcconfig"; sourceTree = "<group>"; };
 		29718C85EEAF7D71CE678E6A /* Pods-bookmarker-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookmarker-ios.release.xcconfig"; path = "Target Support Files/Pods-bookmarker-ios/Pods-bookmarker-ios.release.xcconfig"; sourceTree = "<group>"; };
@@ -317,6 +323,7 @@
 				0A6B80E42520722B00F59F61 /* SectionFooterViewModifier.swift */,
 				0A2673B2251E90DA00B5E24E /* SectionHeaderViewModifier.swift */,
 				0A2673B5251E94CF00B5E24E /* TextFieldViewModifier.swift */,
+				0AC39B51252463DA00CFB158 /* NavigationTitleViewModifier.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -329,6 +336,7 @@
 				0A2673BC251E9AE600B5E24E /* PrimaryToggleStyle.swift */,
 				0A6B80E82520775D00F59F61 /* TextButtonStyle.swift */,
 				0A6B80EC25211CB000F59F61 /* SecondaryButtonStyle.swift */,
+				0AC39B4F25245E7E00CFB158 /* CustomButtonStyle.swift */,
 			);
 			path = ButtonStyles;
 			sourceTree = "<group>";
@@ -415,6 +423,7 @@
 				0A264E5D251E71B100566C43 /* Helper.swift */,
 				0A2906982510007C003602E7 /* ImageCache.swift */,
 				0AAD1574250BE9AA00F8927B /* Info.plist */,
+				0AC39B55252467D600CFB158 /* MenuStyles */,
 				0AAD159B250BEF2200F8927B /* Models */,
 				0AAD15C4250C1E2000F8927B /* Notification.Name+didCompleteAuthentication.swift */,
 				0AAD15C6250C1E6800F8927B /* Notification.Name+didCompleteNewFile.swift */,
@@ -543,6 +552,14 @@
 			children = (
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		0AC39B55252467D600CFB158 /* MenuStyles */ = {
+			isa = PBXGroup;
+			children = (
+				0AC39B53252465F500CFB158 /* CustomMenuStyle.swift */,
+			);
+			path = MenuStyles;
 			sourceTree = "<group>";
 		};
 		1D38BB8ED289CA9C85CC074A /* Pods */ = {
@@ -880,6 +897,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AC39B52252463DA00CFB158 /* NavigationTitleViewModifier.swift in Sources */,
 				0AAD15E9250DF40C00F8927B /* Permissions.swift in Sources */,
 				0A290683250EE66C003602E7 /* MainView.swift in Sources */,
 				0A264E5C251C5F9D00566C43 /* Color.swift in Sources */,
@@ -920,6 +938,7 @@
 				0AAD15BE250C065F00F8927B /* AuthenticationViewModel.swift in Sources */,
 				0A6B80E7252075E800F59F61 /* NavigationBarViewModifier.swift in Sources */,
 				0A290681250EE135003602E7 /* NewFolderFileViewModel.swift in Sources */,
+				0AC39B54252465F500CFB158 /* CustomMenuStyle.swift in Sources */,
 				0A29068F250F0E53003602E7 /* ActivityViewController.swift in Sources */,
 				0AAD15D9250CB74600F8927B /* UserFoldersListRowView.swift in Sources */,
 				0AAD15D5250CA82300F8927B /* ProtectedWithPlaceholderView.swift in Sources */,
@@ -941,6 +960,7 @@
 				0A2906A225113520003602E7 /* ManageSharingView.swift in Sources */,
 				0AAD15EB250E0FE700F8927B /* SetFolderView.swift in Sources */,
 				0A2FA8CA25225EE400EA7531 /* EmojiPickerViewModel.swift in Sources */,
+				0AC39B5025245E7E00CFB158 /* CustomButtonStyle.swift in Sources */,
 				0A264E50251C48DB00566C43 /* EmojiPickerView.swift in Sources */,
 				0AAD15B6250C00CB00F8927B /* SignInView.swift in Sources */,
 				0A290689250EF806003602E7 /* SelectableUserFoldersListView.swift in Sources */,
