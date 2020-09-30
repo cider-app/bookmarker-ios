@@ -15,7 +15,7 @@ struct MembersListView: View {
             VStack {
                 ForEach(members, id: \.id) { member in
                     MembersListRowView(member: member)
-                        .padding(.vertical)
+                        .padding(.bottom)
                 }
             }
         }

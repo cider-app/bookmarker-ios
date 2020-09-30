@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseAuth
 
 class MembersViewModel: ObservableObject {
     @Published var members = [FolderUser]()
@@ -19,9 +20,16 @@ class MembersViewModel: ObservableObject {
                 return
             }
             
-            let items = documents.compactMap {
+            var items = documents.compactMap {
                 FolderUser(documentSnapshot: $0)
             }
+            
+            //  Move authUser to first of array, if authUser exists in this array
+            if let authUser = Auth.auth().currentUser, let index = items.firstIndex(where: { $0.id == authUser.uid }) {
+                let element = items.remove(at: index)
+                items.insert(element, at: 0)
+            }
+            
             self.members = items
         })
     }
