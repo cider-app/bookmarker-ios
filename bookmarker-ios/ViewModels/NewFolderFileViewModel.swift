@@ -27,7 +27,7 @@ class NewFolderFileViewModel: ObservableObject {
         isLoading = true
         
         let ref = FolderFile.subcollectionRef(parentDocId: selectedFolderId).document()
-        let newFolderFile = FolderFile(id: ref.documentID, link: link, createdByUserId: authUser.uid)
+        let newFolderFile = FolderFile(id: ref.documentID, docRef: ref, link: link, createdByUserId: authUser.uid)
         
         FolderFile.subcollectionRef(parentDocId: selectedFolderId).addDocument(data: newFolderFile.toDictionary) { (error) in
             self.isLoading = false 

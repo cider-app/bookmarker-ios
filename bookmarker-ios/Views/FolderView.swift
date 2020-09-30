@@ -183,6 +183,7 @@ struct FolderView: View {
             case .manageSharing:
                 if let folder = self.vm.folder {
                     ManageSharingView(folder: folder)
+                        .environmentObject(self.appState)
                 }
             case .share:
                 if let folder = self.vm.folder, let url = URL(string: folder.shareLink) {

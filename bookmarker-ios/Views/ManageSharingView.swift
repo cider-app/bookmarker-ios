@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ManageSharingView: View {
     @StateObject var vm = ManageSharingViewModel()
+    @StateObject var membersVM = MembersViewModel()
     @Environment(\.presentationMode) var presentationMode
     @State private var activityViewIsPresented: Bool = false
     var folder: Folder
@@ -55,13 +56,6 @@ struct ManageSharingView: View {
                         }
                         
                         if !self.vm.shareLink.isEmpty {
-                            Section {
-                                Toggle("Require passcode", isOn: self.$vm.secret)
-                                    .toggleStyle(PrimaryToggleStyle())
-                            }
-                        }
-                        
-                        if !self.vm.shareLink.isEmpty {
                             Section(
                                 header:
                                     HStack {
@@ -78,15 +72,17 @@ struct ManageSharingView: View {
                                     .toggleStyle(PrimaryToggleStyle())
                             }
                             
-                            Section(
-                                header:
-                                    HStack {
-                                        Text("Members")
-                                        Spacer()
-                                    }
-                                    .modifier(SectionHeaderViewModifier())
-                            ) {
-                                
+                            if !self.membersVM.members.isEmpty {
+                                Section(
+                                    header:
+                                        HStack {
+                                            Text("Members")
+                                            Spacer()
+                                        }
+                                        .modifier(SectionHeaderViewModifier())
+                                ) {
+                                    MembersListView(members: self.membersVM.members)
+                                }
                             }
                         }
                     }
@@ -121,6 +117,11 @@ struct ManageSharingView: View {
                 self.vm.permissions.canEdit = folder.permissions.canEdit
                 self.vm.permissions.canManageMembers = folder.permissions.canManageMembers
                 self.vm.secret = folder.secret
+                
+                self.membersVM.listen(folderId: folder.id)
+            }
+            .onDisappear {
+                self.membersVM.unlisten()
             }
             .sheet(isPresented: $activityViewIsPresented) {
                 if let url = URL(string: self.vm.shareLink) {
