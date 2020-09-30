@@ -19,6 +19,7 @@ struct CustomButtonStyle : ButtonStyle {
     var variant: ButtonVariant = .text
     var color: ButtonColor = .none
     var fullWidth: Bool = false
+    var alignment: Alignment = .center
     
     func getButtonColor() -> Color {
         switch color {
@@ -45,8 +46,9 @@ struct CustomButtonStyle : ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(Font.system(.title3).weight(Constants.fontWeight))
+//            .padding(variant == .text ? 0 : 16)
             .padding()
-            .frame(maxWidth: fullWidth ? .infinity : nil, alignment: .center)
+            .frame(maxWidth: fullWidth ? .infinity : nil, alignment: alignment)
             .background(
                 RoundedRectangle(
                     cornerRadius: Constants.cornerRadius,
