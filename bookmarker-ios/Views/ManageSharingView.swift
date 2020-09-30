@@ -14,19 +14,29 @@ struct ManageSharingView: View {
     @State private var activityViewIsPresented: Bool = false
     var folder: Folder
     
+    func close() {
+        self.vm.updatePermissions(folderId: folder.id) { (error) in
+            if error == nil {
+                self.presentationMode.wrappedValue.dismiss()
+            }
+        }
+    }
+    
     var body: some View {
         NavigationView {
             VStack {
                 ZStack {
                     HStack {
-                        Button(action: {
-                            self.presentationMode.wrappedValue.dismiss()
-                        }) {
+                        Button(action: close) {
                             Image(systemName: Constants.Icon.close)
                         }
                         .buttonStyle(CustomButtonStyle(variant: .contained, color: .secondary, fullWidth: false))
                         
                         Spacer()
+                        
+                        if self.vm.isLoading {
+                            ProgressView()
+                        }
                     }
                     
                     HStack {
@@ -52,7 +62,7 @@ struct ManageSharingView: View {
                                 .onReceive([self.vm.linkSharingToggleIsOn].publisher.first()) { (isOn) in
                                     self.vm.toggleLinkSharing(folder: self.folder)
                                 }
-                                .disabled(self.vm.isProcessingLinkSharingRequest)
+                                .disabled(self.vm.isLoading)
                         }
                         
                         if !self.vm.shareLink.isEmpty {
@@ -63,13 +73,23 @@ struct ManageSharingView: View {
                                         
                                         Spacer()
                                     }
-                                    .modifier(SectionHeaderViewModifier())
+                                    .modifier(SectionHeaderViewModifier()),
+                                footer: !self.vm.permissionsFooterMessage.isEmpty ?
+                                    HStack {
+                                        Text(self.vm.permissionsFooterMessage)
+                                        
+                                        Spacer()
+                                    }
+                                    .modifier(SectionFooterViewModifier())
+                                : nil
                             ) {
                                 Toggle("People can post", isOn: self.$vm.permissions.canEdit)
                                     .toggleStyle(PrimaryToggleStyle())
+                                    .disabled(self.vm.isLoading)
                                 
                                 Toggle("People can invite others", isOn: self.$vm.permissions.canManageMembers)
                                     .toggleStyle(PrimaryToggleStyle())
+                                    .disabled(self.vm.isLoading)
                             }
                             
                             if !self.membersVM.members.isEmpty {
