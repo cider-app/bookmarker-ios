@@ -54,6 +54,36 @@ struct FolderView: View {
         GeometryReader { geometry in
             ZStack {
                 VStack {
+                    FolderFilesListView(folderFiles: self.vm.folderFiles)
+                        .padding(.horizontal)
+                    
+                    if let folder = self.vm.folder {
+                        NavigationLink(destination: SetFolderView(folder: folder), isActive: $editNavLinkIsActive) {
+                            EmptyView()
+                        }
+                    }
+                    
+                    HStack {
+                        TextField("Save link", text: self.$text)
+                            .modifier(TextFieldViewModifier(variant: .filled))
+                        
+                        Spacer()
+                        
+                        if !self.text.isEmpty {
+                            Button(action: {
+                                
+                            }) {
+                                Text("Save")
+                            }
+                            .buttonStyle(PrimaryButtonStyle())
+                        }
+                    }
+                    .padding(.horizontal)
+                    .padding(.top, 8)
+                    .padding(.bottom)
+                }
+                
+                VStack {
                     ZStack {
                         HStack {
                             Button(action: {
@@ -128,33 +158,7 @@ struct FolderView: View {
                         }
                     }
                     
-                    FolderFilesListView(folderFiles: self.vm.folderFiles)
-                        .padding(.horizontal)
-                    
-                    if let folder = self.vm.folder {
-                        NavigationLink(destination: SetFolderView(folder: folder), isActive: $editNavLinkIsActive) {
-                            EmptyView()
-                        }
-                    }
-                    
-                    HStack {
-                        TextField("Save link", text: self.$text)
-                            .modifier(TextFieldViewModifier(variant: .filled))
-                        
-                        Spacer()
-                        
-                        if !self.text.isEmpty {
-                            Button(action: {
-                                
-                            }) {
-                                Text("Save")
-                            }
-                            .buttonStyle(PrimaryButtonStyle())
-                        }
-                    }
-                    .padding(.horizontal)
-                    .padding(.top, 8)
-                    .padding(.bottom)
+                    Spacer()
                 }
             }
         }
