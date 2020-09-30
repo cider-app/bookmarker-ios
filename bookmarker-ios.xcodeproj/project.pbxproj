@@ -10,7 +10,6 @@
 		0A264E50251C48DB00566C43 /* EmojiPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A264E4F251C48DA00566C43 /* EmojiPickerView.swift */; };
 		0A264E52251C498A00566C43 /* UserFoldersGridCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A264E51251C498A00566C43 /* UserFoldersGridCellView.swift */; };
 		0A264E54251C4FE100566C43 /* FolderFilesGridCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A264E53251C4FE100566C43 /* FolderFilesGridCellView.swift */; };
-		0A264E56251C5E2800566C43 /* ColorGridPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A264E55251C5E2800566C43 /* ColorGridPickerView.swift */; };
 		0A264E58251C5E3200566C43 /* ColorGridCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A264E57251C5E3200566C43 /* ColorGridCellView.swift */; };
 		0A264E5A251C5F8500566C43 /* ColorPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A264E59251C5F8500566C43 /* ColorPickerViewModel.swift */; };
 		0A264E5C251C5F9D00566C43 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A264E5B251C5F9D00566C43 /* Color.swift */; };
@@ -159,7 +158,6 @@
 		0A264E4F251C48DA00566C43 /* EmojiPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPickerView.swift; sourceTree = "<group>"; };
 		0A264E51251C498A00566C43 /* UserFoldersGridCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFoldersGridCellView.swift; sourceTree = "<group>"; };
 		0A264E53251C4FE100566C43 /* FolderFilesGridCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFilesGridCellView.swift; sourceTree = "<group>"; };
-		0A264E55251C5E2800566C43 /* ColorGridPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGridPickerView.swift; sourceTree = "<group>"; };
 		0A264E57251C5E3200566C43 /* ColorGridCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGridCellView.swift; sourceTree = "<group>"; };
 		0A264E59251C5F8500566C43 /* ColorPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewModel.swift; sourceTree = "<group>"; };
 		0A264E5B251C5F9D00566C43 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -505,7 +503,6 @@
 				0A29068E250F0E53003602E7 /* ActivityViewController.swift */,
 				0AAD15AF250BFD0C00F8927B /* AuthenticationView.swift */,
 				0A264E57251C5E3200566C43 /* ColorGridCellView.swift */,
-				0A264E55251C5E2800566C43 /* ColorGridPickerView.swift */,
 				0AAD156D250BE9A700F8927B /* ContentView.swift */,
 				0A290686250EE9C3003602E7 /* CurrentUserFoldersPickerView.swift */,
 				0A290692250F52EF003602E7 /* CurrentUserFoldersView.swift */,
@@ -923,7 +920,6 @@
 				0A29069C251006EA003602E7 /* NewFolderFileEditView.swift in Sources */,
 				0AAD15B8250C022900F8927B /* SignUpViewModel.swift in Sources */,
 				0A2906D025142E8F003602E7 /* RecentlyCreatedFolderFilesView.swift in Sources */,
-				0A264E56251C5E2800566C43 /* ColorGridPickerView.swift in Sources */,
 				0A290687250EE9C3003602E7 /* CurrentUserFoldersPickerView.swift in Sources */,
 				0A264E54251C4FE100566C43 /* FolderFilesGridCellView.swift in Sources */,
 				0AAD15C1250C18D100F8927B /* NewFileView.swift in Sources */,
