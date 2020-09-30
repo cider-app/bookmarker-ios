@@ -16,15 +16,26 @@ struct ManageSharingView: View {
     var body: some View {
         NavigationView {
             VStack {
-                HStack {
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Image(systemName: Constants.Icon.close)
+                ZStack {
+                    HStack {
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Image(systemName: Constants.Icon.close)
+                        }
+                        .buttonStyle(CustomButtonStyle(variant: .contained, color: .secondary, fullWidth: false))
+                        
+                        Spacer()
                     }
-                    .buttonStyle(NavigationBarIconButtonStyle())
                     
-                    Spacer()
+                    HStack {
+                        Spacer()
+                        
+                        Text("Manage Sharing")
+                            .modifier(NavigationTitleViewModifier())
+                        
+                        Spacer()
+                    }
                 }
                 .modifier(NavigationBarViewModifier())
                 
@@ -44,49 +55,7 @@ struct ManageSharingView: View {
                         }
                         
                         if !self.vm.shareLink.isEmpty {
-                            Section(header:
-                                Text("")
-                                    .modifier(SectionHeaderViewModifier())
-                            ) {
-                                Button(action: {
-                                    
-                                }) {
-                                    HStack {
-                                        Text("Copy share link")
-                                        Spacer()
-                                    }
-                                }
-                                .buttonStyle(TextButtonStyle())
-                                
-                                Button(action: {
-                                    self.activityViewIsPresented = true
-                                }) {
-                                    HStack {
-                                        Text("Share to...")
-                                        Spacer()
-                                    }
-                                }
-                                .buttonStyle(TextButtonStyle())
-                            }
-                        }
-                        
-                        if !self.vm.shareLink.isEmpty {
-                            Section(
-                                header:
-                                    HStack {
-                                        Text("Secret")
-
-                                        Spacer()
-                                    }
-                                    .modifier(SectionHeaderViewModifier()),
-                                footer:
-                                    HStack {
-                                        Text("Secret collections require Face ID or a passcode to access")
-                                        
-                                        Spacer()
-                                    }
-                                    .modifier(SectionFooterViewModifier())
-                            ) {
+                            Section {
                                 Toggle("Require passcode", isOn: self.$vm.secret)
                                     .toggleStyle(PrimaryToggleStyle())
                             }
@@ -122,6 +91,27 @@ struct ManageSharingView: View {
                         }
                     }
                     .padding(.horizontal)
+                    .padding(.top)
+                }
+                
+                if !self.vm.shareLink.isEmpty {
+                    VStack {
+                        Button(action: {
+                            self.activityViewIsPresented = true
+                        }) {
+                            Text("Share to...")
+                        }
+                        .buttonStyle(CustomButtonStyle(variant: .contained, color: .primary, fullWidth: true))
+                        
+                        Button(action: {
+                            
+                        }) {
+                            Text("Copy share link")
+                        }
+                        .buttonStyle(CustomButtonStyle(variant: .contained, color: .secondary, fullWidth: true))
+                    }
+                    .padding(.horizontal)
+                    .padding(.bottom)
                 }
             }
             .navigationBarHidden(true)

@@ -61,9 +61,7 @@ struct FolderView: View {
                             }) {
                                 Image(systemName: Constants.Icon.back)
                             }
-                            .buttonStyle(NavigationBarIconButtonStyle())
-                            .padding()
-                            .background(RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous).fill(Color(.systemGray6)))
+                            .buttonStyle(CustomButtonStyle(variant: .contained, color: .secondary, fullWidth: false))
                             
                             Spacer()
                             
@@ -74,9 +72,7 @@ struct FolderView: View {
                                 }) {
                                     Image(systemName: Constants.Icon.share)
                                 }
-                                .buttonStyle(NavigationBarIconButtonStyle())
-                                .padding()
-                                .background(RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous).fill(Color(.systemGray6)))
+                                .buttonStyle(CustomButtonStyle(variant: .contained, color: .secondary, fullWidth: false))
                             }
                         }
                         .padding(.horizontal)
@@ -123,18 +119,9 @@ struct FolderView: View {
                                     }
                                 } label: {
                                     Text("\(folder.emoji) \(folder.title)")
-                                        .font(Font.system(.title3).weight(Constants.fontWeight))
-                                        .foregroundColor(Color.primary)
-                                        .padding()
-                                        .frame(maxWidth: geometry.size.width / 2)
-                                        .background(
-                                            RoundedRectangle(
-                                                cornerRadius: Constants.cornerRadius,
-                                                style: .continuous
-                                            )
-                                            .fill(Color(.systemGray6))
-                                        )
+                                        .modifier(NavigationTitleViewModifier())
                                 }
+                                .menuStyle(CustomMenuStyle())
                             }
                             
                             Spacer()
