@@ -331,12 +331,12 @@
 		0A2673B9251E984100B5E24E /* ButtonStyles */ = {
 			isa = PBXGroup;
 			children = (
+				0AC39B4F25245E7E00CFB158 /* CustomButtonStyle.swift */,
 				0A2673BA251E98E600B5E24E /* NavigationBarIconButtonStyle.swift */,
 				0A2673B7251E976A00B5E24E /* PrimaryButtonStyle.swift */,
 				0A2673BC251E9AE600B5E24E /* PrimaryToggleStyle.swift */,
-				0A6B80E82520775D00F59F61 /* TextButtonStyle.swift */,
 				0A6B80EC25211CB000F59F61 /* SecondaryButtonStyle.swift */,
-				0AC39B4F25245E7E00CFB158 /* CustomButtonStyle.swift */,
+				0A6B80E82520775D00F59F61 /* TextButtonStyle.swift */,
 			);
 			path = ButtonStyles;
 			sourceTree = "<group>";
