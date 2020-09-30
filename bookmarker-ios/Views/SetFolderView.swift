@@ -53,8 +53,7 @@ struct SetFolderView: View {
                             Spacer()
                         }
                     }
-                    .padding()
-                    .padding(.top)
+                    .modifier(NavigationBarViewModifier())
                     
                     HStack {
                         Spacer()
@@ -68,12 +67,9 @@ struct SetFolderView: View {
                     
                     TextField("Enter a name", text: self.$vm.title)
                         .modifier(TextFieldViewModifier(variant: .filled))
-                        .padding(.horizontal)
-                        .padding(.top)
-                        .padding(.top)
+                        .padding()
                     
                     EmojiPickerView(selectedEmoji: self.$vm.emoji)
-                        .padding()
                         .ignoresSafeArea(.all)
                 }
             }

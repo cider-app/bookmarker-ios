@@ -19,6 +19,7 @@ struct EmojiPickerView: View {
                 }
             }
             .pickerStyle(SegmentedPickerStyle())
+            .padding(.horizontal)
             
             TabView(selection: self.$vm.categorySelectionIndex) {
                 SelectableEmojisGridView(emojisRange: self.vm.emoticonsRange) { (selectedEmoji) in

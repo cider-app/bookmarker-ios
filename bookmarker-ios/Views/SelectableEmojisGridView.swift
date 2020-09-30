@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SelectableEmojisGridView: View {
     var emojisRange: ClosedRange<Int>
-    var columns = [GridItem(.adaptive(minimum: 50))]
+    var columns = [GridItem(.adaptive(minimum: 60))]
     var onClick: (String) -> Void
     
     var body: some View {
