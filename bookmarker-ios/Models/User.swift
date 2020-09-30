@@ -11,6 +11,7 @@ import FirebaseFirestore
 struct User: FirestoreModel {
     var id: String
     var username: String = ""
+    var docRef: DocumentReference
     
     var toDictionary: [String : Any] {
         return [
@@ -23,6 +24,7 @@ struct User: FirestoreModel {
         else { return nil }
         
         self.id = documentSnapshot.documentID
+        self.docRef = documentSnapshot.reference
         self.username = data[Constants.username] as? String ?? ""
     }
     

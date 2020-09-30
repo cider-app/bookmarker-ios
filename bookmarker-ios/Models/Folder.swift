@@ -20,6 +20,7 @@ struct Folder: FirestoreModel {
     
     init(id: String, title: String, description: String, secret: Bool = true, permissions: Permissions, emoji: String, color: String, createdByUserId: String, shareLink: String = "") {
         self.id = id
+        self.docRef = Firestore.firestore().collection(Constants.folders).document(id)
         self.title = title
         self.description = description
         self.secret = secret
@@ -32,6 +33,8 @@ struct Folder: FirestoreModel {
     
     //  MARK: - FirestoreModel protocol
     var id: String
+    
+    var docRef: DocumentReference
     
     var toDictionary: [String : Any] {
         return [
@@ -54,6 +57,7 @@ struct Folder: FirestoreModel {
         let permissionsData = data[Constants.permissions] as? [String: Bool]
         
         self.id = documentSnapshot.documentID
+        self.docRef = documentSnapshot.reference
         self.title = title
         self.description = data[Constants.description] as? String ?? ""
         self.secret = data[Constants.secret] as? Bool ?? true 

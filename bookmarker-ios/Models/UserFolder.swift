@@ -15,8 +15,9 @@ struct UserFolder: FirestoreModel {
     var emoji: String = Constants.defaultFolderEmoji
     var color: String = Constants.defaultFolderColor
     
-    init(id: String, title: String, description: String, secret: Bool, emoji: String, color: String) {
+    init(id: String, docRef: DocumentReference, title: String, description: String, secret: Bool, emoji: String, color: String) {
         self.id = id
+        self.docRef = docRef
         self.title = title
         self.description = description
         self.secret = secret
@@ -26,6 +27,8 @@ struct UserFolder: FirestoreModel {
     
     //  MARK: - FirestoreModel protocol
     var id: String
+    
+    var docRef: DocumentReference
     
     var toDictionary: [String : Any] {
         return [
@@ -44,6 +47,7 @@ struct UserFolder: FirestoreModel {
         else { return nil }
         
         self.id = documentSnapshot.documentID
+        self.docRef = documentSnapshot.reference
         self.title = title
         self.description = data[Constants.description] as? String ?? ""
         self.secret = data[Constants.secret] as? Bool ?? true

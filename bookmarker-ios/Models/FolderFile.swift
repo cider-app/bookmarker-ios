@@ -16,14 +16,17 @@ struct FolderFile: FirestoreModel {
     var createdByUserId: String = ""
     var createdOn: String = ""
     
-    init(id: String, link: String, createdByUserId: String) {
+    init(id: String, docRef: DocumentReference, link: String, createdByUserId: String) {
         self.id = id
+        self.docRef = docRef
         self.link = link
         self.createdByUserId = createdByUserId
     }
     
     //  MARK: - FirestoreModel protocol
     var id: String
+    
+    var docRef: DocumentReference
     
     var toDictionary: [String : Any] {
         return [
@@ -42,6 +45,7 @@ struct FolderFile: FirestoreModel {
         else { return nil }
         
         self.id = documentSnapshot.documentID
+        self.docRef = documentSnapshot.reference
         self.link = link
         self.title = data[Constants.title] as? String ?? ""
         self.description = data[Constants.description] as? String ?? ""
