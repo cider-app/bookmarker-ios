@@ -83,10 +83,8 @@ struct SetFolderView: View {
             .onAppear {
                 if let folder = self.folder {
                     self.vm.title = folder.title
-                    self.vm.description = folder.description
                     self.vm.secret = folder.secret
                     self.vm.permissions = folder.permissions
-                    self.vm.color = folder.color
                     self.vm.emoji = folder.emoji
                 }
             }

@@ -12,11 +12,9 @@ import FirebaseAuth
 
 class SetFolderViewModel: ObservableObject {
     @Published var title: String = ""
-    @Published var description: String = ""
     @Published var secret: Bool = false
     @Published var permissions: Permissions = Permissions()
     @Published var emoji: String = Constants.defaultFolderEmoji
-    @Published var color: String = Constants.defaultFolderColor
     @Published var isLoading: Bool = false
     
     func set(folder: Folder?, completion: ((Error?) -> Void)?) {
@@ -32,10 +30,8 @@ class SetFolderViewModel: ObservableObject {
         
         Folder.collectionRef.document(folderId).updateData([
             Constants.title: title,
-            Constants.description: description,
             Constants.secret: secret,
             Constants.emoji: emoji,
-            Constants.color: color,
             Constants.permissions: permissions.toDictionary
         ]) { (error) in
             self.isLoading = false
@@ -61,9 +57,9 @@ class SetFolderViewModel: ObservableObject {
         let folderUserRef = FolderUser.subcollectionRef(parentDocId: folderRef.documentID).document(authUser.uid)
         let userFolderRef = UserFolder.subcollectionRef(parentDocId: authUser.uid).document(folderRef.documentID)
         
-        let folder = Folder(id: folderRef.documentID, title: title, description: description, secret: secret, permissions: permissions, emoji: emoji, color: color, createdByUserId: authUser.uid)
+        let folder = Folder(id: folderRef.documentID, title: title, secret: secret, emoji: emoji, createdByUserId: authUser.uid)
         let folderUser = FolderUser(id: authUser.uid, docRef: folderUserRef)
-        let userFolder = UserFolder(id: folderRef.documentID, docRef: userFolderRef, title: title, description: description, secret: secret, emoji: emoji, color: color)
+        let userFolder = UserFolder(id: folderRef.documentID, docRef: userFolderRef, title: title, secret: secret, emoji: emoji)
         
         batch.setData(folder.toDictionary, forDocument: folderRef)
         batch.setData(folderUser.toDictionary, forDocument: folderUserRef)
