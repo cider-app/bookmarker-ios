@@ -10,12 +10,34 @@ import FirebaseFirestore
 import FirebaseAuth
 import LinkPresentation
 
+enum FolderAlert {
+    case leave
+    case delete
+    case enableSharing
+}
+
+enum FolderSheet {
+    case edit
+    case add
+    case manageSharing
+    case share
+    case viewLink
+}
+
 class FolderViewModel: ObservableObject {
     @Published var folder: Folder?
     @Published var folderFiles = [FolderFile]()
+    @Published var newLink: String = ""
+    @Published var shareLink: String = ""
     @Published var isLoading: Bool = false
     @Published var currentUserIsMember: Bool = false
     @Published var shareLinkMetadata: LPLinkMetadata?
+    @Published var alertIsPresented: Bool = false
+    @Published var activeAlert: FolderAlert = .leave
+    @Published var sheetIsPresented: Bool = false
+    @Published var activeSheet: FolderSheet = .add
+    @Published var selectedLink: String = ""
+    @Published var editNavLinkIsActive: Bool = false
     var folderListener: ListenerRegistration?
     var folderFilesListener: ListenerRegistration?
     
@@ -28,7 +50,7 @@ class FolderViewModel: ObservableObject {
             
             if let folder = Folder(documentSnapshot: document) {
                 self.folder = folder
-                self.fetchShareLinkMetadata(urlString: "https://developer.apple.com/documentation/linkpresentation/lpmetadataprovider")
+                self.shareLink = folder.shareLink
             }
         }
     }
@@ -107,21 +129,79 @@ class FolderViewModel: ObservableObject {
         }
     }
     
-    func fetchShareLinkMetadata(urlString: String) {
-        let metadataProvider = LPMetadataProvider()
-        let url = URL(string: urlString)!
+//    func fetchShareLinkMetadata(urlString: String) {
+//        let metadataProvider = LPMetadataProvider()
+//        let url = URL(string: urlString)!
+//        
+//        metadataProvider.startFetchingMetadata(for: url) { (metadata, error) in
+//            if error != nil {
+//                print("Error fetching metadata: \(error!)")
+//                self.shareLinkMetadata = nil
+//                return
+//            }
+//         
+//            guard let metadata = metadata else { return }
+//            
+//            DispatchQueue.main.async {
+//                self.shareLinkMetadata = metadata
+//            }
+//        }
+//    }
+    
+    func addLink(folderId: String, completion: ((Error?) -> Void)?) {
+        if isLoading {
+            return
+        }
         
-        metadataProvider.startFetchingMetadata(for: url) { (metadata, error) in
-            if error != nil {
-                print("Error fetching metadata: \(error!)")
-                self.shareLinkMetadata = nil
+        guard let authUser = Auth.auth().currentUser else { return }
+        
+        isLoading = true
+        
+        let subcollectionRef = FolderFile.subcollectionRef(parentDocId: folderId)
+        let docRef = subcollectionRef.document()
+        let newFolderFile = FolderFile(id: docRef.documentID, docRef: docRef, link: newLink, createdByUserId: authUser.uid)
+        
+        subcollectionRef.addDocument(data: newFolderFile.toDictionary) { (error) in
+            self.isLoading = false
+            
+            if let error = error {
+                print("Error creating new folderFile document: \(error.localizedDescription)")
+                completion?(error)
                 return
             }
-         
-            guard let metadata = metadata else { return }
             
-            DispatchQueue.main.async {
-                self.shareLinkMetadata = metadata
+            self.newLink = ""
+            completion?(nil)
+        }
+    }
+    
+    func enableLinkSharing(folder: Folder) {
+        if self.isLoading {
+            return
+        }
+        
+        isLoading = true
+        
+        Helper.generateFolderShareLink(folder: folder) { (url) in
+            if let url = url {
+                Folder.collectionRef.document(folder.id).updateData([
+                    Constants.sharingIsEnabled: true,
+                    Constants.shareLink: url.absoluteString
+                ]) { (error) in
+                    self.isLoading = false
+                    
+                    if let error = error {
+                        print("Error updating folder's link sharing settings: \(error)")
+                        return
+                    }
+                    
+                    //  When the folder document has been successfully updated with the new share link
+                    self.shareLink = url.absoluteString
+                    self.activeSheet = .share
+                    self.sheetIsPresented = true
+                }
+            } else {
+                self.isLoading = false
             }
         }
     }

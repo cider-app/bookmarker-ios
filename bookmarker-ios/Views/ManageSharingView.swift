@@ -9,71 +9,174 @@ import SwiftUI
 
 struct ManageSharingView: View {
     @StateObject var vm = ManageSharingViewModel()
-    @Binding var isPresented: Bool
+    @StateObject var membersVM = MembersViewModel()
+    @Environment(\.presentationMode) var presentationMode
     @State private var activityViewIsPresented: Bool = false
     var folder: Folder
     
+    func close() {
+        self.vm.updatePermissions(folderId: folder.id) { (error) in
+            if error == nil {
+                self.presentationMode.wrappedValue.dismiss()
+            }
+        }
+    }
+    
     var body: some View {
         NavigationView {
-            Form {
-                Section(
-                    footer: !self.vm.linkSharingFooterMessage.isEmpty ? Text(self.vm.linkSharingFooterMessage) : nil
-                ) {
-                    Toggle("Link sharing", isOn: self.$vm.linkSharingToggleIsOn)
-                        .onReceive([self.vm.linkSharingToggleIsOn].publisher.first()) { (isOn) in
-                            self.vm.toggleLinkSharing(folder: self.folder)
+            VStack {
+                ZStack {
+                    HStack {
+                        Button(action: close) {
+                            Image(systemName: Constants.Icon.close)
                         }
-                        .disabled(self.vm.isProcessingLinkSharingRequest)
+                        .buttonStyle(CustomButtonStyle(variant: .contained, color: .secondary, fullWidth: false))
+                        
+                        Spacer()
+                        
+                        if self.vm.isLoading {
+                            ProgressView()
+                        }
+                    }
                     
-                    if !self.vm.shareLink.isEmpty {
-                        Button(action: {
-                            
-                        }) {
-                            Text("Copy share link")
+                    HStack {
+                        Spacer()
+                        
+                        Text("Manage Sharing")
+                            .modifier(NavigationTitleViewModifier())
+                        
+                        Spacer()
+                    }
+                }
+                .modifier(NavigationBarViewModifier())
+                
+                ScrollView {
+                    VStack(spacing: Constants.verticalSpacing) {
+                        Section(
+                            footer: !self.vm.linkSharingFooterMessage.isEmpty ? Text(self.vm.linkSharingFooterMessage)
+                                    .modifier(SectionFooterViewModifier())
+                                : nil
+                        ) {
+                            HStack {
+                                Text("Share with others")
+                                
+                                Spacer()
+                                
+                                Button(action: {
+                                    if self.vm.sharingIsEnabled {
+                                        self.vm.alertIsPresented = true
+                                    } else {
+                                        self.vm.enableLinkSharing(folder: folder)
+                                    }
+                                }) {
+                                    if self.vm.sharingIsEnabled {
+                                        Text("Turn off")
+                                    } else {
+                                        Text("Turn on")
+                                    }
+                                }
+                                .buttonStyle(
+                                    self.vm.sharingIsEnabled ?
+                                        CustomButtonStyle(variant: .contained, color: .secondary, fullWidth: false, alignment: .center)
+                                    :
+                                        CustomButtonStyle(variant: .contained, color: .primary, fullWidth: false, alignment: .center)
+                                )
+                                .disabled(self.vm.isLoading)
+                            }
                         }
                         
-                        Button(action: {
-                            self.activityViewIsPresented = true
-                        }) {
-                            HStack {
-                                Text("Share to...")
-                                Spacer()
-                                Image(systemName: Constants.Icon.share)
+                        if self.vm.sharingIsEnabled {
+                            Section(
+                                header:
+                                    HStack {
+                                        Text("Permissions")
+                                        
+                                        Spacer()
+                                    }
+                                    .modifier(SectionHeaderViewModifier()),
+                                footer: !self.vm.permissionsFooterMessage.isEmpty ?
+                                    HStack {
+                                        Text(self.vm.permissionsFooterMessage)
+                                        
+                                        Spacer()
+                                    }
+                                    .modifier(SectionFooterViewModifier())
+                                : nil
+                            ) {
+                                Toggle("People can post", isOn: self.$vm.permissions.canEdit)
+                                    .toggleStyle(PrimaryToggleStyle())
+                                    .disabled(self.vm.isLoading)
+                                
+                                Toggle("People can invite others", isOn: self.$vm.permissions.canManageMembers)
+                                    .toggleStyle(PrimaryToggleStyle())
+                                    .disabled(self.vm.isLoading)
+                            }
+                            
+                            if !self.membersVM.members.isEmpty {
+                                Section(
+                                    header:
+                                        HStack {
+                                            Text("Members")
+                                            Spacer()
+                                        }
+                                        .modifier(SectionHeaderViewModifier())
+                                ) {
+                                    MembersListView(members: self.membersVM.members)
+                                }
                             }
                         }
                     }
+                    .padding(.horizontal)
+                    .padding(.top)
                 }
                 
-                if !self.vm.shareLink.isEmpty {
-                    Section(header: Text("Permissions")) {
-                        Toggle("Members can post", isOn: self.$vm.permissions.canEdit)
-                        Toggle("Members can invite others", isOn: self.$vm.permissions.canManageMembers)
-                    }
-                    Section(header: Text("Members")) {
+                if self.vm.sharingIsEnabled {
+                    VStack {
+                        Button(action: {
+                            self.activityViewIsPresented = true
+                        }) {
+                            Text("Share to...")
+                        }
+                        .buttonStyle(CustomButtonStyle(variant: .contained, color: .primary, fullWidth: true))
                         
+                        Button(action: {
+                            let pasteboard = UIPasteboard.general
+                            pasteboard.string = self.vm.shareLink
+                        }) {
+                            Text("Copy share link")
+                        }
+                        .buttonStyle(CustomButtonStyle(variant: .contained, color: .secondary, fullWidth: true))
                     }
+                    .padding(.horizontal)
+                    .padding(.bottom)
                 }
             }
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button(action: {
-                        self.isPresented = false
-                    }) {
-                        Image(systemName: Constants.Icon.close)
-                    }
-                }
-            }
-            .navigationTitle(Text("Manage sharing"))
+            .navigationBarHidden(true)
             .onAppear {
                 self.vm.shareLink = folder.shareLink
-                self.vm.linkSharingToggleIsOn = !folder.shareLink.isEmpty
+                self.vm.sharingIsEnabled = folder.sharingIsEnabled
                 self.vm.permissions.canEdit = folder.permissions.canEdit
                 self.vm.permissions.canManageMembers = folder.permissions.canManageMembers
+                self.vm.secret = folder.secret
+                
+                self.membersVM.listen(folderId: folder.id)
+            }
+            .onDisappear {
+                self.membersVM.unlisten()
             }
             .sheet(isPresented: $activityViewIsPresented) {
                 if let url = URL(string: self.vm.shareLink) {
                     ActivityViewController(activityItems: [url])
                 }
+            }
+            .alert(isPresented: self.$vm.alertIsPresented) {
+                Alert(
+                    title: Text("Stop Sharing?"),
+                    message: Text("If you stop sharing, other people will no longer have access to \(folder.title)"),
+                    primaryButton: .destructive(Text("Stop Sharing"), action: {
+                        self.vm.disableLinkSharing(folderId: folder.id)
+                    }),
+                    secondaryButton: .cancel())
             }
         }
     }

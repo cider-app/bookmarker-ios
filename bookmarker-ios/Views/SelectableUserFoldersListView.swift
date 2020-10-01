@@ -13,21 +13,26 @@ struct SelectableUserFoldersListView: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: Constants.verticalSpacing) {
+            VStack(spacing: 16) {
                 ForEach(userFolders, id: \.id) { userFolder in
-                    HStack {
-                        Button(action: {
-                            self.onUserFolderSelected(userFolder)
-                        }) {
+                    Button(action: {
+                        self.onUserFolderSelected(userFolder)
+                    }) {
+                        HStack(spacing: 16) {
+                            Text(userFolder.emoji)
+                                .font(.title3)
+                                .padding()
+                                .background(RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous).fill(Color("Color1")))
+                            
                             Text(userFolder.title)
+                                .font(Font.system(.headline).weight(Constants.fontWeight))
+                                .foregroundColor(Color.primary)
+                            
+                            Spacer()
                         }
-                        .buttonStyle(PlainButtonStyle())
-                        Spacer()
                     }
                 }
             }
-            .padding()
-            .frame(maxWidth: .infinity)
         }
     }
 }

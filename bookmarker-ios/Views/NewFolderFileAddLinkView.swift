@@ -9,9 +9,12 @@ import SwiftUI
 
 struct NewFolderFileAddLinkView: View {
     @ObservedObject var vm: NewFolderFileViewModel
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack(alignment: .leading, spacing: Constants.verticalSpacing) {
+            Spacer()
+            
             TextField("https://...", text: self.$vm.link, onEditingChanged: { (isEditingChanged) in
                 if isEditingChanged {
                     self.vm.error = nil
@@ -19,15 +22,14 @@ struct NewFolderFileAddLinkView: View {
             }, onCommit: {
                 
             })
+            .modifier(TextFieldViewModifier())
             
             Button(action: {
                 self.vm.fetchLinkMetadata()
             }) {
                 Text("Next")
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color.primary))
             }
+            .buttonStyle(PrimaryButtonStyle())
             .disabled(self.vm.isLoading || self.vm.link.isEmpty)
             
             if let error = self.vm.error {
@@ -37,10 +39,11 @@ struct NewFolderFileAddLinkView: View {
             NavigationLink(destination: NewFolderFileEditView(vm: self.vm), isActive: self.$vm.editFileNavLinkIsActive) {
                 EmptyView()
             }
+            
+            Spacer()
         }
         .padding()
-        .ignoresSafeArea(.keyboard)
-        .navigationTitle(Text("New Link"))
+        .navigationBarHidden(true)
     }
 }
 

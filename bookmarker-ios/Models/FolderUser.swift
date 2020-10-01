@@ -9,12 +9,15 @@ import Foundation
 import FirebaseFirestore
 
 struct FolderUser: FirestoreModel {
-    init(id: String) {
+    init(id: String, docRef: DocumentReference) {
         self.id = id
+        self.docRef = docRef
     }
     
     //  MARK: - FirestoreModel protocol
     var id: String
+    
+    var docRef: DocumentReference
     
     var toDictionary: [String : Any] {
         return [
@@ -27,6 +30,7 @@ struct FolderUser: FirestoreModel {
         else { return nil }
         
         self.id = documentSnapshot.documentID
+        self.docRef = documentSnapshot.reference
     }
     
     static func subcollectionRef(parentDocId: String) -> CollectionReference {

@@ -10,25 +10,28 @@ import FirebaseFirestore
 
 struct UserFolder: FirestoreModel {
     var title: String = ""
-    var description: String = ""
     var secret: Bool = true
+    var emoji: String = Constants.defaultFolderEmoji
     
-    init(id: String, title: String, description: String, secret: Bool = true) {
+    init(id: String, docRef: DocumentReference, title: String, secret: Bool, emoji: String) {
         self.id = id
+        self.docRef = docRef
         self.title = title
-        self.description = description
         self.secret = secret
+        self.emoji = emoji
     }
     
     //  MARK: - FirestoreModel protocol
     var id: String
     
+    var docRef: DocumentReference
+    
     var toDictionary: [String : Any] {
         return [
             Constants.title: title,
-            Constants.description: description,
             Constants.secret: secret,
-            Constants.folderId: id
+            Constants.folderId: id,
+            Constants.emoji: emoji
         ]
     }
     
@@ -38,9 +41,10 @@ struct UserFolder: FirestoreModel {
         else { return nil }
         
         self.id = documentSnapshot.documentID
+        self.docRef = documentSnapshot.reference
         self.title = title
-        self.description = data[Constants.description] as? String ?? ""
         self.secret = data[Constants.secret] as? Bool ?? true
+        self.emoji = data[Constants.emoji] as? String ?? Constants.defaultFolderEmoji
     }
     
     static func subcollectionRef(parentDocId: String) -> CollectionReference {

@@ -10,33 +10,36 @@ import FirebaseFirestore
 
 struct Folder: FirestoreModel {
     var title: String = ""
-    var description: String = ""
     var secret: Bool = true
     var permissions: Permissions = Permissions()
     var createdByUserId: String = ""
     var shareLink: String = ""
+    var emoji: String = Constants.defaultFolderEmoji
+    var sharingIsEnabled: Bool = false
     
-    init(id: String, title: String, description: String, secret: Bool = true, permissions: Permissions = Permissions(), createdByUserId: String, shareLink: String = "") {
+    init(id: String, title: String, secret: Bool = true, emoji: String, createdByUserId: String) {
         self.id = id
+        self.docRef = Firestore.firestore().collection(Constants.folders).document(id)
         self.title = title
-        self.description = description
+        self.emoji = emoji
         self.secret = secret
-        self.permissions = permissions
         self.createdByUserId = createdByUserId
-        self.shareLink = shareLink
     }
     
     //  MARK: - FirestoreModel protocol
     var id: String
     
+    var docRef: DocumentReference
+    
     var toDictionary: [String : Any] {
         return [
             Constants.title: title,
-            Constants.description: description,
             Constants.secret: secret,
             Constants.permissions: permissions.toDictionary,
             Constants.createdByUserId: createdByUserId,
-            Constants.shareLink: shareLink
+            Constants.shareLink: shareLink,
+            Constants.emoji: emoji,
+            Constants.sharingIsEnabled: sharingIsEnabled
         ]
     }
     
@@ -48,12 +51,14 @@ struct Folder: FirestoreModel {
         let permissionsData = data[Constants.permissions] as? [String: Bool]
         
         self.id = documentSnapshot.documentID
+        self.docRef = documentSnapshot.reference
         self.title = title
-        self.description = data[Constants.description] as? String ?? ""
         self.secret = data[Constants.secret] as? Bool ?? true 
         self.permissions = Permissions(data: permissionsData)
         self.createdByUserId = data[Constants.createdByUserId] as? String ?? ""
         self.shareLink = data[Constants.shareLink] as? String ?? ""
+        self.emoji = data[Constants.emoji] as? String ?? Constants.defaultFolderEmoji
+        self.sharingIsEnabled = data[Constants.sharingIsEnabled] as? Bool ?? false
     }
     
     static var collectionRef: CollectionReference {

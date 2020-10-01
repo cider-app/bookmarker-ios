@@ -13,7 +13,7 @@ struct ColorGridCellView: View {
     var body: some View {
         color
             .frame(width: 50, height: 50)
-            .clipShape(Circle())
+            .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous))
     }
 }
 

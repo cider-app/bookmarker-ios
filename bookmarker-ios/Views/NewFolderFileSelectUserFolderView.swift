@@ -10,6 +10,7 @@ import SwiftUI
 struct NewFolderFileSelectUserFolderView: View {
     @EnvironmentObject var appState: AppState
     @ObservedObject var vm: NewFolderFileViewModel
+    @Environment(\.presentationMode) var presentationMode
     
     func createFolderFile(folderId: String) {
         self.vm.selectedFolderId = folderId
@@ -22,11 +23,26 @@ struct NewFolderFileSelectUserFolderView: View {
     }
     
     var body: some View {
-        SelectableUserFoldersListView(userFolders: self.appState.currentUserFolders) { (selectedUserFolder) in
-            self.createFolderFile(folderId: selectedUserFolder.id)
+        VStack {
+            HStack {
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: Constants.Icon.back)
+                }
+                .buttonStyle(NavigationBarIconButtonStyle())
+                
+                Spacer()
+            }
+            .padding()
+            
+            SelectableUserFoldersListView(userFolders: self.appState.currentUserFolders) { (selectedUserFolder) in
+                self.createFolderFile(folderId: selectedUserFolder.id)
+            }
+            .padding()
         }
         .disabled(self.vm.isLoading)
-        .navigationTitle("Choose collection")
+        .navigationBarHidden(true)
     }
 }
 

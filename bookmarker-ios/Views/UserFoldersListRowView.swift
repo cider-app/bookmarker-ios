@@ -11,26 +11,20 @@ struct UserFoldersListRowView: View {
     var userFolder: UserFolder
     
     var body: some View {
-        VStack(alignment: .center, spacing: Constants.verticalSpacing) {
+        HStack {
+            Text(userFolder.emoji)
+                .font(.largeTitle)
+            
             Text(userFolder.title)
-                .font(Font.system(.title).weight(Constants.fontWeight))
+                .font(Font.system(.title3).weight(Constants.fontWeight))
+                .lineLimit(1)
+                .foregroundColor(Color.primary)
+                .padding(.leading)
             
-            Text(userFolder.description)
-                .font(Font.system(.subheadline))
-            
-//            HStack {
-//                Spacer()
-//
-//                Text(self.userFolder.secret ? "🔒" : "🎉")
-//            }
+            Spacer()
         }
         .padding()
-        .frame(maxWidth: .infinity)
-        .foregroundColor(Color(.systemBackground))
-        .background(RoundedRectangle(cornerRadius: Constants.cornerRadius).fill(Color(.blue)))
-//        .clipped()
-//        .shadow(color: Color.gray.opacity(0.25), radius: 4, x: 0, y: 6)
-        .padding(.horizontal)
+        .background(RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous).fill(Color(.systemBackground)))
     }
 }
 
