@@ -57,15 +57,35 @@ struct ManageSharingView: View {
                                     .modifier(SectionFooterViewModifier())
                                 : nil
                         ) {
-                            Toggle("Turn on link sharing", isOn: self.$vm.linkSharingToggleIsOn)
-                                .toggleStyle(PrimaryToggleStyle())
-                                .onReceive([self.vm.linkSharingToggleIsOn].publisher.first()) { (isOn) in
-                                    self.vm.toggleLinkSharing(folder: self.folder)
+                            HStack {
+                                Text("Share with others")
+                                
+                                Spacer()
+                                
+                                Button(action: {
+                                    if self.vm.sharingIsEnabled {
+                                        self.vm.alertIsPresented = true
+                                    } else {
+                                        self.vm.enableLinkSharing(folder: folder)
+                                    }
+                                }) {
+                                    if self.vm.sharingIsEnabled {
+                                        Text("Turn off")
+                                    } else {
+                                        Text("Turn on")
+                                    }
                                 }
+                                .buttonStyle(
+                                    self.vm.sharingIsEnabled ?
+                                        CustomButtonStyle(variant: .contained, color: .secondary, fullWidth: false, alignment: .center)
+                                    :
+                                        CustomButtonStyle(variant: .contained, color: .primary, fullWidth: false, alignment: .center)
+                                )
                                 .disabled(self.vm.isLoading)
+                            }
                         }
                         
-                        if !self.vm.shareLink.isEmpty {
+                        if self.vm.sharingIsEnabled {
                             Section(
                                 header:
                                     HStack {
@@ -110,7 +130,7 @@ struct ManageSharingView: View {
                     .padding(.top)
                 }
                 
-                if !self.vm.shareLink.isEmpty {
+                if self.vm.sharingIsEnabled {
                     VStack {
                         Button(action: {
                             self.activityViewIsPresented = true
@@ -120,7 +140,8 @@ struct ManageSharingView: View {
                         .buttonStyle(CustomButtonStyle(variant: .contained, color: .primary, fullWidth: true))
                         
                         Button(action: {
-                            
+                            let pasteboard = UIPasteboard.general
+                            pasteboard.string = self.vm.shareLink
                         }) {
                             Text("Copy share link")
                         }
@@ -133,7 +154,7 @@ struct ManageSharingView: View {
             .navigationBarHidden(true)
             .onAppear {
                 self.vm.shareLink = folder.shareLink
-                self.vm.linkSharingToggleIsOn = !folder.shareLink.isEmpty
+                self.vm.sharingIsEnabled = folder.sharingIsEnabled
                 self.vm.permissions.canEdit = folder.permissions.canEdit
                 self.vm.permissions.canManageMembers = folder.permissions.canManageMembers
                 self.vm.secret = folder.secret
@@ -147,6 +168,15 @@ struct ManageSharingView: View {
                 if let url = URL(string: self.vm.shareLink) {
                     ActivityViewController(activityItems: [url])
                 }
+            }
+            .alert(isPresented: self.$vm.alertIsPresented) {
+                Alert(
+                    title: Text("Stop Sharing?"),
+                    message: Text("If you stop sharing, other people will no longer have access to \(folder.title)"),
+                    primaryButton: .destructive(Text("Stop Sharing"), action: {
+                        self.vm.disableLinkSharing(folderId: folder.id)
+                    }),
+                    secondaryButton: .cancel())
             }
         }
     }
