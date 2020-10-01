@@ -103,7 +103,6 @@ struct FolderView: View {
                                 .disabled(self.vm.isLoading)
                             }
                         }
-                        .padding(.horizontal)
                         
                         HStack {
                             Spacer()
@@ -155,6 +154,7 @@ struct FolderView: View {
                             Spacer()
                         }
                     }
+                    .modifier(NavigationBarViewModifier())
                     
                     Spacer()
                 }

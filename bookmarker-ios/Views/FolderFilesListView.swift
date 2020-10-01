@@ -24,7 +24,7 @@ struct FolderFilesListView: View {
                     }
                 }
             }
-            .padding(.top, 60)
+            .padding(.top, 72)
         }
     }
 }

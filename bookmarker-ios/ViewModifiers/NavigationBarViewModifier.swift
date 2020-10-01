@@ -12,6 +12,5 @@ struct NavigationBarViewModifier : ViewModifier {
         content
             .padding(.top)
             .padding(.horizontal)
-            .padding(.bottom, 8)
     }
 }
