@@ -11,26 +11,7 @@ struct FolderView: View {
     @EnvironmentObject var appState: AppState
     @Environment(\.presentationMode) var presentationMode
     @StateObject var vm = FolderViewModel()
-    @State private var alertIsPresented: Bool = false
-    @State private var activeAlert: FolderAlert = .leave
-    @State private var sheetIsPresented: Bool = false
-    @State private var activeSheet: FolderSheet = .add
-    @State private var selectedLink: String = ""
-    @State private var editNavLinkIsActive: Bool = false
     var folderId: String
-    
-    enum FolderAlert {
-        case leave
-        case delete
-    }
-    
-    enum FolderSheet {
-        case edit
-        case add
-        case manageSharing
-        case share
-        case viewLink
-    }
     
     func leave() {
         self.vm.leave(folderId: folderId) { (error) in
@@ -57,6 +38,18 @@ struct FolderView: View {
         }
     }
     
+    func share() {
+        guard let folder = self.vm.folder else { return }
+        
+        if folder.sharingIsEnabled {
+            self.vm.sheetIsPresented = true
+            self.vm.activeSheet = .share
+        } else {
+            self.vm.alertIsPresented = true
+            self.vm.activeAlert = .enableSharing
+        }
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -65,7 +58,7 @@ struct FolderView: View {
                         .padding(.horizontal)
                     
                     if let folder = self.vm.folder {
-                        NavigationLink(destination: SetFolderView(folder: folder), isActive: $editNavLinkIsActive) {
+                        NavigationLink(destination: SetFolderView(folder: folder), isActive: self.$vm.editNavLinkIsActive) {
                             EmptyView()
                         }
                     }
@@ -98,17 +91,16 @@ struct FolderView: View {
                                 Image(systemName: Constants.Icon.back)
                             }
                             .buttonStyle(CustomButtonStyle(variant: .contained, color: .secondary, fullWidth: false))
+                            .disabled(self.vm.isLoading)
                             
                             Spacer()
                             
-                            IfFolderLinkSharingIsEnabled(folder: self.vm.folder) {
-                                Button(action: {
-                                    self.sheetIsPresented = true
-                                    self.activeSheet = .share
-                                }) {
+                            IfIsFolderCreatorOrCanManageMembersView(folderViewModel: self.vm) {
+                                Button(action: share) {
                                     Image(systemName: Constants.Icon.share)
                                 }
                                 .buttonStyle(CustomButtonStyle(variant: .contained, color: .secondary, fullWidth: false))
+                                .disabled(self.vm.isLoading)
                             }
                         }
                         .padding(.horizontal)
@@ -120,8 +112,8 @@ struct FolderView: View {
                                 Menu {
                                     IfIsFolderCreatorView(folderVM: self.vm) {
                                         Button(action: {
-                                            self.sheetIsPresented = true
-                                            self.activeSheet = .edit
+                                            self.vm.sheetIsPresented = true
+                                            self.vm.activeSheet = .edit
                                         }) {
                                             Label("Edit collection", systemImage: Constants.Icon.edit)
                                         }
@@ -129,8 +121,8 @@ struct FolderView: View {
                                     
                                     IfIsFolderCreatorOrCanManageMembersView(folderViewModel: self.vm) {
                                         Button(action: {
-                                            self.sheetIsPresented = true
-                                            self.activeSheet = .manageSharing
+                                            self.vm.sheetIsPresented = true
+                                            self.vm.activeSheet = .manageSharing
                                         }) {
                                             Label("Manage sharing", systemImage: Constants.Icon.members)
                                         }
@@ -138,8 +130,8 @@ struct FolderView: View {
                 
                                     IfIsFolderMemberView(folderVM: self.vm) {
                                         Button(action: {
-                                            self.alertIsPresented = true
-                                            self.activeAlert = .leave
+                                            self.vm.alertIsPresented = true
+                                            self.vm.activeAlert = .leave
                                         }) {
                                             Label("Leave collection", systemImage: Constants.Icon.leave)
                                         }
@@ -147,8 +139,8 @@ struct FolderView: View {
                 
                                     IfIsFolderCreatorView(folderVM: self.vm) {
                                         Button(action: {
-                                            self.alertIsPresented = true
-                                            self.activeAlert = .delete
+                                            self.vm.alertIsPresented = true
+                                            self.vm.activeAlert = .delete
                                         }) {
                                             Label("Delete collection", systemImage: Constants.Icon.delete)
                                         }
@@ -178,8 +170,8 @@ struct FolderView: View {
             self.vm.unlistenFolder()
             self.vm.unlistenFolderFiles()
         }
-        .sheet(isPresented: self.$sheetIsPresented) {
-            switch self.activeSheet {
+        .sheet(isPresented: self.$vm.sheetIsPresented) {
+            switch self.vm.activeSheet {
             case .edit:
                 if let folder = self.vm.folder {
                     SetFolderView(folder: folder)
@@ -196,26 +188,35 @@ struct FolderView: View {
                     ActivityViewController(activityItems: [url])
                 }
             case .viewLink:
-                if let url = URL(string: self.selectedLink) {
+                if let url = URL(string: self.vm.selectedLink) {
                     SafariView(url: url)
                         .ignoresSafeArea(.all)
                 }
             }
         }
-        .alert(isPresented: self.$alertIsPresented) { () -> Alert in
-            switch self.activeAlert {
+        .alert(isPresented: self.$vm.alertIsPresented) { () -> Alert in
+            switch self.vm.activeAlert {
             case .leave:
                 return Alert(
-                    title: Text("Leave collection"),
+                    title: Text("Leave Collection?"),
                     message: Text("Are you sure?"),
                     primaryButton: .destructive(Text("Leave"), action: leave),
                     secondaryButton: .cancel()
                 )
             case .delete:
                 return Alert(
-                    title: Text("Delete collection"),
+                    title: Text("Delete Collection?"),
                     message: Text("Are you sure?"),
                     primaryButton: .destructive(Text("Delete"), action: delete),
+                    secondaryButton: .cancel()
+                )
+            case .enableSharing:
+                return Alert(
+                    title: Text("Share Collection with Others?"),
+                    message: Text("Let anyone with the link see collection items and members."),
+                    primaryButton: .default(Text("Turn on"), action: {
+                        self.vm.enableLinkSharing(folder: self.vm.folder!)
+                    }),
                     secondaryButton: .cancel()
                 )
             }
