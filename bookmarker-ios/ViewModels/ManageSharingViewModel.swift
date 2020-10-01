@@ -28,80 +28,31 @@ class ManageSharingViewModel: ObservableObject {
         self.isLoading = true
         self.linkSharingFooterMessage = "Generating share link..."
         
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = Constants.webUrl
-        components.path = Constants.collectionsPath
-        components.path.append("/\(folder.id)")
-        guard let link = components.url else {
-            print("Could not create web url")
-            self.isLoading = false
-            self.sharingIsEnabled = false
-            self.shareLink = ""
-            self.linkSharingFooterMessage = "Oops! We encountered a problem when creating the link. Please try again."
-            return
-        }
-          
-        //  Create dynamic link
-        guard let shareLinkBuilder = DynamicLinkComponents(link: link, domainURIPrefix: Constants.dynamicLinksDomainURIPrefix) else {
-            print("Could not create Firebase Dynamic Links component")
-            self.isLoading = false
-            self.shareLink = ""
-            self.sharingIsEnabled = false
-            self.linkSharingFooterMessage = "Oops! We encountered a problem when creating the link. Please try again."
-            return
-        }
-        
-        if let iOSBundleId = Bundle.main.bundleIdentifier {
-            shareLinkBuilder.iOSParameters = DynamicLinkIOSParameters(bundleID: iOSBundleId)
-        }
-        shareLinkBuilder.iOSParameters?.appStoreID = Constants.appStoreId
-        shareLinkBuilder.socialMetaTagParameters = DynamicLinkSocialMetaTagParameters()
-        shareLinkBuilder.socialMetaTagParameters?.title = "\(folder.title) on \(Constants.appName)"
-//        shareLinkBuilder.socialMetaTagParameters?.imageURL =
-        
-        //  Create short Firebase Dynamic Link
-        shareLinkBuilder.shorten { (url, warnings, error) in
-            if let error = error {
-                print("Error creating short dynamic link: \(error)")
-                self.isLoading = false
-                self.sharingIsEnabled = false
-                self.shareLink = ""
-                self.linkSharingFooterMessage = "Oops! We encountered a problem when creating the link. Please try again."
-                return
-            }
-            
-            if let warnings = warnings {
-                for warning in warnings {
-                    print("Firebase dynamic link warning: \(warning)")
-                }
-            }
-            
-            guard let url = url else {
-                self.isLoading = false
-                self.sharingIsEnabled = false
-                self.shareLink = ""
-                self.linkSharingFooterMessage = "Oops! We encountered a problem when creating the link. Please try again."
-                return
-            }
-            
-            Folder.collectionRef.document(folder.id).updateData([
-                Constants.sharingIsEnabled: true,
-                Constants.shareLink: url.absoluteString
-            ]) { (error) in
-                if let error = error {
-                    print("Error updating folder's link sharing settings: \(error)")
+        Helper.generateFolderShareLink(folder: folder) { (url) in
+            if let url = url {
+                Folder.collectionRef.document(folder.id).updateData([
+                    Constants.sharingIsEnabled: true,
+                    Constants.shareLink: url.absoluteString
+                ]) { (error) in
+                    if let error = error {
+                        print("Error updating folder's link sharing settings: \(error)")
+                        self.isLoading = false
+                        self.linkSharingFooterMessage = "Unable to update link sharing settings. Try again later."
+                        self.shareLink = ""
+                        return
+                    }
+                    
+                    //  When the folder document has been successfully updated with the new share link
+                    self.sharingIsEnabled = true
                     self.isLoading = false
-                    self.linkSharingFooterMessage = "Unable to update link sharing settings. Try again later."
-                    self.shareLink = ""
-                    return
+                    self.shareLink = url.absoluteString
+                    self.linkSharingFooterMessage = ""
                 }
-                
-                //  When the folder document has been successfully updated with the new share link
-                self.sharingIsEnabled = true
+            } else {
                 self.isLoading = false
-                self.shareLink = url.absoluteString
-                self.linkSharingFooterMessage = ""
+                self.shareLink = ""
+                self.sharingIsEnabled = false
+                self.linkSharingFooterMessage = "Oops! We encountered a problem when creating the link. Please try again."
             }
         }
     }
