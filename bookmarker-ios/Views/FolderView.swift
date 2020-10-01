@@ -19,8 +19,6 @@ struct FolderView: View {
     @State private var editNavLinkIsActive: Bool = false
     var folderId: String
     
-    @State private var text: String = ""
-    
     enum FolderAlert {
         case leave
         case delete
@@ -50,6 +48,15 @@ struct FolderView: View {
         }
     }
     
+    func addLink() {
+        self.vm.addLink(folderId: folderId) { (error) in
+            if error == nil {
+                //  Dismiss keyboard
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            }
+        }
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -64,18 +71,17 @@ struct FolderView: View {
                     }
                     
                     HStack {
-                        TextField("Save link", text: self.$text)
+                        TextField("Save link", text: self.$vm.newLink)
                             .modifier(TextFieldViewModifier(variant: .filled))
                         
                         Spacer()
                         
-                        if !self.text.isEmpty {
-                            Button(action: {
-                                
-                            }) {
+                        if !self.vm.newLink.isEmpty {
+                            Button(action: addLink) {
                                 Text("Save")
                             }
                             .buttonStyle(PrimaryButtonStyle())
+                            .disabled(self.vm.isLoading)
                         }
                     }
                     .padding(.horizontal)

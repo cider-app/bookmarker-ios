@@ -13,6 +13,7 @@ import LinkPresentation
 class FolderViewModel: ObservableObject {
     @Published var folder: Folder?
     @Published var folderFiles = [FolderFile]()
+    @Published var newLink: String = ""
     @Published var isLoading: Bool = false
     @Published var currentUserIsMember: Bool = false
     @Published var shareLinkMetadata: LPLinkMetadata?
@@ -123,6 +124,33 @@ class FolderViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.shareLinkMetadata = metadata
             }
+        }
+    }
+    
+    func addLink(folderId: String, completion: ((Error?) -> Void)?) {
+        if isLoading {
+            return
+        }
+        
+        guard let authUser = Auth.auth().currentUser else { return }
+        
+        isLoading = true
+        
+        let subcollectionRef = FolderFile.subcollectionRef(parentDocId: folderId)
+        let docRef = subcollectionRef.document()
+        let newFolderFile = FolderFile(id: docRef.documentID, docRef: docRef, link: newLink, createdByUserId: authUser.uid)
+        
+        subcollectionRef.addDocument(data: newFolderFile.toDictionary) { (error) in
+            self.isLoading = false
+            
+            if let error = error {
+                print("Error creating new folderFile document: \(error.localizedDescription)")
+                completion?(error)
+                return
+            }
+            
+            self.newLink = ""
+            completion?(nil)
         }
     }
 }
